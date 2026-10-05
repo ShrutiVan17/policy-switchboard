@@ -1,8 +1,10 @@
 __pycache__/
 .venv/
+.cache/
 .env
 artifacts/*.sqlite*
 artifacts/cache*
+artifacts/model-cache*.json
 models/
 data/
 *.log

@@ -39,6 +39,10 @@ class FastAPITests(unittest.TestCase):
         self.assertEqual(self.client.post("/api/enforce",json={"message":"Hello!"}).status_code,401)
         result=self.client.post("/api/enforce",json={"message":"Hello!","tenant":"cedar"},headers=self.headers)
         self.assertEqual(result.status_code,403)
+        self.assertEqual(self.client.get('/api/experiments').status_code,401)
+        self.assertEqual(self.client.post('/api/shadow',json={'message':'Hello!'}).status_code,401)
+        wrong=self.client.post('/api/shadow',json={'message':'Hello!','tenant':'cedar'},headers=self.headers)
+        self.assertEqual(wrong.status_code,403)
 
     def test_versioned_refund_and_evidence(self):
         payload={"message":"I can refund your $15 transfer fee now.","version":"v2", "context":{"fee_amount":15,"currency":"USD","supervisor_approved":False}}

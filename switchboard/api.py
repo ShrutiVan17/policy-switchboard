@@ -14,10 +14,11 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from .engine import POLICIES, enforce
 from .evals import run
+from .release_gate import load_experiments
 from . import server
 
 app = FastAPI(title="Policy Switchboard", version="1.1.0",
-              description="Fictional customer-policy demo. Live rule checks; LoRA training is a separate workflow.")
+              description="Fictional customer-policy lab. Verified rules delivery, measured LoRA research, shadow inference and release gates.")
 bearer = HTTPBearer(auto_error=False)
 
 
@@ -70,13 +71,19 @@ async def http_error(request, exc):
 
 @app.get("/api/health")
 def health():
-    return {"status":"ok", "api_framework":"FastAPI", "backend":"deterministic", "trained_model":False}
+    return {"status":"ok", "api_framework":"FastAPI", "backend":"deterministic", "trained_model":False,
+            "shadow_adapters_available":(server.ROOT/'models/registry.json').exists(),"model_delivery_enabled":False}
 
 
 @app.get("/api/demo-config")
 def demo_config():
     return {"keys":{tenant:key for key,tenant in server.TOKENS.items()},
             "policies":[p.public() for p in POLICIES.values()], "local_demo":True}
+
+
+@app.get("/api/experiments")
+def experiments(tenant=Depends(authenticated_tenant)):
+    return load_experiments(server.ROOT)
 
 
 @app.post("/api/enforce")
@@ -96,6 +103,21 @@ def check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
     except (OSError, sqlite3.Error):
         raise HTTPException(503, "Evidence storage unavailable; output withheld") from None
     return result
+
+
+@app.post('/api/shadow')
+def shadow_check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
+    if body.tenant is not None and body.tenant != tenant:
+        raise HTTPException(403, 'Tenant does not match authenticated key')
+    if not (server.ROOT/'models/registry.json').exists():
+        raise HTTPException(503, 'Complete trained adapter registry is not available')
+    try:
+        from ml.runtime import shadow
+        return shadow(body.message,body.context,tenant,body.version)
+    except ValueError as exc:
+        raise HTTPException(400,str(exc)) from None
+    except (ImportError,OSError,RuntimeError,KeyError):
+        raise HTTPException(503,'Research model unavailable; delivery remains disabled') from None
 
 
 @app.get("/api/evidence")

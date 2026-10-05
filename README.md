@@ -1,109 +1,110 @@
 # Policy Switchboard
 
-**Check whether a customer message follows the right company's rules—and whether it still does after those rules change.**
+**What should change when a customer's policy changes—and what must stay correct?**
 
-A support agent promises a $15 refund. Harbor used to allow refunds up to $20, but its new limit is $10. Cedar requires approval for every refund. This project makes those differences visible, testable and traceable.
+A $15 refund is allowed under Harbor's old $20 limit, held under its new $10 limit, and held under Cedar's approval policy. This application makes those differences playable, measurable and traceable.
 
-![Policy Switchboard demo](artifacts/preview.png)
+![Policy Switchboard](artifacts/preview.png)
 
-## Current status
+## What is implemented
 
-Working local prototype: FastAPI service, simple browser interface, company-specific rule checks, saved evidence, a 72-case synthetic test suite, selective evaluation and exact-configuration caching.
+- A concise animated playground with allow, fix, block and review outcomes.
+- Real customer/version LoRA training against an immutable open model checkpoint.
+- Base-model versus adapter evaluation, raw outputs and a separate wording-family holdout.
+- A release gate that rejects invalid answers, unsafe approvals, unnecessary holds, missing cases and policy regressions.
+- Real local shadow inference with authenticated tenant routing, locked adapter switching and checked artifact fingerprints.
+- Rules-based delivery, secret-redacted evidence, exact-configuration caching and selective evaluation.
 
-**No trained AI model is active.** LoRA training and offline model-evaluation scripts are included, but training has not run. The demo's result counts describe built-in rule checks, not AI accuracy or real-world compliance.
+The base is **SmolLM2-135M-Instruct**, chosen for the local 4 GB GPU. It is much smaller than ZeroDrift's enforcement model. AI-generated text is never delivered to a customer. Synthetic scores do not certify compliance.
 
-## Start the app
+See [measured results](docs/MODEL_REPORT.md), [trust boundaries](docs/TRUST.md) and [the interview guide](docs/INTERVIEW.md).
 
-Python 3.11 or later:
+**Recorded result:** base model 0/72 correct with 72 invalid outputs; customer adapters 25/72 correct with 47 unsafe allows. The adapter learned the output format but collapsed to allowing messages. The release gate rejected it. Verified rules continue to handle the playground; model-generated customer delivery stays disabled. This is a reproducible engineering experiment, not a successful production enforcement model.
 
-```bash
+![Measured AI results and release decision](artifacts/lab-preview.png)
+
+## Start
+
+```powershell
 python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.lock.txt
 python -m switchboard.launch
 ```
 
-Open **http://127.0.0.1:8765**. API documentation is at **http://127.0.0.1:8765/docs**.
+Open **http://127.0.0.1:8765**. API documentation: **http://127.0.0.1:8765/docs**. The Windows launcher uses the installed project environment.
 
-Windows users can launch `Start-PolicySwitchboard.cmd` after installing dependencies. A no-install fallback remains available through `python -m switchboard.server`.
+The rules playground works without ML packages. To reproduce the AI lab:
 
-## What you can try
+```powershell
+python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+python -m pip install -r ml/requirements-tested.txt
+python -m ml.run_experiment --epochs 3
+```
 
-1. Check the default $15 refund: previous Harbor rules allow it; new Harbor rules and Cedar require review.
-2. Try a $5 refund: both Harbor versions still allow it.
-3. Mark the refund as supervisor-approved: each company permits the supported refund commitment.
-4. Try an investment guarantee: the supported simple claim is replaced with a checked statement.
-5. Try private information: the message is blocked and credentials are hidden in stored evidence.
-6. Run all examples, inspect each answer and download the JSON results.
+Use a compatible PyTorch build for other hardware. Downloads stay in the project cache. No paid services or real customer data are used. GitHub contains source, manifests and measured reports; the local project bundle also contains adapter weights. Fresh clones can reproduce weights using the command above.
+
+## Try it
+
+1. Send the default $15 refund through three policy versions.
+2. Try $5, change the amount or toggle supervisor approval.
+3. Try a guarantee or private information.
+4. Run 72 smoke checks or 48 policy-change checks.
+5. Open **AI lab** for actual model results and compare your message with an adapter.
+
+The approval toggle is fictional demo context. Production must retrieve approval and fee metadata from an authenticated support system.
 
 ## Technology
 
-| Layer | Technology | Implemented status |
+| Layer | Technology | Purpose |
 | --- | --- | --- |
-| API | Python, FastAPI, Pydantic, Uvicorn | Installed, running and tested locally |
-| Interface | HTML, CSS, JavaScript | Simple responsive page; no frontend build step |
-| Enforcement | Versioned Python rules, decimal amounts, explicit handling priority | Narrow fictional support domain |
-| Evidence | SQLite, policy hashes, tenant-scoped retrieval, secret redaction | Working local persistence |
-| Evaluations | Python, paired version cases, dependency selection, exact-config cache | 72 full cases and 48 selective cases |
-| ML workflow | PyTorch, Transformers, PEFT, TRL | Scripts included; ML dependencies/training not run here |
-| Adaptation | LoRA, optional QLoRA, customer/version adapter registry | Optional GPU workflow; no saved trained adapters yet |
-| Quality | unittest, API integration tests, GitHub Actions | 26 local tests passed; remote CI status is independent |
-| Packaging | Docker and dependency lockfile | Dockerfile provided; container execution unverified |
+| API | Python, FastAPI, Pydantic, Uvicorn | Typed requests, tenant routing, OpenAPI |
+| UI | HTML, CSS, JavaScript | Responsive animated playground without build tooling |
+| Adaptation | PyTorch, Transformers, PEFT, TRL | Completion-only LoRA training, rank 16 |
+| Base model | SmolLM2-135M-Instruct, pinned commit | Open, small enough for local GPU experiments |
+| Evaluation | Case-level Python harness | Changed/invariant pairs, invalid outputs, held-out wording, exact cache |
+| Release checks | Canonical cases and SHA-256 identities | Fail closed on errors or changed artifacts |
+| Evidence | SQLite and policy hashes | Tenant-scoped records with matched-secret redaction |
+| Quality | unittest and GitHub Actions | Boundary, API, dataset and release-gate checks |
 
-This stack keeps the interface easy to run while putting the relevant ML work in Python. SQLite is appropriate for a local prototype; production deployment would need different authentication, trusted context retrieval, serving, storage and operations.
+The recorded ML versions are pinned in [tested requirements](ml/requirements-tested.txt) and each training manifest. Docker packaging is provided; container execution is unverified.
 
-## How closely does it match ZeroDrift?
+## Alignment with the role
 
-ZeroDrift publicly describes an enforcement model based on **Gemma E4B**, a deterministic rules engine, trained customer-policy LoRA adapters, and verified rewrites. Its hiring post requests post-training, efficient evaluations and deployment experience. [Published model description](https://zerodrift.com/model/anchor)
+The supplied hiring post asks for post-training, customer LoRA adapters, efficient evals and deployment. This project demonstrates actual small-model adaptation, measured comparisons, evaluation caching and a local model-serving boundary.
 
-This project targets those responsibilities through customer-specific policies, policy-change tests, a LoRA pipeline and an API. **It does not contain ZeroDrift's proprietary Anchor model, and their exact internal libraries are not publicly confirmed by that description.** No particular base checkpoint has been downloaded or selected here. The training workflow requires a licensed instruction checkpoint compatible with its Transformers/TRL loading path; an E4B model with a different architecture may require loading changes.
+ZeroDrift publicly describes Gemma E4B, customer LoRA adapters, deterministic rules and verified rewrites. Its proprietary Anchor weights and exact internal library choices are not available here. This project targets the engineering responsibilities; it does not claim to reproduce Anchor. [First-party model description](https://zerodrift.com/model/anchor)
 
-See [the stack and alignment notes](docs/STACK.md) for confirmed facts, our choices and remaining work.
+## Evaluation limits
 
-## Verify it
+The 72-case smoke suite includes 3 required-change pairs and 21 invariant pairs. Some schema seeds overlap training. A separate 132-case validation suite holds out complete refund wording families; its labels are still synthetic and unreviewed. Invalid JSON counts as wrong. Cached outputs are identified explicitly; uncached p95 excludes them. Dollar costs remain unknown.
 
-```bash
+Even a perfect synthetic gate permits shadow research only. Expert-reviewed representative data, rewrite review, adversarial testing and operational validation are prerequisites for customer deployment.
+
+## Verify
+
+```powershell
 python -m unittest discover -s tests -v
 python -m switchboard.evals --output artifacts/evaluation.json
-python -m switchboard.evals --mode triage --output artifacts/triage.json
-python -m ml.build_dataset
+python -m ml.summarize_experiment
 ```
-
-The curated smoke suite contains **72 fictional cases, 3 required-change pairs and 21 invariant pairs**. The deterministic baseline matches all 72. These tests were authored for this narrow prototype and are not an independent compliance benchmark. Selective evaluation covers 48 cases; a full suite still runs before a release. Dollar cost and GPU time are unmeasured.
-
-## Optional ML experiment
-
-The actual research question is whether customer-specific LoRA improves policy adherence over a prompted model, particularly when policy changes. Use `ml/train_lora.py` to train adapters, then `ml/evaluate_model.py` to compare the same base checkpoint with and without them. Training uses family-separated validation data and revision-pinned model identifiers; evaluation validates the adapter manifests.
-
-[Full ML commands and limitations](RUN.md#optional-lora-workflow-not-executed-on-this-machine)
-
-The generated training examples are small and unreviewed. The shared post-trained checkpoint, trained-model API backend, independent expert labels and model-vs-baseline results remain future work.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  UI[Message and demo context] --> API[FastAPI]
-  API --> AUTH[Tenant and policy version]
-  AUTH --> RULES[Rule checks]
-  RULES --> RESULT[Allow / fix / block / review]
-  RESULT --> LOG[Redacted SQLite evidence]
-  DATA[Family-split examples] --> LORA[Optional LoRA training]
-  LORA --> EVAL[Offline paired evaluations]
+  UI[Message playground] --> API[Authenticated FastAPI]
+  API --> RULES[Versioned rules]
+  RULES --> DELIVERY[Checked output or withheld]
+  RULES --> AUDIT[Redacted evidence]
+  API --> SHADOW[Locked customer LoRA inference]
+  SHADOW --> COMPARE[Compare only: nothing delivered]
+  TRAIN[Family-split training] --> WEIGHTS[Fingerprinted adapters]
+  WEIGHTS --> SHADOW
+  WEIGHTS --> EVAL[Base vs LoRA evaluations]
+  EVAL --> GATE[Recomputed release gate]
 ```
 
-The UI sets approval and fee metadata only for this fictional demo. A real service must retrieve them from a trusted source. Messages requiring review or blocking are withheld. The local demo exposes its demo keys to its own interface and binds to loopback; it is not a public production service.
+This is a loopback-only fictional-data research application, with deliberately public demo keys. It is not a hosted production service or regulatory certification.
 
-## Explore the repository
-
-- [Run guide](RUN.md): installation, API calls and ML commands.
-- [Demo walkthrough](DEMO.md): a three-minute explanation for an interview.
-- [Research design](docs/DESIGN.md): the original experiment and intended deployment stages.
-- [Technology alignment](docs/STACK.md): why each component is used.
-- `switchboard/`: API, rules, benchmarks and caching.
-- `ml/`: dataset generator, adapter training and offline inference/evaluation.
-- `tests/`: rule and API tests.
-- `.github/workflows/checks.yml`: Windows/Linux checks on Python 3.11 and 3.13.
-
-This is an independent engineering portfolio project, not a ZeroDrift product or endorsement.
+[Run guide](RUN.md) · [Demo walkthrough](DEMO.md) · [Model report](docs/MODEL_REPORT.md) · [Trust boundaries](docs/TRUST.md) · [Stack alignment](docs/STACK.md)

@@ -1,0 +1,96 @@
+{
+  "cedar-v1": {
+    "model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "02e84e7cc564d9c3ca090f978a4da4698ccaac29",
+    "training_sha256": "0cb1dcd71904b71f1952f6c6c623de1935e62c948a7897c2c2737a3176cbabf5",
+    "validation_sha256": "bbed642637a168e806ec7ef1ea43a955735da6a29767395ebafe279d2bf0d1bd",
+    "epochs": 3.0,
+    "seed": 42,
+    "qlora": false,
+    "wall_seconds": 347.0457169999718,
+    "max_length": 512,
+    "gradient_checkpointing": false,
+    "tenant": "cedar",
+    "policy_version": "v1",
+    "policy_sha256": "d917e1bc1e9ec392de73141324667dba2e0241ec5306cad6453cd98ad7666713",
+    "hardware": "NVIDIA GeForce GTX 1650 Ti",
+    "training_metrics": {
+      "train_runtime": 346.7713,
+      "train_samples_per_second": 0.796,
+      "train_steps_per_second": 0.104,
+      "total_flos": 69129578221056.0,
+      "train_loss": 0.6085382973154386,
+      "epoch": 3.0
+    },
+    "adapter_sha256": "0c6d54c5781820cb16106d27af0f199890de095da1c5fb91ac2635cea45fe57d",
+    "versions": {
+      "torch": "2.7.1+cu126",
+      "transformers": "4.57.6",
+      "peft": "0.21.2",
+      "trl": "0.23.1",
+      "datasets": "4.8.5"
+    }
+  },
+  "harbor-v1": {
+    "model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "02e84e7cc564d9c3ca090f978a4da4698ccaac29",
+    "training_sha256": "71b38b2aa5b9c55a54d595edc8c432309e9a43894fa5e3ee2c0c8ac7363bd926",
+    "validation_sha256": "813d5e63c856d27c02c563d0cf003f8a89e65a5a424413af80947671e7ead6bc",
+    "epochs": 3.0,
+    "seed": 42,
+    "qlora": false,
+    "wall_seconds": 699.5616756999516,
+    "tenant": "harbor",
+    "policy_version": "v1",
+    "policy_sha256": "9888982ed0e5a22f538f5d8ca441dfd6a4ba7d46e6807a2d515ab8ffc93ea5f4",
+    "hardware": "NVIDIA GeForce GTX 1650 Ti",
+    "training_metrics": {
+      "train_runtime": 699.2874,
+      "train_samples_per_second": 0.395,
+      "train_steps_per_second": 0.051,
+      "total_flos": 68643679588992.0,
+      "train_loss": 0.47759271330303615,
+      "epoch": 3.0
+    },
+    "adapter_sha256": "db8be3fde05ed8322c7329af0dac0dd9a0d07285098861b444b20d41957bee08",
+    "versions": {
+      "torch": "2.7.1+cu126",
+      "transformers": "4.57.6",
+      "peft": "0.21.2",
+      "trl": "0.23.1",
+      "datasets": "4.8.5"
+    }
+  },
+  "harbor-v2": {
+    "model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "02e84e7cc564d9c3ca090f978a4da4698ccaac29",
+    "training_sha256": "6f992f2a5fac1c2a5de4208bd3a90e242ff64c1d84cc2c8170b33a4f22f0cf73",
+    "validation_sha256": "69c1bc57d7485985d1c545d3c012ee4c014bd2961ca8e106c15067fd8a4c3014",
+    "epochs": 3.0,
+    "seed": 42,
+    "qlora": false,
+    "wall_seconds": 242.95280219998676,
+    "max_length": 512,
+    "gradient_checkpointing": false,
+    "tenant": "harbor",
+    "policy_version": "v2",
+    "policy_sha256": "bbe08a11c8e7ecab7bce37601c5d9751ec236552b2a3702867691998716a0565",
+    "hardware": "NVIDIA GeForce GTX 1650 Ti",
+    "training_metrics": {
+      "train_runtime": 242.6805,
+      "train_samples_per_second": 1.137,
+      "train_steps_per_second": 0.148,
+      "total_flos": 69539492704896.0,
+      "train_loss": 0.5632648095488548,
+      "epoch": 3.0
+    },
+    "adapter_sha256": "f04242b7665f1f5f495187f236e4ce5b38e65492bf0e7ff05bcdef9c2faf1c87",
+    "versions": {
+      "torch": "2.7.1+cu126",
+      "transformers": "4.57.6",
+      "peft": "0.21.2",
+      "trl": "0.23.1",
+      "datasets": "4.8.5"
+    }
+  }
+}

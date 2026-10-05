@@ -49,7 +49,7 @@ def build(out):
             file = out / f"{tenant}-{version}-{split}.jsonl"
             content = "".join(json.dumps(row)+"\n" for row in rows)
             file.write_text(content, encoding="utf-8")
-            counts[file.name] = {"rows":len(rows), "sha256":hashlib.sha256(content.encode()).hexdigest()}
+            counts[file.name] = {"rows":len(rows), "sha256":hashlib.sha256(file.read_bytes()).hexdigest()}
     (out / "manifest.json").write_text(json.dumps({"files":counts,"status":"synthetic; human review required","split":"held-out refund wording families"}, indent=2),encoding="utf-8")
     return counts
 

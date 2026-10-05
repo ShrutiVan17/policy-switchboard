@@ -22,7 +22,7 @@ The supplied hiring post specifically requests post-training, customer LoRA adap
 | Quality | unittest, FastAPI TestClient, GitHub Actions | Verify failure behavior, boundaries, authentication and split integrity |
 | Distribution | Dependency lockfile, Dockerfile, Windows launcher | Repeatable setup and a convenient local start path |
 
-FastAPI and frontend choice support the demo; they are not the strongest hiring evidence. Actual adapter weights, a reviewed benchmark, model comparisons and deployment measurements would provide that evidence.
+The relevant hiring evidence is the actual adapter training, case-level base/adapted comparisons, artifact checks and shadow-serving behavior. A reviewed benchmark and production measurements remain necessary before customer use.
 
 ## Model compatibility
 
@@ -32,9 +32,10 @@ There is no access to ZeroDrift's proprietary Anchor weights. The project should
 
 ## Status you can defend in an interview
 
-- Working now: FastAPI demo, four enforcement outcomes, company/version routing, evidence redaction, paired synthetic evaluations, selective triage and cache.
-- Provided but unexecuted: LoRA/QLoRA training and offline model evaluation scripts.
-- Unverified: actual trained model quality, GPU/cost performance, container execution and remote CI until those runs complete.
-- Planned: shared enforcement checkpoint, independent reviewed benchmark, trained-model API backend, shadow/canary deployment, and public hosting with proper identity, context retrieval and production storage.
+- Implemented: FastAPI playground, four enforcement outcomes, customer/version routing, evidence redaction, paired synthetic evaluations, selective triage and exact model/config cache.
+- Executed locally: small-model LoRA training on a GTX 1650 Ti. Actual training manifests and completed evaluation reports are the source of truth for results.
+- Implemented serving boundary: locked, artifact-checked adapter inference in shadow mode; model-generated customer delivery is disabled.
+- Unverified: regulatory model quality, dollar cost, container execution and public production deployment. QLoRA was not used in the recorded local run.
+- Remaining: shared enforcement checkpoint, independent reviewed benchmark, customer deployment and public hosting with proper identity, context retrieval and production storage.
 
 The local demo is deliberately restricted to fictional support-policy patterns. Unknown or ambiguous messages are generally escalated; pattern matching is not a general semantic compliance engine.

@@ -1,37 +1,27 @@
-# Three-minute engineering walkthrough
+# Three-minute walkthrough
 
-Only describe what you have run and can explain. The current system uses a deterministic baseline, not a trained model.
+## 0:00 — A concrete policy change
 
-## 0:00 — The problem
+Send the default $15 refund. Harbor's old $20 limit allows it; the new $10 limit and Cedar's approval policy hold it. Try $5 to show behavior that must remain correct. The approval toggle is fictional trusted context; production must fetch approval from a secure source.
 
-"A support agent promises a $15 transfer-fee refund. Harbor allows this under yesterday's rules, but today's limit is $10. Cedar requires approval for every refund. I built a small policy migration lab to make those differences testable."
+## 0:40 — Other decisions
 
-Show the default replay: Harbor v1 passes; Harbor v2 and Cedar escalate. Explain why the escalation message is proposed for review and withheld from delivery.
+Try guaranteed returns and private information. A narrow supported guarantee is rewritten and verified; credentials are blocked. Open Saved checks to inspect redacted evidence and policy identities.
 
-## 0:40 — What must remain correct
+## 1:10 — Evaluations
 
-Click `Small $5 refund`: Harbor passes under both versions. Check `Supervisor approved this refund`, then click `Check this message`: all three policies permit the refund. Explain that the toggle represents trusted context in this fictional demo, and that a deployed system would fetch approval rather than trust a user-supplied field.
+Run 72 checks. Show required-change pairs, invariant cases and raw answers. The rules match all curated cases; that is an implementation smoke check, not general compliance accuracy. Selective iteration covers 48 cases; repeat runs use exact-configuration caching.
 
-## 1:10 — Other enforcement paths
+## 1:40 — Real post-training
 
-Click `Guaranteed investment returns`: a supported simple claim becomes `Investment returns are uncertain.` and is verified by a separate deterministic check. Click `Private information`: output is blocked. Expand `View saved checks for Harbor` and a technical record to show the stored secret is redacted and the policy hash is recorded.
+Open AI lab and load measured results. Compare the pinned 135M base model with three customer/policy LoRA adapters. Explain actual correct decisions, invalid answers and gate failures using the recorded numbers. Show the separate wording-family holdout; do not claim every smoke case is unseen.
 
-## 1:40 — Measured evaluations
+## 2:20 — Serving and trust
 
-Run the full benchmark. It has 72 curated synthetic cases; the rules baseline matches all 72. There are 3 required-change pairs and 21 invariant pairs. Explain that these small fixtures test the implementation, rather than establish legal accuracy or generalization.
+Compare a message with AI. Model inference is real, but generated text is never delivered. Explain the tenant key, policy hash, pinned base revision, adapter weight hash and adapter-switching lock. Show why model errors reject readiness, and why even perfect synthetic results only permit shadow research.
 
-Click `Test the changed rule`: 48 cases, including refund dependencies and a fixed set of invariant sentinels. Repeated exact-configuration runs use cached verdicts. Show downloaded raw JSON. Do not claim measured GPU or dollar savings; those fields are explicitly null.
+## 2:50 — Engineering tradeoffs
 
-## 2:20 — Applied ML next stage
+The small model fits the local 4 GB GPU; it is not ZeroDrift's proprietary enforcement model. The next customer-ready milestone requires independently reviewed data and operational validation. Discuss the actual failure patterns and what additional training data or a stronger model would test.
 
-Show `ml/build_dataset.py`, `ml/train_lora.py` and `ml/evaluate_model.py`. Explain family-based validation splits, revision-pinned base models, a customer/version adapter registry, manifest validation and explicit handling of malformed model outputs.
-
-"These scripts prepare the next experiment: does customer-specific LoRA improve enforcement against the prompted baseline? Training has not run yet, so I haven't invented model results."
-
-## 2:50 — Tradeoff and one real fix
-
-"The local baseline escalates unfamiliar wording rather than trying to interpret everything. I also fixed a database connection lifecycle issue caught by concurrent API tests. The next milestone is reviewed data, actual adapter training and an independent benchmark, followed by a hosted model backend."
-
-## Application note
-
-Present this version as a policy-enforcement engineering prototype. Do not describe it as post-trained production deployment experience. Once actual model training and deployment have been completed, update the demonstration and application wording to the measured results.
+Use [the measured report](docs/MODEL_REPORT.md) and [interview guide](docs/INTERVIEW.md). Describe local post-training and shadow serving accurately; do not label this public production deployment experience.

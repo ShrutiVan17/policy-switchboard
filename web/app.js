@@ -8,7 +8,7 @@ let config,report;
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
 async function api(path,body,tenant='harbor'){
-  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),8000);
+  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),path==='/api/shadow'?60000:8000);
   try{const r=await fetch(path,{method:body?'POST':'GET',signal:controller.signal,headers:{'Content-Type':'application/json','Authorization':`Bearer ${config.keys[tenant]}`},...(body?{body:JSON.stringify(body)}:{})});const data=await r.json();if(!r.ok)throw new Error(data.error||data.detail?.[0]?.msg||'Check your input.');return data;}
   finally{clearTimeout(timer);}
 }
@@ -69,4 +69,25 @@ $('message').addEventListener('input',()=>{document.querySelectorAll('[data-pres
 $('message').addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();replay();}});
 $('replay-btn').addEventListener('click',()=>replay());$('eval-btn').addEventListener('click',()=>evaluate('full'));$('triage-btn').addEventListener('click',()=>evaluate('triage'));$('refresh-btn').addEventListener('click',()=>evidence().catch(()=>{}));
 $('download-btn').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=`switchboard-${report.mode}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+async function experiments(){
+  $('models-btn').disabled=true;
+  try{const data=await api('/api/experiments');
+    $('model-results').replaceChildren(...data.experiments.map(r=>{
+      const n=el('article',undefined,'model-card');n.append(el('h3',r.name),el('strong',`${r.correct}/${r.total} correct`),el('p',`${r.invalid_outputs} invalid · ${Math.round(r.p95_ms)} ms batch p95`,'fine-print'),el('span',r.gate.status==='shadow-ready'?'Shadow ready':'Release blocked',`badge ${r.gate.status==='shadow-ready'?'pass':'escalate'}`));
+      if(r.holdout)n.append(el('p',`Unseen wording: ${r.holdout.correct}/${r.holdout.total}`,'fine-print'));
+      const d=el('details');d.append(el('summary','Evidence'),el('p',r.model),el('code',r.revision),el('p',r.gate.failures.join(' · ')||'Synthetic gate passed. Independent review required.'),el('p',`Report SHA-256: ${r.report_sha256}`,'fine-print'));n.append(d);return n;
+    }));if(!data.experiments.length)$('model-results').append(el('p','No completed model runs yet.','fine-print'));
+  }catch(error){$('model-results').replaceChildren(el('p',error.message));}
+  finally{$('models-btn').disabled=false;}
+}
+$('models-btn').addEventListener('click',experiments);
+$('shadow-btn').addEventListener('click',async()=>{
+  if(!config)return;$('shadow-btn').disabled=true;$('shadow-result').textContent='Comparing… first run loads the model.';
+  try{const context={currency:'USD',supervisor_approved:$('approved').checked};if($('amount').value!=='')context.fee_amount=Number($('amount').value);
+    const r=await api('/api/shadow',{message:$('message').value,version:'v2',context});
+    const aiLabel={pass:'Allow',escalate:'Review',block:'Block',rewrite:'Rewrite',invalid:'Invalid answer'}[r.model_verdict]||r.model_verdict;
+    $('shadow-result').textContent=r.model_verdict==='not-run'?'Private info blocked · AI skipped · Nothing sent':`AI: ${aiLabel} (unverified) · Rules: ${labels[r.rule_verdict]} · Nothing sent`;
+  }catch(error){$('shadow-result').textContent=error.name==='AbortError'?'Model is still loading. Try again shortly.':error.message;}
+  finally{$('shadow-btn').disabled=false;}
+});
 fetch('/api/demo-config').then(r=>{if(!r.ok)throw new Error('Connection unavailable.');return r.json();}).then(c=>{config=c;return replay({celebration:false});}).catch(error=>{$('status').textContent=error.message;});
