@@ -1,6 +1,6 @@
 # Service deployment and specialist stack
 
-The deployment target is a Python/CUDA policy service with tenant-specific PEFT adapters. The interface is a small demonstration client; ML correctness, isolation and deployment boundaries are the engineering focus.
+The current deployment target is an offline CPU policy classifier with tenant/version PEFT adapters and trained verdict heads. GPU resources are used for training. The interface is a demonstration client; ML correctness, isolation and serving boundaries are the focus.
 
 ## Why these components
 
@@ -10,6 +10,7 @@ The deployment target is a Python/CUDA policy service with tenant-specific PEFT 
 | Transformers + PEFT | Frozen base model plus separate low-rank policy adapters and immutable checkpoint identity |
 | TRL with custom token-weighted loss | Give verdict errors more training influence than repeated JSON boilerplate |
 | Balanced curriculum | Equal pass/rewrite/block/escalate training populations; distinct validation wording families |
+| Finite-state verdict decoding | Constrain generation to four verdicts; construct no model explanations or rewrites, and compare the base under the same decoder |
 | Counterfactual policy evaluations | Required-change pairs and invariant regressions across policy versions |
 | Homogeneous policy batches | Improve throughput without mixing tenant adapters inside a batch |
 | Exact evaluation cache | Hash model, adapters, prompts, precision, library versions and batch composition |
@@ -45,7 +46,11 @@ Service mode disables demo credential discovery and rejects caller-supplied busi
 
 The workflow builds the locked image, starts a service container, provisions a ticket, verifies a held refund and rejects forged approval. Its actual run status is the deployment evidence. This is a clean-container integration check, not a claim of a live client production installation.
 
-For a local Linux deployment, build the Dockerfile and use host networking with configured private keys and persistent artifact/context storage. The default bind is loopback. A managed deployment must also configure ingress/TLS, secret management, backups, rate limits and monitoring for its environment.
+The initial service/container workflow passed: [verified run](https://github.com/ShrutiVan17/policy-switchboard/actions/runs/37262498175).
+
+The first trained-model container workflow also passed: [model-serving run](https://github.com/ShrutiVan17/policy-switchboard/actions/runs/37310823387). It trained a Harbor v2 adapter from synthetic source data in a clean CPU image, provisioned the pinned checkpoint, started offline inference and verified a trusted-ticket request, model/rule verdicts, artifact identities and warm latency. The follow-up [integrity workflow](https://github.com/ShrutiVan17/policy-switchboard/actions/runs/37311765160) adds forged-context and modified-head rejection; its actual status is the evidence.
+
+For Linux, use `docker build --target service` for rules or `--target model-service` for the reproduced CPU adapter, then host networking, private keys and persistent context storage. The bind is loopback. A managed deployment must configure ingress/TLS, secrets, backups, rate limits and monitoring.
 
 ## GPU serving path
 
@@ -53,4 +58,4 @@ The working local implementation uses a locked PEFT multi-adapter runtime. vLLM 
 
 ## New training experiment
 
-`python -m ml.run_balanced` builds a separate class-balanced curriculum, trains verdict-focused adapters and evaluates the untouched smoke suite. It preserves the first failed run. Results, not token-level training loss, determine whether the new candidate is useful. The synthetic data still requires expert review.
+The current experiment is `python -m ml.improve_fast`, followed by the `--head-only` control. See [the model study](MODEL_STUDY.md) for training, ablation, unseen failures and pinned-checkpoint provisioning. Historical `run_balanced` is an earlier causal-model experiment. Synthetic labels still need expert review.

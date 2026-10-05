@@ -20,7 +20,7 @@ def main():
     for tenant,version in [('harbor','v1'),('harbor','v2'),('cedar','v1')]:
         old=root/f'models/{prefix}-{tenant}-{version}'
         archive=root/f'models/archive-v4-{tenant}-{version}'
-        if not args.head_only and not archive.exists():shutil.copytree(old,archive)
+        if not args.head_only and old.exists() and not archive.exists():shutil.copytree(old,archive)
         command=[sys.executable,'-m','ml.train_evidence','--model','sentence-transformers/all-MiniLM-L6-v2',
             '--revision','1110a243fdf4706b3f48f1d95db1a4f5529b4d41','--tenant',tenant,'--policy-version',version,
             '--train',str(root/f'data-v5/{tenant}-{version}-train.jsonl'),

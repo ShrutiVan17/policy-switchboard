@@ -1,5 +1,7 @@
 # Measured model experiment
 
+This is the historical causal-model experiment. The current encoder LoRA reaches 70/72 on smoke and 59/66 on the frozen challenge, including one unsafe challenge approval. See [the current model study](MODEL_STUDY.md) for results, ablation and deployment evidence.
+
 Generated from completed runs: 2026-10-05T03:48:17.201738+00:00
 
 All inputs are fictional. Scores measure this experiment, not regulatory compliance.

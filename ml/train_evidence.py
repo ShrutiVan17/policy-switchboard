@@ -29,6 +29,7 @@ def main():
     set_seed(42);torch.set_num_threads(2)
     device='cuda' if torch.cuda.is_available() else 'cpu'
     source=local_source(args.model,args.revision)
+    if not Path(source).is_dir():raise OSError('Provision the immutable base checkpoint before training')
     tokenizer=AutoTokenizer.from_pretrained(source,trust_remote_code=False)
     base=AutoModel.from_pretrained(source,trust_remote_code=False,attn_implementation='eager')
     encoder=get_peft_model(base,LoraConfig(r=8,lora_alpha=16,lora_dropout=.05,bias='none',task_type='FEATURE_EXTRACTION',target_modules=['query','value']))

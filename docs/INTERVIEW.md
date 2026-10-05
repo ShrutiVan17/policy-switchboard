@@ -1,5 +1,13 @@
 # Explain the project in an interview
 
+## Current evidence to lead with
+
+I trained three customer/version LoRA adapters on a pinned semantic encoder, paired identical refund text with changed approval and amount facts, and compared adaptation with a frozen-encoder/head-only control. LoRA improved smoke accuracy from 61/72 to 70/72 and unseen challenge accuracy from 55/66 to 59/66. Smoke unsafe allows fell from 1 to 0, but the challenge still contains one unsafe approval. The release gate rejects it and customer delivery stays disabled.
+
+I selected checkpoints using monitored validation safety, accuracy and loss, rather than treating more epochs as automatically better. Training/validation contain no exact shared messages; semantic families remain related and the data is synthetic. A clean Linux CPU container reproduces an adapter from source, serves it offline and verifies a trusted-ticket API request. This demonstrates model-serving engineering, not a real-client production deployment or expert-reviewed compliance accuracy. [Study and reproduction](MODEL_STUDY.md) · [Serving evidence](SERVICE.md).
+
+The remaining sections describe the historical causal-model experiment and the broader design.
+
 ## The problem
 
 A policy change must change some decisions without breaking unrelated behavior. A $15 refund should move from allowed to held when Harbor's limit changes from $20 to $10. A $5 refund should stay allowed. A different customer, Cedar, requires approval regardless of amount.

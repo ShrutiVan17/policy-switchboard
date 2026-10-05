@@ -1,6 +1,6 @@
 # Policy Switchboard
 
-**What should change when a customer's policy changesâ€”and what must stay correct?**
+**What should change when a customer's policy changes—and what must stay correct?**
 
 A $15 refund is allowed under Harbor's old $20 limit, held under its new $10 limit, and held under Cedar's approval policy. This application makes those differences playable, measurable and traceable.
 
@@ -41,6 +41,8 @@ The rules playground works without ML packages. To reproduce the AI lab:
 ```powershell
 python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 python -m pip install -r ml/requirements-tested.txt
+python -c "from ml.checkpoints import download; download('sentence-transformers/all-MiniLM-L6-v2','1110a243fdf4706b3f48f1d95db1a4f5529b4d41')"
+python -m ml.challenge
 python -m ml.improve_fast
 python -m ml.improve_fast --head-only
 ```
@@ -110,4 +112,4 @@ flowchart LR
 
 This is a loopback-only fictional-data research application, with deliberately public demo keys. It is not a hosted production service or regulatory certification.
 
-[Run guide](RUN.md) Â· [Demo walkthrough](DEMO.md) Â· [Model report](docs/MODEL_REPORT.md) Â· [Trust boundaries](docs/TRUST.md) Â· [Stack alignment](docs/STACK.md)
+[Run guide](RUN.md) · [Demo walkthrough](DEMO.md) · [Model report](docs/MODEL_REPORT.md) · [Trust boundaries](docs/TRUST.md) · [Stack alignment](docs/STACK.md)
