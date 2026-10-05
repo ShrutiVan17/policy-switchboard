@@ -1,0 +1,5 @@
+# CPU model-serving dependencies, separate from research training packages.
+transformers==4.57.6
+peft==0.21.2
+safetensors==0.8.0
+huggingface-hub==0.36.2

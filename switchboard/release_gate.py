@@ -67,7 +67,8 @@ def assess(report):
 
 def load_experiments(root):
     experiments = []
-    for name in ('baseline-model.json', 'lora-model.json', 'evidence-model.json'):
+    names=('control-model.json','evidence-model.json') if (root/'artifacts/control-model.json').exists() else ('baseline-model.json', 'lora-model.json', 'evidence-model.json')
+    for name in names:
         path = root/'artifacts'/name
         if not path.exists():
             continue
@@ -90,13 +91,16 @@ def load_experiments(root):
             gate['failures'].append('Local adapter artifacts are missing or changed')
         holdout_path=root/'artifacts'/name.replace('.json','-holdout.json')
         holdout=json.loads(holdout_path.read_text()) if holdout_path.exists() else None
-        experiments.append({'name': 'Fast evidence LoRA' if report.get('architecture')=='evidence-classifier' else 'Customer LoRA' if report.get('backend') == 'lora' else 'Base model',
+        challenge_path=root/'artifacts'/name.replace('.json','-challenge.json')
+        challenge=json.loads(challenge_path.read_text()) if challenge_path.exists() else None
+        experiments.append({'name': 'Head-only baseline' if report.get('backend')=='head-only' else 'Customer evidence LoRA' if report.get('architecture')=='evidence-classifier' else 'Customer LoRA' if report.get('backend') == 'lora' else 'Base model',
             'backend': report.get('backend'), 'model': report.get('model'),
             'revision': report.get('revision'), 'total': report['total'], 'correct': report['correct'],
             'invalid_outputs': report.get('invalid_outputs'), 'p95_ms': report.get('p95_uncached_ms'),
             'wall_ms': report.get('wall_ms'), 'report_sha256': digest_file(path),
             'batch_size':report.get('batch_size',1),'cases_per_second':report.get('cases_per_second'),
             'artifacts_verified': artifacts_verified, 'gate': gate,
+            'challenge':{'correct':challenge['correct'],'total':challenge['total'],'unsafe_allows':challenge['unsafe_allows']} if challenge else None,
             'holdout': {'correct':holdout['correct'],'total':holdout['total'],'invalid':holdout['invalid_outputs']} if holdout else None})
     return {'experiments': experiments, 'live_backend': 'deterministic',
             'delivery_mode': 'Verified rules only', 'data_status': 'Synthetic, awaiting independent review'}

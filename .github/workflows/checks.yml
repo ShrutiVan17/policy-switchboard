@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build service image
-        run: docker build -t switchboard-service .
+        run: docker build --target service -t switchboard-service .
       - name: Verify the deployed service boundary
         shell: bash
         run: |
@@ -45,3 +45,27 @@ jobs:
       - name: Container diagnostics
         if: failure()
         run: docker logs switchboard-check
+  model-container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build CPU model image and reproduce synthetic adaptation
+        run: docker build --target model-service -t switchboard-model .
+      - name: Exercise deployed trained-model shadow endpoint
+        shell: bash
+        run: |
+          docker run -d --name model-check --network host -e SWITCHBOARD_MODE=service -e HARBOR_API_KEY=ci-harbor-fixture-key-0000000000000000000000 -e CEDAR_API_KEY=ci-cedar-fixture-key-00000000000000000000000 switchboard-model
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8765/api/health; then break; fi
+            sleep 1
+          done
+          docker exec model-check python -m switchboard.provision_context --tenant harbor --ticket model-refund --amount 13.64
+          curl --max-time 90 --fail --silent http://127.0.0.1:8765/api/shadow -H 'Authorization: Bearer ci-harbor-fixture-key-0000000000000000000000' -H 'Content-Type: application/json' --data '{"message":"We will refund the $13.64 processing fee.","version":"v2","ticket_id":"model-refund"}' > model-response.json
+          python -c "import json; r=json.load(open('model-response.json')); assert r['model_verdict']=='escalate' and r['rule_verdict']=='escalate' and r['delivered_output'] is None; assert len(r['adapter_sha256'])==64 and len(r['head_sha256'])==64"
+          curl --max-time 15 --fail --silent http://127.0.0.1:8765/api/shadow -H 'Authorization: Bearer ci-harbor-fixture-key-0000000000000000000000' -H 'Content-Type: application/json' --data '{"message":"We will refund the $13.64 processing fee.","version":"v2","ticket_id":"model-refund"}' > warm-response.json
+          python -c "import json; r=json.load(open('warm-response.json')); assert r['latency_ms']<1000 and r['delivered_output'] is None"
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:8765/api/shadow -H 'Authorization: Bearer ci-cedar-fixture-key-00000000000000000000000' -H 'Content-Type: application/json' --data '{"message":"Hello","version":"v1","ticket_id":"model-refund"}')" != 200
+      - name: Model container diagnostics
+        if: failure()
+        run: docker logs model-check

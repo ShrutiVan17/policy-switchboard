@@ -8,6 +8,9 @@ artifacts/model-cache*.json
 models/
 data/
 data-v2/
+data-v3/
+data-v4/
+data-v5/
 artifacts/trusted-context.sqlite*
 *.log
 artifacts/tmp*/

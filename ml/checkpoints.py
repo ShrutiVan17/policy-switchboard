@@ -10,7 +10,7 @@ def download(model,revision):
     if len(revision)!=40 or not set(revision)<=set('0123456789abcdef'): raise ValueError('Immutable revision required')
     path=ROOT/'.cache/checkpoints'/revision
     snapshot_download(model,revision=revision,local_dir=path,
-        allow_patterns=['*.json','*.safetensors','*.jinja','merges.txt','vocab.json','LICENSE','README.md'])
+        allow_patterns=['*.json','*.safetensors','*.jinja','merges.txt','vocab.json','vocab.txt','LICENSE','README.md'])
     hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in path.glob('*') if p.is_file() and p.name!='source.json'}
     (path/'source.json').write_text(json.dumps({'model':model,'revision':revision,'files':hashes},indent=2))
     return path

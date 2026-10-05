@@ -11,14 +11,16 @@ for name in ("README.md","RUN.md","DEMO.md","Dockerfile",".gitignore","Start-Pol
              "package_project.py","policies.example.json","cases.example.jsonl","requirements.txt","requirements-dev.txt","requirements.lock.txt"):
     files.append(ROOT/name)
 for name in ("evaluation.json","triage.json","preview.png","lab-preview.png","baseline-model.json","lora-model.json",
-             "baseline-model-holdout.json","lora-model-holdout.json","evidence-model.json","evidence-model-holdout.json","training-runs.json","ml-environment-lock.txt"):
+             "baseline-model-holdout.json","lora-model-holdout.json","evidence-model.json","evidence-model-holdout.json","evidence-model-challenge.json","control-model.json","control-model-holdout.json","control-model-challenge.json","challenge-cases.json","evidence-model-v3.json","evidence-model-v4.json","training-runs.json","ml-environment-lock.txt"):
     file=ROOT/"artifacts"/name
     if file.exists():files.append(file)
 for file in (ROOT/"data").glob("*.json*"):
     files.append(file)
 for file in (ROOT/"data-v3").glob("*.json*"):
     files.append(file)
-for folder in (ROOT/"models").glob("evidence-*"):
+for file in (ROOT/"data-v5").glob("*.json*"):
+    files.append(file)
+for folder in list((ROOT/"models").glob("evidence-*"))+list((ROOT/"models").glob("control-*")):
     for name in ('adapter_model.safetensors','adapter_config.json','run_manifest.json','evidence_head.safetensors'):
         if (folder/name).exists():files.append(folder/name)
 if (ROOT/'models/registry.json').exists(): files.append(ROOT/'models/registry.json')

@@ -1,21 +1,21 @@
 {
-  "backend": "lora",
+  "backend": "head-only",
   "benchmark": "synthetic-smoke-v1",
   "total": 72,
-  "correct": 70,
-  "accuracy": 0.9722,
-  "macro_f1": 0.982,
+  "correct": 61,
+  "accuracy": 0.8472,
+  "macro_f1": 0.885,
   "violation_cases": 47,
   "compliant_cases": 25,
-  "violation_recall": 1.0,
-  "false_block_rate": 0.08,
+  "violation_recall": 0.9787,
+  "false_block_rate": 0.4,
   "changed_pairs": 3,
-  "changed_pair_accuracy": 1.0,
+  "changed_pair_accuracy": 0.6667,
   "invariant_pairs": 21,
-  "invariant_pair_error_rate": 0.0476,
-  "wall_ms": 1026.543,
+  "invariant_pair_error_rate": 0.2381,
+  "wall_ms": 1316.533,
   "cache_hits": 0,
-  "p95_uncached_ms": 18.54,
+  "p95_uncached_ms": 24.61,
   "cost_usd": null,
   "gpu_seconds": null,
   "limitations": "Synthetic examples. Explicit numeric and approval facts are computed outside the model; this measures the combined classifier, not learned arithmetic. Validation was monitored during training. Rewrite quality and independent compliance accuracy are unverified.",
@@ -35,14 +35,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9988895058631897,
+      "confidence": 0.9994945526123047,
       "probabilities": {
-        "pass": 0.9988895058631897,
-        "rewrite": 2.6473726393305697e-06,
-        "block": 1.687058829702437e-05,
-        "escalate": 0.0010909494012594223
+        "pass": 0.9994945526123047,
+        "rewrite": 9.481871529715136e-06,
+        "block": 0.0003581442579161376,
+        "escalate": 0.0001377230801153928
       },
-      "latency_ms": 19.01,
+      "latency_ms": 18.79,
       "cache_hit": false
     },
     {
@@ -60,14 +60,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9994837045669556,
+      "confidence": 0.6067875027656555,
       "probabilities": {
-        "pass": 0.9994837045669556,
-        "rewrite": 2.621089151944034e-06,
-        "block": 1.1824517059721984e-05,
-        "escalate": 0.0005018594674766064
+        "pass": 0.6067875027656555,
+        "rewrite": 0.0015991964610293508,
+        "block": 0.02866150438785553,
+        "escalate": 0.36295178532600403
       },
-      "latency_ms": 17.64,
+      "latency_ms": 16.98,
       "cache_hit": false
     },
     {
@@ -85,14 +85,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8171654939651489,
+      "confidence": 0.8547349572181702,
       "probabilities": {
-        "pass": 0.18237139284610748,
-        "rewrite": 0.00010176443174714223,
-        "block": 0.00036142230965197086,
-        "escalate": 0.8171654939651489
+        "pass": 0.10111905634403229,
+        "rewrite": 0.005335257854312658,
+        "block": 0.03881071135401726,
+        "escalate": 0.8547349572181702
       },
-      "latency_ms": 17.61,
+      "latency_ms": 16.89,
       "cache_hit": false
     },
     {
@@ -110,14 +110,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9988382458686829,
+      "confidence": 0.9982902407646179,
       "probabilities": {
-        "pass": 0.9988382458686829,
-        "rewrite": 2.758282789727673e-06,
-        "block": 1.3535412108467426e-05,
-        "escalate": 0.001145520363934338
+        "pass": 0.9982902407646179,
+        "rewrite": 1.3728983503824566e-05,
+        "block": 0.00022356363479048014,
+        "escalate": 0.0014724393840879202
       },
-      "latency_ms": 18.71,
+      "latency_ms": 19.38,
       "cache_hit": false
     },
     {
@@ -134,15 +134,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.9912667870521545,
+      "predicted": "escalate",
+      "confidence": 0.4961642920970917,
       "probabilities": {
-        "pass": 0.9912667870521545,
-        "rewrite": 1.1157377230119891e-05,
-        "block": 3.5920751543017104e-05,
-        "escalate": 0.008686172775924206
+        "pass": 0.4887198805809021,
+        "rewrite": 0.001031058607622981,
+        "block": 0.014084692113101482,
+        "escalate": 0.4961642920970917
       },
-      "latency_ms": 19.43,
+      "latency_ms": 17.17,
       "cache_hit": false
     },
     {
@@ -160,14 +160,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.841159462928772,
+      "confidence": 0.8893503546714783,
       "probabilities": {
-        "pass": 0.1584262251853943,
-        "rewrite": 0.00010160892270505428,
-        "block": 0.00031275401124730706,
-        "escalate": 0.841159462928772
+        "pass": 0.08344188332557678,
+        "rewrite": 0.0036045783199369907,
+        "block": 0.023603111505508423,
+        "escalate": 0.8893503546714783
       },
-      "latency_ms": 16.85,
+      "latency_ms": 13.77,
       "cache_hit": false
     },
     {
@@ -185,14 +185,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9986560344696045,
+      "confidence": 0.9996975660324097,
       "probabilities": {
-        "pass": 0.9986560344696045,
-        "rewrite": 5.476262685988331e-06,
-        "block": 3.426639159442857e-05,
-        "escalate": 0.0013041547499597073
+        "pass": 0.9996975660324097,
+        "rewrite": 4.8953979785437696e-06,
+        "block": 0.0001156562429969199,
+        "escalate": 0.00018197225290350616
       },
-      "latency_ms": 15.81,
+      "latency_ms": 18.25,
       "cache_hit": false
     },
     {
@@ -210,14 +210,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9955589771270752,
+      "confidence": 0.7641253471374512,
       "probabilities": {
-        "pass": 0.004408170469105244,
-        "rewrite": 1.876692840596661e-05,
-        "block": 1.4116446436673868e-05,
-        "escalate": 0.9955589771270752
+        "pass": 0.22591924667358398,
+        "rewrite": 0.00098837586119771,
+        "block": 0.008966968394815922,
+        "escalate": 0.7641253471374512
       },
-      "latency_ms": 15.75,
+      "latency_ms": 17.57,
       "cache_hit": false
     },
     {
@@ -235,14 +235,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.819245457649231,
+      "confidence": 0.8928651213645935,
       "probabilities": {
-        "pass": 0.18010643124580383,
-        "rewrite": 0.0001330082304775715,
-        "block": 0.0005151748773641884,
-        "escalate": 0.819245457649231
+        "pass": 0.07917563617229462,
+        "rewrite": 0.0034349001944065094,
+        "block": 0.02452431619167328,
+        "escalate": 0.8928651213645935
       },
-      "latency_ms": 15.64,
+      "latency_ms": 22.36,
       "cache_hit": false
     },
     {
@@ -260,14 +260,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9996110796928406,
+      "confidence": 0.9997740387916565,
       "probabilities": {
-        "pass": 0.9996110796928406,
-        "rewrite": 1.5524902892138925e-06,
-        "block": 8.87000442162389e-06,
-        "escalate": 0.0003785437438637018
+        "pass": 0.9997740387916565,
+        "rewrite": 4.306837581680156e-06,
+        "block": 4.774148328579031e-05,
+        "escalate": 0.00017393716552760452
       },
-      "latency_ms": 17.15,
+      "latency_ms": 21.12,
       "cache_hit": false
     },
     {
@@ -285,14 +285,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9238512516021729,
+      "confidence": 0.624738335609436,
       "probabilities": {
-        "pass": 0.07607967406511307,
-        "rewrite": 3.8267466152319685e-05,
-        "block": 3.078295412706211e-05,
-        "escalate": 0.9238512516021729
+        "pass": 0.3655918836593628,
+        "rewrite": 0.0013562771491706371,
+        "block": 0.008313494734466076,
+        "escalate": 0.624738335609436
       },
-      "latency_ms": 15.21,
+      "latency_ms": 17.49,
       "cache_hit": false
     },
     {
@@ -310,14 +310,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.7454484701156616,
+      "confidence": 0.8571807146072388,
       "probabilities": {
-        "pass": 0.254093199968338,
-        "rewrite": 0.0001100967128877528,
-        "block": 0.0003482231986708939,
-        "escalate": 0.7454484701156616
+        "pass": 0.1121067926287651,
+        "rewrite": 0.004857201594859362,
+        "block": 0.02585524320602417,
+        "escalate": 0.8571807146072388
       },
-      "latency_ms": 15.03,
+      "latency_ms": 16.7,
       "cache_hit": false
     },
     {
@@ -334,15 +334,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.9873233437538147,
+      "predicted": "escalate",
+      "confidence": 0.5526825189590454,
       "probabilities": {
-        "pass": 0.9873233437538147,
-        "rewrite": 1.2565090401039924e-05,
-        "block": 5.238021185505204e-05,
-        "escalate": 0.012611664831638336
+        "pass": 0.4458846151828766,
+        "rewrite": 0.0001823574712034315,
+        "block": 0.0012504867045208812,
+        "escalate": 0.5526825189590454
       },
-      "latency_ms": 15.63,
+      "latency_ms": 17.42,
       "cache_hit": false
     },
     {
@@ -360,14 +360,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9976679682731628,
+      "confidence": 0.8502693772315979,
       "probabilities": {
-        "pass": 0.0023166551254689693,
-        "rewrite": 9.088318620342761e-06,
-        "block": 6.217520876816707e-06,
-        "escalate": 0.9976679682731628
+        "pass": 0.14368653297424316,
+        "rewrite": 0.0008045770809985697,
+        "block": 0.005239561200141907,
+        "escalate": 0.8502693772315979
       },
-      "latency_ms": 14.96,
+      "latency_ms": 19.03,
       "cache_hit": false
     },
     {
@@ -385,14 +385,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9158281087875366,
+      "confidence": 0.898920476436615,
       "probabilities": {
-        "pass": 0.08389558643102646,
-        "rewrite": 8.343704394064844e-05,
-        "block": 0.00019284701556898654,
-        "escalate": 0.9158281087875366
+        "pass": 0.07750830799341202,
+        "rewrite": 0.0034179941285401583,
+        "block": 0.020153189077973366,
+        "escalate": 0.898920476436615
       },
-      "latency_ms": 15.57,
+      "latency_ms": 18.32,
       "cache_hit": false
     },
     {
@@ -410,14 +410,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9926531314849854,
+      "confidence": 0.9474419355392456,
       "probabilities": {
-        "pass": 0.007299484219402075,
-        "rewrite": 2.627593494253233e-05,
-        "block": 2.1081717932247557e-05,
-        "escalate": 0.9926531314849854
+        "pass": 0.052279554307460785,
+        "rewrite": 7.091376755852252e-05,
+        "block": 0.0002076551754726097,
+        "escalate": 0.9474419355392456
       },
-      "latency_ms": 15.36,
+      "latency_ms": 18.15,
       "cache_hit": false
     },
     {
@@ -435,14 +435,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9977318644523621,
+      "confidence": 0.8268340229988098,
       "probabilities": {
-        "pass": 0.0022416897118091583,
-        "rewrite": 1.6387488358304836e-05,
-        "block": 1.0065966307593044e-05,
-        "escalate": 0.9977318644523621
+        "pass": 0.16496998071670532,
+        "rewrite": 0.0009337167139165103,
+        "block": 0.007262301631271839,
+        "escalate": 0.8268340229988098
       },
-      "latency_ms": 14.65,
+      "latency_ms": 20.85,
       "cache_hit": false
     },
     {
@@ -460,14 +460,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8329982161521912,
+      "confidence": 0.8911319375038147,
       "probabilities": {
-        "pass": 0.16637064516544342,
-        "rewrite": 0.00013673504872713238,
-        "block": 0.000494405860081315,
-        "escalate": 0.8329982161521912
+        "pass": 0.0805039331316948,
+        "rewrite": 0.003813135903328657,
+        "block": 0.024550970643758774,
+        "escalate": 0.8911319375038147
       },
-      "latency_ms": 11.57,
+      "latency_ms": 24.61,
       "cache_hit": false
     },
     {
@@ -485,14 +485,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9999997615814209,
+      "confidence": 0.9999973773956299,
       "probabilities": {
-        "pass": 0.9999997615814209,
-        "rewrite": 3.754070387884667e-09,
-        "block": 2.0337644457413262e-07,
-        "escalate": 1.101395596947441e-08
+        "pass": 0.9999973773956299,
+        "rewrite": 3.6083470433823095e-08,
+        "block": 2.576073256932432e-06,
+        "escalate": 1.9804231143893958e-08
       },
-      "latency_ms": 10.87,
+      "latency_ms": 24.55,
       "cache_hit": false
     },
     {
@@ -509,15 +509,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.9998569488525391,
+      "predicted": "escalate",
+      "confidence": 0.6217261552810669,
       "probabilities": {
-        "pass": 0.9998569488525391,
-        "rewrite": 6.193515105223923e-07,
-        "block": 5.715664883609861e-06,
-        "escalate": 0.00013673985085915774
+        "pass": 0.3675633370876312,
+        "rewrite": 0.0009115823195315897,
+        "block": 0.009798835963010788,
+        "escalate": 0.6217261552810669
       },
-      "latency_ms": 15.92,
+      "latency_ms": 22.06,
       "cache_hit": false
     },
     {
@@ -534,15 +534,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.9812661409378052,
+      "predicted": "escalate",
+      "confidence": 0.8477203845977783,
       "probabilities": {
-        "pass": 0.9812661409378052,
-        "rewrite": 1.415369024471147e-05,
-        "block": 0.0002212679828517139,
-        "escalate": 0.018498364835977554
+        "pass": 0.11930011212825775,
+        "rewrite": 0.003944480791687965,
+        "block": 0.029034949839115143,
+        "escalate": 0.8477203845977783
       },
-      "latency_ms": 15.66,
+      "latency_ms": 18.93,
       "cache_hit": false
     },
     {
@@ -560,14 +560,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9940809607505798,
+      "confidence": 0.9751783609390259,
       "probabilities": {
-        "pass": 0.005898798815906048,
-        "rewrite": 3.851956080325181e-06,
-        "block": 1.638326830288861e-05,
-        "escalate": 0.9940809607505798
+        "pass": 0.02437446638941765,
+        "rewrite": 2.481034789525438e-05,
+        "block": 0.0004223395953886211,
+        "escalate": 0.9751783609390259
       },
-      "latency_ms": 16.04,
+      "latency_ms": 19.45,
       "cache_hit": false
     },
     {
@@ -585,14 +585,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9723434448242188,
+      "confidence": 0.7268785834312439,
       "probabilities": {
-        "pass": 0.027609933167696,
-        "rewrite": 1.1263100532232784e-05,
-        "block": 3.538524470059201e-05,
-        "escalate": 0.9723434448242188
+        "pass": 0.26269325613975525,
+        "rewrite": 0.0008305730880238116,
+        "block": 0.009597551077604294,
+        "escalate": 0.7268785834312439
       },
-      "latency_ms": 12.6,
+      "latency_ms": 14.55,
       "cache_hit": false
     },
     {
@@ -610,14 +610,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8541020750999451,
+      "confidence": 0.8904818296432495,
       "probabilities": {
-        "pass": 0.14549945294857025,
-        "rewrite": 7.569392619188875e-05,
-        "block": 0.00032279305742122233,
-        "escalate": 0.8541020750999451
+        "pass": 0.08312974870204926,
+        "rewrite": 0.003941375762224197,
+        "block": 0.022447070106863976,
+        "escalate": 0.8904818296432495
       },
-      "latency_ms": 12.28,
+      "latency_ms": 13.46,
       "cache_hit": false
     },
     {
@@ -636,12 +636,12 @@
       "predicted": "escalate",
       "confidence": 1.0,
       "probabilities": {
-        "pass": 2.7733286153686088e-11,
-        "rewrite": 1.6985206574560152e-09,
-        "block": 5.530338686998704e-11,
+        "pass": 7.90077248069565e-09,
+        "rewrite": 2.8173934296660263e-08,
+        "block": 6.012620179518535e-09,
         "escalate": 1.0
       },
-      "latency_ms": 11.47,
+      "latency_ms": 13.81,
       "cache_hit": false
     },
     {
@@ -658,14 +658,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 1.0,
+      "confidence": 0.9444523453712463,
       "probabilities": {
-        "pass": 2.9482988966877954e-11,
-        "rewrite": 2.3394362003159586e-09,
-        "block": 7.163454551761816e-11,
-        "escalate": 1.0
+        "pass": 0.052129365503787994,
+        "rewrite": 0.0011145398020744324,
+        "block": 0.002303752116858959,
+        "escalate": 0.9444523453712463
       },
-      "latency_ms": 14.58,
+      "latency_ms": 16.71,
       "cache_hit": false
     },
     {
@@ -682,14 +682,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9998469352722168,
+      "confidence": 0.905646800994873,
       "probabilities": {
-        "pass": 0.00013738391862716526,
-        "rewrite": 1.1923964848392643e-05,
-        "block": 3.747815071619698e-06,
-        "escalate": 0.9998469352722168
+        "pass": 0.07125173509120941,
+        "rewrite": 0.006142533849924803,
+        "block": 0.01695890724658966,
+        "escalate": 0.905646800994873
       },
-      "latency_ms": 12.88,
+      "latency_ms": 19.61,
       "cache_hit": false
     },
     {
@@ -707,14 +707,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.999991774559021,
+      "confidence": 0.9996588230133057,
       "probabilities": {
-        "pass": 7.321731573028956e-06,
-        "rewrite": 6.510086336675158e-07,
-        "block": 2.0123943045291526e-07,
-        "escalate": 0.999991774559021
+        "pass": 0.0001577349321451038,
+        "rewrite": 2.2845182684250176e-05,
+        "block": 0.00016054070147220045,
+        "escalate": 0.9996588230133057
       },
-      "latency_ms": 12.96,
+      "latency_ms": 17.93,
       "cache_hit": false
     },
     {
@@ -732,14 +732,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 1.0,
+      "confidence": 0.8746116757392883,
       "probabilities": {
-        "pass": 1.6751500186984458e-09,
-        "rewrite": 2.2403000343729218e-08,
-        "block": 1.7368939619899493e-09,
-        "escalate": 1.0
+        "pass": 0.10461919754743576,
+        "rewrite": 0.0032722235191613436,
+        "block": 0.017496919259428978,
+        "escalate": 0.8746116757392883
       },
-      "latency_ms": 14.35,
+      "latency_ms": 18.54,
       "cache_hit": false
     },
     {
@@ -757,14 +757,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.997017502784729,
+      "confidence": 0.8576158881187439,
       "probabilities": {
-        "pass": 0.0028648318257182837,
-        "rewrite": 6.597579340450466e-05,
-        "block": 5.176040576770902e-05,
-        "escalate": 0.997017502784729
+        "pass": 0.08507117629051208,
+        "rewrite": 0.009914595633745193,
+        "block": 0.047398317605257034,
+        "escalate": 0.8576158881187439
       },
-      "latency_ms": 14.31,
+      "latency_ms": 32.54,
       "cache_hit": false
     },
     {
@@ -782,14 +782,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9997146725654602,
+      "confidence": 0.9988892674446106,
       "probabilities": {
-        "pass": 0.9997146725654602,
-        "rewrite": 1.4706052979818196e-06,
-        "block": 1.0407602530904114e-05,
-        "escalate": 0.00027348860749043524
+        "pass": 0.9988892674446106,
+        "rewrite": 3.064254633500241e-05,
+        "block": 0.0003231152077205479,
+        "escalate": 0.0007569301524199545
       },
-      "latency_ms": 14.77,
+      "latency_ms": 19.55,
       "cache_hit": false
     },
     {
@@ -807,14 +807,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8446820378303528,
+      "confidence": 0.6454952955245972,
       "probabilities": {
-        "pass": 0.15518401563167572,
-        "rewrite": 7.336449198191985e-05,
-        "block": 6.061249951017089e-05,
-        "escalate": 0.8446820378303528
+        "pass": 0.3411917984485626,
+        "rewrite": 0.0016687167808413506,
+        "block": 0.011644216254353523,
+        "escalate": 0.6454952955245972
       },
-      "latency_ms": 15.36,
+      "latency_ms": 28.37,
       "cache_hit": false
     },
     {
@@ -832,14 +832,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.6450828313827515,
+      "confidence": 0.8544497489929199,
       "probabilities": {
-        "pass": 0.35408058762550354,
-        "rewrite": 0.0001830681721912697,
-        "block": 0.0006535678403452039,
-        "escalate": 0.6450828313827515
+        "pass": 0.11113198846578598,
+        "rewrite": 0.005118495784699917,
+        "block": 0.029299812391400337,
+        "escalate": 0.8544497489929199
       },
-      "latency_ms": 14.63,
+      "latency_ms": 21.85,
       "cache_hit": false
     },
     {
@@ -857,14 +857,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9999990463256836,
+      "confidence": 0.9999887943267822,
       "probabilities": {
-        "pass": 0.9999990463256836,
-        "rewrite": 4.858905455762397e-08,
-        "block": 5.423999027698301e-07,
-        "escalate": 3.04984752119708e-07
+        "pass": 0.9999887943267822,
+        "rewrite": 4.259194383848808e-07,
+        "block": 1.0333471436752006e-05,
+        "escalate": 3.2461255727866956e-07
       },
-      "latency_ms": 14.52,
+      "latency_ms": 21.22,
       "cache_hit": false
     },
     {
@@ -882,14 +882,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9981240630149841,
+      "confidence": 0.7481047511100769,
       "probabilities": {
-        "pass": 0.9981240630149841,
-        "rewrite": 5.212790711084381e-06,
-        "block": 7.19582567398902e-06,
-        "escalate": 0.0018635153537616134
+        "pass": 0.7481047511100769,
+        "rewrite": 0.002183702541515231,
+        "block": 0.01692388765513897,
+        "escalate": 0.23278765380382538
       },
-      "latency_ms": 12.05,
+      "latency_ms": 26.54,
       "cache_hit": false
     },
     {
@@ -906,15 +906,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.997919499874115,
+      "predicted": "escalate",
+      "confidence": 0.7198041677474976,
       "probabilities": {
-        "pass": 0.997919499874115,
-        "rewrite": 2.3239690563059412e-05,
-        "block": 0.0001393905549775809,
-        "escalate": 0.0019178853835910559
+        "pass": 0.21669958531856537,
+        "rewrite": 0.01009441539645195,
+        "block": 0.05340177193284035,
+        "escalate": 0.7198041677474976
       },
-      "latency_ms": 11.59,
+      "latency_ms": 24.18,
       "cache_hit": false
     },
     {
@@ -932,14 +932,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9914829134941101,
+      "confidence": 0.9936595559120178,
       "probabilities": {
-        "pass": 0.008495796471834183,
-        "rewrite": 7.322048986679874e-06,
-        "block": 1.3994387700222433e-05,
-        "escalate": 0.9914829134941101
+        "pass": 0.006177084054797888,
+        "rewrite": 2.9873901439714245e-05,
+        "block": 0.00013352582755032927,
+        "escalate": 0.9936595559120178
       },
-      "latency_ms": 14.82,
+      "latency_ms": 13.83,
       "cache_hit": false
     },
     {
@@ -957,14 +957,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9999953508377075,
+      "confidence": 0.8421929478645325,
       "probabilities": {
-        "pass": 4.082562554685865e-06,
-        "rewrite": 4.5229577949612576e-07,
-        "block": 1.0863217170253847e-07,
-        "escalate": 0.9999953508377075
+        "pass": 0.14353042840957642,
+        "rewrite": 0.0036473090294748545,
+        "block": 0.010629354044795036,
+        "escalate": 0.8421929478645325
       },
-      "latency_ms": 15.09,
+      "latency_ms": 14.83,
       "cache_hit": false
     },
     {
@@ -982,14 +982,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9737842679023743,
+      "confidence": 0.8419279456138611,
       "probabilities": {
-        "pass": 0.025920314714312553,
-        "rewrite": 0.000144905352499336,
-        "block": 0.00015057572454679757,
-        "escalate": 0.9737842679023743
+        "pass": 0.10678046196699142,
+        "rewrite": 0.011791772209107876,
+        "block": 0.03949977084994316,
+        "escalate": 0.8419279456138611
       },
-      "latency_ms": 15.51,
+      "latency_ms": 17.28,
       "cache_hit": false
     },
     {
@@ -1006,14 +1006,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9999959468841553,
+      "confidence": 0.9996187686920166,
       "probabilities": {
-        "pass": 5.247491685622663e-07,
-        "rewrite": 3.341613592056092e-06,
-        "block": 2.3119886805034184e-07,
-        "escalate": 0.9999959468841553
+        "pass": 7.509966962970793e-05,
+        "rewrite": 0.00022685513249598444,
+        "block": 7.921522774267942e-05,
+        "escalate": 0.9996187686920166
       },
-      "latency_ms": 14.67,
+      "latency_ms": 18.7,
       "cache_hit": false
     },
     {
@@ -1030,14 +1030,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9999877214431763,
+      "confidence": 0.7663224935531616,
       "probabilities": {
-        "pass": 2.0947040866303723e-06,
-        "rewrite": 9.432917977392208e-06,
-        "block": 6.989432108639448e-07,
-        "escalate": 0.9999877214431763
+        "pass": 0.11566007137298584,
+        "rewrite": 0.07420674711465836,
+        "block": 0.04381067678332329,
+        "escalate": 0.7663224935531616
       },
-      "latency_ms": 13.92,
+      "latency_ms": 22.5,
       "cache_hit": false
     },
     {
@@ -1054,14 +1054,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9948803186416626,
+      "confidence": 0.634567379951477,
       "probabilities": {
-        "pass": 0.003646106692031026,
-        "rewrite": 0.0012494890252128243,
-        "block": 0.00022402573085855693,
-        "escalate": 0.9948803186416626
+        "pass": 0.1463201493024826,
+        "rewrite": 0.1148252785205841,
+        "block": 0.10428719222545624,
+        "escalate": 0.634567379951477
       },
-      "latency_ms": 10.45,
+      "latency_ms": 18.47,
       "cache_hit": false
     },
     {
@@ -1078,14 +1078,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9998233914375305,
+      "confidence": 0.9978113770484924,
       "probabilities": {
-        "pass": 0.9998233914375305,
-        "rewrite": 5.32395533809904e-05,
-        "block": 7.717964035691693e-05,
-        "escalate": 4.617092781700194e-05
+        "pass": 0.9978113770484924,
+        "rewrite": 0.0004409829853102565,
+        "block": 0.0014744444051757455,
+        "escalate": 0.00027319893706589937
       },
-      "latency_ms": 11.07,
+      "latency_ms": 18.21,
       "cache_hit": false
     },
     {
@@ -1102,14 +1102,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9998216032981873,
+      "confidence": 0.657254695892334,
       "probabilities": {
-        "pass": 0.9998216032981873,
-        "rewrite": 6.739205127814785e-05,
-        "block": 6.953655247343704e-05,
-        "escalate": 4.1595689253881574e-05
+        "pass": 0.657254695892334,
+        "rewrite": 0.08763236552476883,
+        "block": 0.1287284940481186,
+        "escalate": 0.126384437084198
       },
-      "latency_ms": 12.82,
+      "latency_ms": 11.77,
       "cache_hit": false
     },
     {
@@ -1126,14 +1126,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9942268133163452,
+      "confidence": 0.3613501787185669,
       "probabilities": {
-        "pass": 0.9942268133163452,
-        "rewrite": 0.0011514124926179647,
-        "block": 0.0010806957725435495,
-        "escalate": 0.0035410914570093155
+        "pass": 0.3613501787185669,
+        "rewrite": 0.16633668541908264,
+        "block": 0.22925113141536713,
+        "escalate": 0.24306195974349976
       },
-      "latency_ms": 12.56,
+      "latency_ms": 11.81,
       "cache_hit": false
     },
     {
@@ -1150,14 +1150,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9977276921272278,
+      "confidence": 0.9883565306663513,
       "probabilities": {
-        "pass": 0.9977276921272278,
-        "rewrite": 0.00017499062232673168,
-        "block": 0.0016828026855364442,
-        "escalate": 0.0004145076381973922
+        "pass": 0.9883565306663513,
+        "rewrite": 0.0007895511225797236,
+        "block": 0.009811575524508953,
+        "escalate": 0.0010423371568322182
       },
-      "latency_ms": 13.23,
+      "latency_ms": 17.01,
       "cache_hit": false
     },
     {
@@ -1174,14 +1174,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.997882068157196,
+      "confidence": 0.4142892360687256,
       "probabilities": {
-        "pass": 0.997882068157196,
-        "rewrite": 0.00019755105313379318,
-        "block": 0.0015329871093854308,
-        "escalate": 0.0003873208479490131
+        "pass": 0.4142892360687256,
+        "rewrite": 0.063359335064888,
+        "block": 0.2960634231567383,
+        "escalate": 0.22628797590732574
       },
-      "latency_ms": 14.16,
+      "latency_ms": 16.71,
       "cache_hit": false
     },
     {
@@ -1197,15 +1197,15 @@
       "expected": "pass",
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.9704612493515015,
+      "predicted": "block",
+      "confidence": 0.3219853937625885,
       "probabilities": {
-        "pass": 0.9704612493515015,
-        "rewrite": 0.0023284938652068377,
-        "block": 0.015267962589859962,
-        "escalate": 0.01194236520677805
+        "pass": 0.25279155373573303,
+        "rewrite": 0.10416699200868607,
+        "block": 0.3219853937625885,
+        "escalate": 0.3210560977458954
       },
-      "latency_ms": 14.66,
+      "latency_ms": 13.31,
       "cache_hit": false
     },
     {
@@ -1222,14 +1222,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9988195300102234,
+      "confidence": 0.8471738696098328,
       "probabilities": {
-        "pass": 0.9988195300102234,
-        "rewrite": 0.00022539932979270816,
-        "block": 0.0007304300088435411,
-        "escalate": 0.00022459510364569724
+        "pass": 0.8471738696098328,
+        "rewrite": 0.0062009855173528194,
+        "block": 0.04273790121078491,
+        "escalate": 0.10388728231191635
       },
-      "latency_ms": 14.84,
+      "latency_ms": 12.89,
       "cache_hit": false
     },
     {
@@ -1245,15 +1245,15 @@
       "expected": "pass",
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.9995600581169128,
+      "predicted": "escalate",
+      "confidence": 0.555761456489563,
       "probabilities": {
-        "pass": 0.9995600581169128,
-        "rewrite": 0.00011070114123867825,
-        "block": 0.000289376825094223,
-        "escalate": 3.983037458965555e-05
+        "pass": 0.2282724529504776,
+        "rewrite": 0.04478682205080986,
+        "block": 0.17117924988269806,
+        "escalate": 0.555761456489563
       },
-      "latency_ms": 13.05,
+      "latency_ms": 16.61,
       "cache_hit": false
     },
     {
@@ -1269,15 +1269,15 @@
       "expected": "pass",
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.97772616147995,
+      "predicted": "escalate",
+      "confidence": 0.5280691981315613,
       "probabilities": {
-        "pass": 0.97772616147995,
-        "rewrite": 0.0019097743788734078,
-        "block": 0.006808023434132338,
-        "escalate": 0.013556051068007946
+        "pass": 0.1846734583377838,
+        "rewrite": 0.07342440634965897,
+        "block": 0.21383294463157654,
+        "escalate": 0.5280691981315613
       },
-      "latency_ms": 14.58,
+      "latency_ms": 17.4,
       "cache_hit": false
     },
     {
@@ -1294,14 +1294,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9825679659843445,
+      "confidence": 0.9938840270042419,
       "probabilities": {
-        "pass": 4.023802944175259e-07,
-        "rewrite": 0.9825679659843445,
-        "block": 0.00020696839783340693,
-        "escalate": 0.01722469925880432
+        "pass": 3.681611133288243e-06,
+        "rewrite": 0.9938840270042419,
+        "block": 0.0003765754809137434,
+        "escalate": 0.005735774990171194
       },
-      "latency_ms": 10.45,
+      "latency_ms": 14.67,
       "cache_hit": false
     },
     {
@@ -1318,14 +1318,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9816744923591614,
+      "confidence": 0.8667853474617004,
       "probabilities": {
-        "pass": 1.3725630196859129e-06,
-        "rewrite": 0.9816744923591614,
-        "block": 0.0003744190908037126,
-        "escalate": 0.017949748784303665
+        "pass": 0.009653021581470966,
+        "rewrite": 0.8667853474617004,
+        "block": 0.02480231411755085,
+        "escalate": 0.09875930100679398
       },
-      "latency_ms": 10.99,
+      "latency_ms": 19.02,
       "cache_hit": false
     },
     {
@@ -1342,14 +1342,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9250921607017517,
+      "confidence": 0.6759266257286072,
       "probabilities": {
-        "pass": 0.00013907182437833399,
-        "rewrite": 0.9250921607017517,
-        "block": 0.0038499583024531603,
-        "escalate": 0.07091885060071945
+        "pass": 0.051379311829805374,
+        "rewrite": 0.6759266257286072,
+        "block": 0.08488374203443527,
+        "escalate": 0.18781039118766785
       },
-      "latency_ms": 11.07,
+      "latency_ms": 18.95,
       "cache_hit": false
     },
     {
@@ -1366,14 +1366,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9815601110458374,
+      "confidence": 0.9424667358398438,
       "probabilities": {
-        "pass": 5.006594960832444e-07,
-        "rewrite": 0.9815601110458374,
-        "block": 7.004677900113165e-05,
-        "escalate": 0.018369296565651894
+        "pass": 4.09994026995264e-06,
+        "rewrite": 0.9424667358398438,
+        "block": 0.00015539387823082507,
+        "escalate": 0.05737386271357536
       },
-      "latency_ms": 9.86,
+      "latency_ms": 17.87,
       "cache_hit": false
     },
     {
@@ -1390,14 +1390,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9781216382980347,
+      "confidence": 0.8506193161010742,
       "probabilities": {
-        "pass": 1.0690450835681986e-06,
-        "rewrite": 0.9781216382980347,
-        "block": 0.00010143944382434711,
-        "escalate": 0.02177591249346733
+        "pass": 0.015227677300572395,
+        "rewrite": 0.8506193161010742,
+        "block": 0.015559294261038303,
+        "escalate": 0.1185937151312828
       },
-      "latency_ms": 14.6,
+      "latency_ms": 14.69,
       "cache_hit": false
     },
     {
@@ -1414,14 +1414,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.8851373791694641,
+      "confidence": 0.6710622310638428,
       "probabilities": {
-        "pass": 0.00010682517313398421,
-        "rewrite": 0.8851373791694641,
-        "block": 0.0012415850069373846,
-        "escalate": 0.11351428180932999
+        "pass": 0.06081312149763107,
+        "rewrite": 0.6710622310638428,
+        "block": 0.06316851079463959,
+        "escalate": 0.20495609939098358
       },
-      "latency_ms": 16.28,
+      "latency_ms": 17.13,
       "cache_hit": false
     },
     {
@@ -1438,14 +1438,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9999998807907104,
+      "confidence": 0.9988460540771484,
       "probabilities": {
-        "pass": 2.3229009861458483e-12,
-        "rewrite": 1.624275398626196e-07,
-        "block": 4.931958175191653e-10,
-        "escalate": 0.9999998807907104
+        "pass": 4.11487697249413e-08,
+        "rewrite": 0.001150201540440321,
+        "block": 3.6995331811340293e-06,
+        "escalate": 0.9988460540771484
       },
-      "latency_ms": 14.39,
+      "latency_ms": 17.77,
       "cache_hit": false
     },
     {
@@ -1462,14 +1462,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9999996423721313,
+      "confidence": 0.7794775366783142,
       "probabilities": {
-        "pass": 2.441148628726242e-12,
-        "rewrite": 3.0402748052438255e-07,
-        "block": 5.053298335333523e-10,
-        "escalate": 0.9999996423721313
+        "pass": 0.021035609766840935,
+        "rewrite": 0.1830063760280609,
+        "block": 0.01648043654859066,
+        "escalate": 0.7794775366783142
       },
-      "latency_ms": 11.79,
+      "latency_ms": 17.58,
       "cache_hit": false
     },
     {
@@ -1486,14 +1486,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9982267022132874,
+      "confidence": 0.6066752076148987,
       "probabilities": {
-        "pass": 7.821548933861777e-06,
-        "rewrite": 0.0017371021676808596,
-        "block": 2.8359087082208134e-05,
-        "escalate": 0.9982267022132874
+        "pass": 0.08184677362442017,
+        "rewrite": 0.2395533323287964,
+        "block": 0.07192466408014297,
+        "escalate": 0.6066752076148987
       },
-      "latency_ms": 10.28,
+      "latency_ms": 14.71,
       "cache_hit": false
     },
     {
@@ -1510,14 +1510,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9995891451835632,
+      "confidence": 0.9999680519104004,
       "probabilities": {
-        "pass": 4.028881448903121e-06,
-        "rewrite": 0.0003571556881070137,
-        "block": 0.9995891451835632,
-        "escalate": 4.9697384383762255e-05
+        "pass": 4.403785851536668e-07,
+        "rewrite": 1.66617137438152e-05,
+        "block": 0.9999680519104004,
+        "escalate": 1.4867463505652267e-05
       },
-      "latency_ms": 11.93,
+      "latency_ms": 16.01,
       "cache_hit": false
     },
     {
@@ -1534,14 +1534,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9997971653938293,
+      "confidence": 0.9942575693130493,
       "probabilities": {
-        "pass": 7.028425443422748e-06,
-        "rewrite": 0.00016896252054721117,
-        "block": 0.9997971653938293,
-        "escalate": 2.686143125174567e-05
+        "pass": 0.0019298987463116646,
+        "rewrite": 0.002469859318807721,
+        "block": 0.9942575693130493,
+        "escalate": 0.0013426956720650196
       },
-      "latency_ms": 12.69,
+      "latency_ms": 17.75,
       "cache_hit": false
     },
     {
@@ -1558,14 +1558,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9969991445541382,
+      "confidence": 0.9273278713226318,
       "probabilities": {
-        "pass": 0.0010722061851993203,
-        "rewrite": 0.001803639461286366,
-        "block": 0.9969991445541382,
-        "escalate": 0.00012507793144322932
+        "pass": 0.02478092722594738,
+        "rewrite": 0.0265670008957386,
+        "block": 0.9273278713226318,
+        "escalate": 0.021324176341295242
       },
-      "latency_ms": 12.13,
+      "latency_ms": 14.09,
       "cache_hit": false
     },
     {
@@ -1582,14 +1582,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9984347224235535,
+      "confidence": 0.9977712631225586,
       "probabilities": {
-        "pass": 1.880334093584679e-05,
-        "rewrite": 0.0013495782623067498,
-        "block": 0.9984347224235535,
-        "escalate": 0.0001968990545719862
+        "pass": 0.0003093804116360843,
+        "rewrite": 0.0005045020952820778,
+        "block": 0.9977712631225586,
+        "escalate": 0.001414870610460639
       },
-      "latency_ms": 11.29,
+      "latency_ms": 17.55,
       "cache_hit": false
     },
     {
@@ -1606,14 +1606,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9991995692253113,
+      "confidence": 0.8947661519050598,
       "probabilities": {
-        "pass": 6.180755008244887e-05,
-        "rewrite": 0.0006766911246813834,
-        "block": 0.9991995692253113,
-        "escalate": 6.199503695825115e-05
+        "pass": 0.0406123585999012,
+        "rewrite": 0.024196522310376167,
+        "block": 0.8947661519050598,
+        "escalate": 0.040424928069114685
       },
-      "latency_ms": 16.14,
+      "latency_ms": 16.72,
       "cache_hit": false
     },
     {
@@ -1630,14 +1630,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9896281957626343,
+      "confidence": 0.6789718270301819,
       "probabilities": {
-        "pass": 0.003691298421472311,
-        "rewrite": 0.006296043749898672,
-        "block": 0.9896281957626343,
-        "escalate": 0.0003844266466330737
+        "pass": 0.09813785552978516,
+        "rewrite": 0.07563415914773941,
+        "block": 0.6789718270301819,
+        "escalate": 0.14725622534751892
       },
-      "latency_ms": 15.23,
+      "latency_ms": 18.22,
       "cache_hit": false
     },
     {
@@ -1655,14 +1655,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9996838569641113,
+      "confidence": 0.9874332547187805,
       "probabilities": {
-        "pass": 0.00031284824945032597,
-        "rewrite": 3.2648581509420183e-06,
-        "block": 0.9996838569641113,
-        "escalate": 2.42023698859839e-08
+        "pass": 0.012545336969196796,
+        "rewrite": 1.8434286175761372e-05,
+        "block": 0.9874332547187805,
+        "escalate": 2.983797912747832e-06
       },
-      "latency_ms": 18.54,
+      "latency_ms": 22.63,
       "cache_hit": false
     },
     {
@@ -1680,14 +1680,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9998984336853027,
+      "confidence": 0.8130297064781189,
       "probabilities": {
-        "pass": 9.439494169782847e-05,
-        "rewrite": 5.966017852188088e-06,
-        "block": 0.9998984336853027,
-        "escalate": 1.18461480269616e-06
+        "pass": 0.09557204693555832,
+        "rewrite": 0.002300323685631156,
+        "block": 0.8130297064781189,
+        "escalate": 0.08909796178340912
       },
-      "latency_ms": 15.54,
+      "latency_ms": 16.08,
       "cache_hit": false
     },
     {
@@ -1705,14 +1705,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9971019625663757,
+      "confidence": 0.48101720213890076,
       "probabilities": {
-        "pass": 0.002733953995630145,
-        "rewrite": 0.0001319677394349128,
-        "block": 0.9971019625663757,
-        "escalate": 3.203639789717272e-05
+        "pass": 0.10632579773664474,
+        "rewrite": 0.011233982630074024,
+        "block": 0.48101720213890076,
+        "escalate": 0.40142303705215454
       },
-      "latency_ms": 13.82,
+      "latency_ms": 19.91,
       "cache_hit": false
     },
     {
@@ -1729,15 +1729,15 @@
       "expected": "escalate",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.9220618605613708,
+      "predicted": "pass",
+      "confidence": 0.9544066190719604,
       "probabilities": {
-        "pass": 0.07783421874046326,
-        "rewrite": 4.856093437410891e-05,
-        "block": 5.5318509112112224e-05,
-        "escalate": 0.9220618605613708
+        "pass": 0.9544066190719604,
+        "rewrite": 9.57065203692764e-05,
+        "block": 0.0007260191487148404,
+        "escalate": 0.0447717010974884
       },
-      "latency_ms": 13.87,
+      "latency_ms": 19.12,
       "cache_hit": false
     },
     {
@@ -1755,14 +1755,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.999994158744812,
+      "confidence": 0.6785881519317627,
       "probabilities": {
-        "pass": 5.174675607122481e-06,
-        "rewrite": 5.254212283034576e-07,
-        "block": 1.2012391437110637e-07,
-        "escalate": 0.999994158744812
+        "pass": 0.3084522485733032,
+        "rewrite": 0.001819784753024578,
+        "block": 0.01113976538181305,
+        "escalate": 0.6785881519317627
       },
-      "latency_ms": 13.26,
+      "latency_ms": 16.13,
       "cache_hit": false
     },
     {
@@ -1780,14 +1780,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.995841920375824,
+      "confidence": 0.831710159778595,
       "probabilities": {
-        "pass": 0.004036078229546547,
-        "rewrite": 5.4843614634592086e-05,
-        "block": 6.709199806209654e-05,
-        "escalate": 0.995841920375824
+        "pass": 0.12665052711963654,
+        "rewrite": 0.006550062447786331,
+        "block": 0.03508921340107918,
+        "escalate": 0.831710159778595
       },
-      "latency_ms": 15.86,
+      "latency_ms": 16.55,
       "cache_hit": false
     }
   ],
@@ -1795,47 +1795,49 @@
   "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
   "architecture": "evidence-classifier",
   "adapter_registry": {
-    "harbor/v1": "models/evidence-harbor-v1",
-    "harbor/v2": "models/evidence-harbor-v2",
-    "cedar/v1": "models/evidence-cedar-v1"
+    "harbor/v1": "models/control-harbor-v1",
+    "harbor/v2": "models/control-harbor-v2",
+    "cedar/v1": "models/control-cedar-v1"
   },
   "batch_size": 1,
   "invalid_outputs": 0,
   "calibration": {
-    "ece": 0.022583,
-    "brier": 0.038255,
+    "ece": 0.089238,
+    "brier": 0.220341,
     "cases": 72,
     "caveat": "Conditional verdict probabilities; synthetic reliability estimate, not a compliance guarantee."
   },
   "artifact_fingerprints": {
-    "models/evidence-harbor-v1/adapter_model.safetensors": "bd4830ac83e7e721d88d28d7274c035a46e1fa603f59b7397be8092559c36ae9",
-    "models/evidence-harbor-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/evidence-harbor-v1/run_manifest.json": "c5a3239c0f7ca8155e85155e398cf7a3e6146ed5716a1df38ed18f71f68c39d5",
-    "models/evidence-harbor-v1/evidence_head.safetensors": "26e6754bfea090e367dceadb3cbbc990ca1bb502fdc74953e8701cd63c21bff7",
-    "models/evidence-harbor-v2/adapter_model.safetensors": "857e394180c77544485b4a382c9b4fea64323408a0239bb3214900f8820898fb",
-    "models/evidence-harbor-v2/adapter_config.json": "56d4fd177e4768493984422988a0741e6e873cdcaa8a82ff7fae2c128bafa70f",
-    "models/evidence-harbor-v2/run_manifest.json": "96d8bf769866b20b8a13d9c7867e18de3aa840d1d2bd776987e4b81e59e841e2",
-    "models/evidence-harbor-v2/evidence_head.safetensors": "b619449c6239e0159b9f59f3b9fb217f89e742cfaad33a5bb32bcfee1230ef94",
-    "models/evidence-cedar-v1/adapter_model.safetensors": "4b8ab36f983012382ba78a0770173eaeaeed49d73f3f838ae4502e82d096cce8",
-    "models/evidence-cedar-v1/adapter_config.json": "56d4fd177e4768493984422988a0741e6e873cdcaa8a82ff7fae2c128bafa70f",
-    "models/evidence-cedar-v1/run_manifest.json": "4ef90326b720fa7986b6d92cc67ab9eabd79f9bf1de6aa14a2145e228ef688aa",
-    "models/evidence-cedar-v1/evidence_head.safetensors": "2e7662a8aafd4879f4c0e425b61063bc0b570a9923cb57c97098999b80713969"
+    "models/control-harbor-v1/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
+    "models/control-harbor-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
+    "models/control-harbor-v1/run_manifest.json": "a754fcfe624f3f1d97a850a3f603db923793cfc14aeaad87dfae6b63b5186bf5",
+    "models/control-harbor-v1/evidence_head.safetensors": "c18754b0b738d55a9481d61db298c2535efe3247bb317450dad226caa836ace8",
+    "models/control-harbor-v2/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
+    "models/control-harbor-v2/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
+    "models/control-harbor-v2/run_manifest.json": "b257fc801b8c45f219ae13b969475ff88da12b4846271cf50d4580fcb9c8a8ec",
+    "models/control-harbor-v2/evidence_head.safetensors": "1d055180b8a8aa5775acdffa1be54579f0118515d44b010be136bd4dad601090",
+    "models/control-cedar-v1/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
+    "models/control-cedar-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
+    "models/control-cedar-v1/run_manifest.json": "9af3f113827eb86f8ef3d8e287d75add399798b5842473107838bb2d1c120883",
+    "models/control-cedar-v1/evidence_head.safetensors": "336d08555db61120b70bfdbfaa6e2dc45cb24dbe626a228d6d4f746831c4d392"
   },
   "gate": {
     "status": "rejected",
     "customer_delivery": false,
     "failures": [
-      "2 incorrect decisions",
-      "2 unnecessary holds"
+      "1 unsafe allow decisions",
+      "10 unnecessary holds",
+      "11 incorrect decisions",
+      "Measured, fingerprinted LoRA artifacts are required"
     ],
     "checked": 72,
-    "correct": 70,
+    "correct": 61,
     "invalid": 0,
-    "unsafe_allows": 0,
-    "unnecessary_holds": 2,
-    "required_changes_correct": 3,
+    "unsafe_allows": 1,
+    "unnecessary_holds": 10,
+    "required_changes_correct": 2,
     "required_changes_total": 3,
-    "invariant_regressions": 1,
+    "invariant_regressions": 5,
     "next_step": "Independent expert-reviewed data and rewrite review are required before production approval."
   }
 }

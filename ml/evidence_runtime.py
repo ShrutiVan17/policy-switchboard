@@ -14,7 +14,7 @@ LOCK = threading.Lock()
 STATE = {}
 
 
-def load(tenant, version):
+def load(tenant, version, model_prefix='evidence'):
     import torch
     from transformers import AutoModel, AutoTokenizer
     from peft import PeftModel
@@ -22,7 +22,8 @@ def load(tenant, version):
     from .evidence_model import EvidenceModel
     torch.set_num_threads(2)
     policy = resolve(tenant, version)
-    path = ROOT/'models'/f'evidence-{policy.tenant}-{policy.version}'
+    if model_prefix not in {'evidence','control'}:raise ValueError('Unknown experiment')
+    path = ROOT/'models'/f'{model_prefix}-{policy.tenant}-{policy.version}'
     manifest = json.loads((path/'run_manifest.json').read_text())
     if (manifest['tenant'], manifest['policy_version'], manifest['policy_sha256']) != (tenant, version, policy.digest):
         raise ValueError('Adapter policy mismatch')
@@ -42,13 +43,13 @@ def load(tenant, version):
     return model, tokenizer, manifest
 
 
-def predict(message, context, tenant, version):
+def predict(message, context, tenant, version, model_prefix='evidence'):
     import torch
     start = time.perf_counter()
     with LOCK:
-        key = (tenant, version)
+        key = (tenant, version, model_prefix)
         if key not in STATE:
-            STATE[key] = load(tenant, version)
+            STATE[key] = load(tenant, version, model_prefix)
         model, tokenizer, manifest = STATE[key]
         tokens = tokenizer(message, return_tensors='pt')
         if tokens['input_ids'].shape[-1] > 128:
