@@ -14,6 +14,12 @@ except ImportError:
 
 @unittest.skipUnless(AVAILABLE, "Install requirements-dev.txt to test FastAPI")
 class FastAPITests(unittest.TestCase):
+    def test_invalid_shadow_version_and_corrupt_report_fail_closed(self):
+        result=self.client.post('/api/shadow',json={'message':'Hello','version':'../../outside'},headers=self.headers)
+        self.assertEqual(result.status_code,400)
+        with patch('switchboard.api.load_experiments',side_effect=ValueError('Corrupt report')):
+            result=self.client.get('/api/experiments',headers=self.headers)
+        self.assertEqual(result.status_code,503)
     @classmethod
     def setUpClass(cls):
         cls.tmp = local_temp()

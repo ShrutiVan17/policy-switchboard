@@ -20,6 +20,10 @@ for file in (ROOT/"data-v3").glob("*.json*"):
     files.append(file)
 for file in (ROOT/"data-v5").glob("*.json*"):
     files.append(file)
+for file in (ROOT/"data-v6").glob("*.json*"):
+    files.append(file)
+for name in ('evidence-model-test.json','control-model-test.json','challenge-v2-cases.json'):
+    if (ROOT/'artifacts'/name).exists():files.append(ROOT/'artifacts'/name)
 for folder in list((ROOT/"models").glob("evidence-*"))+list((ROOT/"models").glob("control-*")):
     for name in ('adapter_model.safetensors','adapter_config.json','run_manifest.json','evidence_head.safetensors'):
         if (folder/name).exists():files.append(folder/name)

@@ -23,13 +23,14 @@ def load(tenant, version, model_prefix='evidence'):
     from .evidence_model import EvidenceModel
     torch.set_num_threads(2)
     policy = resolve(tenant, version)
-    if model_prefix not in {'evidence','control'}:raise ValueError('Unknown experiment')
+    if model_prefix not in {'evidence','control','candidate'}:raise ValueError('Unknown experiment')
     path = ROOT/'models'/f'{model_prefix}-{policy.tenant}-{policy.version}'
     manifest = json.loads((path/'run_manifest.json').read_text())
     if (manifest['tenant'], manifest['policy_version'], manifest['policy_sha256']) != (tenant, version, policy.digest):
         raise ValueError('Adapter policy mismatch')
     if manifest['task'] != 'evidence-classifier' or manifest['labels'] != list(LABELS) or manifest['evidence_features'] != list(NAMES):
         raise ValueError('Unsupported model contract')
+    if bool(manifest.get('head_only'))!=(model_prefix=='control'):raise ValueError('Adapter training identity mismatch')
     for filename, field in [('adapter_model.safetensors','adapter_sha256'), ('evidence_head.safetensors','head_sha256'), ('adapter_config.json','adapter_config_sha256')]:
         if digest_file(path/filename) != manifest[field]:
             raise ValueError('Changed trained artifact')
@@ -45,6 +46,9 @@ def load(tenant, version, model_prefix='evidence'):
 
 
 def predict(message, context, tenant, version, model_prefix='evidence'):
+    resolve(tenant,version)
+    if model_prefix not in {'evidence','control','candidate'}:raise ValueError('Unknown experiment')
+    facts=features(message,context,tenant,version)
     import torch
     start = time.perf_counter()
     with LOCK:
@@ -60,7 +64,6 @@ def predict(message, context, tenant, version, model_prefix='evidence'):
         tokens = tokenizer(message, return_tensors='pt')
         if tokens['input_ids'].shape[-1] > 128:
             raise ValueError('AI comparison supports messages up to 128 tokens')
-        facts = features(message, context, tenant, version)
         with torch.inference_mode():
             probabilities=model(input_ids=tokens['input_ids'], attention_mask=tokens['attention_mask'],
                           evidence=torch.tensor([facts], dtype=torch.float32)).softmax(-1)[0]

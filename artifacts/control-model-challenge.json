@@ -2,23 +2,23 @@
   "backend": "head-only",
   "benchmark": "frozen-synthetic-challenge-v1",
   "total": 66,
-  "correct": 55,
-  "accuracy": 0.8333,
-  "macro_f1": 0.8483,
+  "correct": 57,
+  "accuracy": 0.8636,
+  "macro_f1": 0.8717,
   "violation_cases": 48,
   "compliant_cases": 18,
-  "violation_recall": 0.9792,
-  "false_block_rate": 0.4444,
+  "violation_recall": 0.8542,
+  "false_block_rate": 0.1111,
   "changed_pairs": 1,
-  "changed_pair_accuracy": 1.0,
+  "changed_pair_accuracy": 0.0,
   "invariant_pairs": 21,
-  "invariant_pair_error_rate": 0.2381,
-  "wall_ms": 1184.14,
+  "invariant_pair_error_rate": 0.1429,
+  "wall_ms": 1249.139,
   "cache_hits": 0,
-  "p95_uncached_ms": 23.55,
+  "p95_uncached_ms": 23.01,
   "cost_usd": null,
   "gpu_seconds": null,
-  "limitations": "Frozen synthetic challenge; not used for training or epoch selection. No independent expert review.",
+  "limitations": "Earlier challenge is now a development regression set for v6. No expert review.",
   "rows": [
     {
       "id": "challenge-low-harbor-v1",
@@ -34,14 +34,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9998130202293396,
+      "confidence": 0.9995858073234558,
       "probabilities": {
-        "pass": 0.9998130202293396,
-        "rewrite": 3.836298219539458e-06,
-        "block": 5.480644540512003e-05,
-        "escalate": 0.0001284119498450309
+        "pass": 0.9995858073234558,
+        "rewrite": 4.9473992476123385e-06,
+        "block": 4.8190711822826415e-05,
+        "escalate": 0.00036110408836975694
       },
-      "latency_ms": 16.18,
+      "latency_ms": 19.11,
       "cache_hit": false
     },
     {
@@ -58,14 +58,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.6123136878013611,
+      "confidence": 0.9536682367324829,
       "probabilities": {
-        "pass": 0.6123136878013611,
-        "rewrite": 0.0008361241198144853,
-        "block": 0.010074421763420105,
-        "escalate": 0.3767758011817932
+        "pass": 0.9536682367324829,
+        "rewrite": 5.977825276204385e-05,
+        "block": 0.0008027042495086789,
+        "escalate": 0.04546917974948883
       },
-      "latency_ms": 14.78,
+      "latency_ms": 19.39,
       "cache_hit": false
     },
     {
@@ -82,14 +82,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8798716068267822,
+      "confidence": 0.9570843577384949,
       "probabilities": {
-        "pass": 0.09634555876255035,
-        "rewrite": 0.003320621093735099,
-        "block": 0.020462172105908394,
-        "escalate": 0.8798716068267822
+        "pass": 0.04284006357192993,
+        "rewrite": 1.0060011845780537e-05,
+        "block": 6.556605512741953e-05,
+        "escalate": 0.9570843577384949
       },
-      "latency_ms": 14.31,
+      "latency_ms": 21.51,
       "cache_hit": false
     },
     {
@@ -106,14 +106,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9999380111694336,
+      "confidence": 0.9999567270278931,
       "probabilities": {
-        "pass": 0.9999380111694336,
-        "rewrite": 2.8250401555851568e-06,
-        "block": 2.0265548300812952e-05,
-        "escalate": 3.885317710228264e-05
+        "pass": 0.9999567270278931,
+        "rewrite": 1.938407194757019e-06,
+        "block": 9.068663530342747e-06,
+        "escalate": 3.229868525522761e-05
       },
-      "latency_ms": 15.0,
+      "latency_ms": 20.13,
       "cache_hit": false
     },
     {
@@ -129,15 +129,15 @@
       "version": "v2",
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.6030473113059998,
+      "predicted": "pass",
+      "confidence": 0.7692263722419739,
       "probabilities": {
-        "pass": 0.390412300825119,
-        "rewrite": 0.001013120636343956,
-        "block": 0.005527179688215256,
-        "escalate": 0.6030473113059998
+        "pass": 0.7692263722419739,
+        "rewrite": 0.00010089307761518285,
+        "block": 0.0006781630218029022,
+        "escalate": 0.22999458014965057
       },
-      "latency_ms": 15.02,
+      "latency_ms": 19.53,
       "cache_hit": false
     },
     {
@@ -153,15 +153,15 @@
       "version": "v1",
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.8652894496917725,
+      "predicted": "pass",
+      "confidence": 0.9606555104255676,
       "probabilities": {
-        "pass": 0.11137595772743225,
-        "rewrite": 0.0038229564670473337,
-        "block": 0.019511697813868523,
-        "escalate": 0.8652894496917725
+        "pass": 0.9606555104255676,
+        "rewrite": 1.1497533705551177e-05,
+        "block": 6.74584080115892e-05,
+        "escalate": 0.03926561772823334
       },
-      "latency_ms": 16.23,
+      "latency_ms": 16.37,
       "cache_hit": false
     },
     {
@@ -178,14 +178,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9993661046028137,
+      "confidence": 0.9878232479095459,
       "probabilities": {
-        "pass": 0.0006028120988048613,
-        "rewrite": 1.6118938219733536e-05,
-        "block": 1.4969353287597187e-05,
-        "escalate": 0.9993661046028137
+        "pass": 0.012089657597243786,
+        "rewrite": 3.070449747610837e-05,
+        "block": 5.6420700275339186e-05,
+        "escalate": 0.9878232479095459
       },
-      "latency_ms": 23.55,
+      "latency_ms": 17.77,
       "cache_hit": false
     },
     {
@@ -202,14 +202,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8286365270614624,
+      "confidence": 0.7604828476905823,
       "probabilities": {
-        "pass": 0.16575871407985687,
-        "rewrite": 0.0008433708571828902,
-        "block": 0.004761455114930868,
-        "escalate": 0.8286365270614624
+        "pass": 0.2381831854581833,
+        "rewrite": 0.00016411286196671426,
+        "block": 0.001169836730696261,
+        "escalate": 0.7604828476905823
       },
-      "latency_ms": 19.93,
+      "latency_ms": 17.09,
       "cache_hit": false
     },
     {
@@ -226,14 +226,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9024425745010376,
+      "confidence": 0.9995167255401611,
       "probabilities": {
-        "pass": 0.07735448330640793,
-        "rewrite": 0.0030676547903567553,
-        "block": 0.017135318368673325,
-        "escalate": 0.9024425745010376
+        "pass": 0.0004689420748036355,
+        "rewrite": 2.6955131033901125e-06,
+        "block": 1.1679042472678702e-05,
+        "escalate": 0.9995167255401611
       },
-      "latency_ms": 21.57,
+      "latency_ms": 17.74,
       "cache_hit": false
     },
     {
@@ -250,14 +250,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.818986713886261,
+      "confidence": 0.9943782687187195,
       "probabilities": {
-        "pass": 0.818986713886261,
-        "rewrite": 0.00017162955191452056,
-        "block": 0.001217726618051529,
-        "escalate": 0.17962388694286346
+        "pass": 0.9943782687187195,
+        "rewrite": 3.6509572964860126e-05,
+        "block": 0.00026246963534504175,
+        "escalate": 0.0053227790631353855
       },
-      "latency_ms": 18.58,
+      "latency_ms": 17.08,
       "cache_hit": false
     },
     {
@@ -273,15 +273,15 @@
       "version": "v2",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.8279491066932678,
+      "predicted": "pass",
+      "confidence": 0.8601530194282532,
       "probabilities": {
-        "pass": 0.16586941480636597,
-        "rewrite": 0.000565393187571317,
-        "block": 0.005616123788058758,
-        "escalate": 0.8279491066932678
+        "pass": 0.8601530194282532,
+        "rewrite": 9.004950697999448e-05,
+        "block": 0.001584679470397532,
+        "escalate": 0.1381722092628479
       },
-      "latency_ms": 16.89,
+      "latency_ms": 17.4,
       "cache_hit": false
     },
     {
@@ -297,15 +297,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.8950594067573547,
+      "predicted": "pass",
+      "confidence": 0.9992734789848328,
       "probabilities": {
-        "pass": 0.08303995430469513,
-        "rewrite": 0.0025045217480510473,
-        "block": 0.019396044313907623,
-        "escalate": 0.8950594067573547
+        "pass": 0.9992734789848328,
+        "rewrite": 4.3169984564883634e-06,
+        "block": 7.791275129420683e-05,
+        "escalate": 0.0006443922757171094
       },
-      "latency_ms": 20.04,
+      "latency_ms": 17.84,
       "cache_hit": false
     },
     {
@@ -322,14 +322,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9999943971633911,
+      "confidence": 0.9999864101409912,
       "probabilities": {
-        "pass": 1.6259286894637626e-06,
-        "rewrite": 5.168213306205871e-07,
-        "block": 3.411704028621898e-06,
-        "escalate": 0.9999943971633911
+        "pass": 7.546661890955875e-06,
+        "rewrite": 1.8977435729539138e-06,
+        "block": 4.142942543694517e-06,
+        "escalate": 0.9999864101409912
       },
-      "latency_ms": 19.24,
+      "latency_ms": 17.77,
       "cache_hit": false
     },
     {
@@ -346,14 +346,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8870923519134521,
+      "confidence": 0.9559561610221863,
       "probabilities": {
-        "pass": 0.10744340717792511,
-        "rewrite": 0.00047189422184601426,
-        "block": 0.004992314614355564,
-        "escalate": 0.8870923519134521
+        "pass": 0.04318021610379219,
+        "rewrite": 0.00010185789142269641,
+        "block": 0.0007617171504534781,
+        "escalate": 0.9559561610221863
       },
-      "latency_ms": 19.68,
+      "latency_ms": 17.12,
       "cache_hit": false
     },
     {
@@ -370,14 +370,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9263067245483398,
+      "confidence": 0.9998577833175659,
       "probabilities": {
-        "pass": 0.056556884199380875,
-        "rewrite": 0.002458509523421526,
-        "block": 0.014677861705422401,
-        "escalate": 0.9263067245483398
+        "pass": 0.00013119939831085503,
+        "rewrite": 1.786930397429387e-06,
+        "block": 9.157913154922426e-06,
+        "escalate": 0.9998577833175659
       },
-      "latency_ms": 22.12,
+      "latency_ms": 18.82,
       "cache_hit": false
     },
     {
@@ -393,14 +393,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 1.0,
+      "confidence": 0.9999998807907104,
       "probabilities": {
-        "pass": 2.2802231214313906e-09,
-        "rewrite": 2.293339917969206e-08,
-        "block": 1.1560596036019888e-08,
-        "escalate": 1.0
+        "pass": 3.561226336046275e-08,
+        "rewrite": 5.179330742066668e-08,
+        "block": 3.6926227409139756e-08,
+        "escalate": 0.9999998807907104
       },
-      "latency_ms": 20.47,
+      "latency_ms": 18.1,
       "cache_hit": false
     },
     {
@@ -416,14 +416,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.980712890625,
+      "confidence": 0.998917818069458,
       "probabilities": {
-        "pass": 0.01777981035411358,
-        "rewrite": 0.0003630653955042362,
-        "block": 0.0011442792601883411,
-        "escalate": 0.980712890625
+        "pass": 0.0009936915012076497,
+        "rewrite": 2.086628956021741e-05,
+        "block": 6.768833554815501e-05,
+        "escalate": 0.998917818069458
       },
-      "latency_ms": 18.82,
+      "latency_ms": 18.18,
       "cache_hit": false
     },
     {
@@ -439,14 +439,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9330788254737854,
+      "confidence": 0.9999809265136719,
       "probabilities": {
-        "pass": 0.0514451339840889,
-        "rewrite": 0.003113173646852374,
-        "block": 0.012362935580313206,
-        "escalate": 0.9330788254737854
+        "pass": 1.7460684830439277e-05,
+        "rewrite": 3.736508915608283e-07,
+        "block": 1.1892959719261853e-06,
+        "escalate": 0.9999809265136719
       },
-      "latency_ms": 18.87,
+      "latency_ms": 19.03,
       "cache_hit": false
     },
     {
@@ -463,14 +463,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 1.0,
+      "confidence": 0.9999998807907104,
       "probabilities": {
-        "pass": 2.2802231214313906e-09,
-        "rewrite": 2.293339917969206e-08,
-        "block": 1.1560596036019888e-08,
-        "escalate": 1.0
+        "pass": 3.561226336046275e-08,
+        "rewrite": 5.179330742066668e-08,
+        "block": 3.6926227409139756e-08,
+        "escalate": 0.9999998807907104
       },
-      "latency_ms": 16.75,
+      "latency_ms": 20.44,
       "cache_hit": false
     },
     {
@@ -487,14 +487,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.980712890625,
+      "confidence": 0.998917818069458,
       "probabilities": {
-        "pass": 0.01777981035411358,
-        "rewrite": 0.0003630653955042362,
-        "block": 0.0011442792601883411,
-        "escalate": 0.980712890625
+        "pass": 0.0009936915012076497,
+        "rewrite": 2.086628956021741e-05,
+        "block": 6.768833554815501e-05,
+        "escalate": 0.998917818069458
       },
-      "latency_ms": 13.63,
+      "latency_ms": 19.08,
       "cache_hit": false
     },
     {
@@ -511,14 +511,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9330788254737854,
+      "confidence": 0.9999809265136719,
       "probabilities": {
-        "pass": 0.0514451339840889,
-        "rewrite": 0.003113173646852374,
-        "block": 0.012362935580313206,
-        "escalate": 0.9330788254737854
+        "pass": 1.7460684830439277e-05,
+        "rewrite": 3.736508915608283e-07,
+        "block": 1.1892959719261853e-06,
+        "escalate": 0.9999809265136719
       },
-      "latency_ms": 16.32,
+      "latency_ms": 18.53,
       "cache_hit": false
     },
     {
@@ -535,14 +535,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9935289025306702,
+      "confidence": 0.9999065399169922,
       "probabilities": {
-        "pass": 0.006087047979235649,
-        "rewrite": 3.2588686735834926e-05,
-        "block": 0.0003514282579999417,
-        "escalate": 0.9935289025306702
+        "pass": 5.5587664974154904e-05,
+        "rewrite": 1.8546679712017067e-05,
+        "block": 1.9320914361742325e-05,
+        "escalate": 0.9999065399169922
       },
-      "latency_ms": 14.97,
+      "latency_ms": 20.78,
       "cache_hit": false
     },
     {
@@ -559,14 +559,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.792164146900177,
+      "confidence": 0.9944307208061218,
       "probabilities": {
-        "pass": 0.19672147929668427,
-        "rewrite": 0.001283675548620522,
-        "block": 0.009830659255385399,
-        "escalate": 0.792164146900177
+        "pass": 0.00492999330163002,
+        "rewrite": 0.0001882810320239514,
+        "block": 0.00045101577416062355,
+        "escalate": 0.9944307208061218
       },
-      "latency_ms": 17.79,
+      "latency_ms": 18.98,
       "cache_hit": false
     },
     {
@@ -583,14 +583,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9005402326583862,
+      "confidence": 0.9999946355819702,
       "probabilities": {
-        "pass": 0.07318413257598877,
-        "rewrite": 0.0045619443990290165,
-        "block": 0.021713735535740852,
-        "escalate": 0.9005402326583862
+        "pass": 3.0867013265378773e-06,
+        "rewrite": 8.798029398349172e-07,
+        "block": 1.3420243476502947e-06,
+        "escalate": 0.9999946355819702
       },
-      "latency_ms": 12.43,
+      "latency_ms": 18.49,
       "cache_hit": false
     },
     {
@@ -606,15 +606,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.9933962821960449,
+      "predicted": "pass",
+      "confidence": 0.7999193072319031,
       "probabilities": {
-        "pass": 0.006212970241904259,
-        "rewrite": 0.0002121621073456481,
-        "block": 0.00017855587066151202,
-        "escalate": 0.9933962821960449
+        "pass": 0.7999193072319031,
+        "rewrite": 0.0003259994846303016,
+        "block": 0.0007927807164378464,
+        "escalate": 0.19896185398101807
       },
-      "latency_ms": 16.03,
+      "latency_ms": 18.7,
       "cache_hit": false
     },
     {
@@ -630,15 +630,15 @@
       "version": "v2",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.804554283618927,
+      "predicted": "pass",
+      "confidence": 0.7504395246505737,
       "probabilities": {
-        "pass": 0.18632231652736664,
-        "rewrite": 0.0014162666629999876,
-        "block": 0.007707105949521065,
-        "escalate": 0.804554283618927
+        "pass": 0.7504395246505737,
+        "rewrite": 0.0002635760174598545,
+        "block": 0.002280600368976593,
+        "escalate": 0.24701640009880066
       },
-      "latency_ms": 14.48,
+      "latency_ms": 19.36,
       "cache_hit": false
     },
     {
@@ -655,14 +655,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8895868062973022,
+      "confidence": 0.6162198781967163,
       "probabilities": {
-        "pass": 0.08502847701311111,
-        "rewrite": 0.003944751340895891,
-        "block": 0.02143990993499756,
-        "escalate": 0.8895868062973022
+        "pass": 0.3827977776527405,
+        "rewrite": 0.000169467311934568,
+        "block": 0.0008128712070174515,
+        "escalate": 0.6162198781967163
       },
-      "latency_ms": 15.78,
+      "latency_ms": 17.09,
       "cache_hit": false
     },
     {
@@ -679,14 +679,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.5767580270767212,
+      "confidence": 0.960392415523529,
       "probabilities": {
-        "pass": 0.5767580270767212,
-        "rewrite": 0.00035711124655790627,
-        "block": 0.0019150341395288706,
-        "escalate": 0.4209698438644409
+        "pass": 0.960392415523529,
+        "rewrite": 3.775850200327113e-05,
+        "block": 0.0009896809933707118,
+        "escalate": 0.03858017548918724
       },
-      "latency_ms": 15.81,
+      "latency_ms": 20.73,
       "cache_hit": false
     },
     {
@@ -703,14 +703,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.5521128177642822,
+      "confidence": 0.907300591468811,
       "probabilities": {
-        "pass": 0.5521128177642822,
-        "rewrite": 0.002013790188357234,
-        "block": 0.018084844574332237,
-        "escalate": 0.42778855562210083
+        "pass": 0.907300591468811,
+        "rewrite": 0.00011814181198133156,
+        "block": 0.003713921643793583,
+        "escalate": 0.08886739611625671
       },
-      "latency_ms": 16.57,
+      "latency_ms": 18.98,
       "cache_hit": false
     },
     {
@@ -726,15 +726,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.7952702045440674,
+      "predicted": "pass",
+      "confidence": 0.7331130504608154,
       "probabilities": {
-        "pass": 0.15484270453453064,
-        "rewrite": 0.0070123872719705105,
-        "block": 0.04287472367286682,
-        "escalate": 0.7952702045440674
+        "pass": 0.7331130504608154,
+        "rewrite": 3.62384962500073e-05,
+        "block": 0.002544570015743375,
+        "escalate": 0.26430606842041016
       },
-      "latency_ms": 14.75,
+      "latency_ms": 18.91,
       "cache_hit": false
     },
     {
@@ -750,14 +750,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9701476693153381,
+      "confidence": 0.9253026843070984,
       "probabilities": {
-        "pass": 0.9701476693153381,
-        "rewrite": 0.00046755760558880866,
-        "block": 0.0009133967105299234,
-        "escalate": 0.02847135253250599
+        "pass": 0.9253026843070984,
+        "rewrite": 0.0008444108534604311,
+        "block": 0.0009509007213637233,
+        "escalate": 0.07290204614400864
       },
-      "latency_ms": 13.46,
+      "latency_ms": 18.01,
       "cache_hit": false
     },
     {
@@ -773,14 +773,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.7569488883018494,
+      "confidence": 0.615527868270874,
       "probabilities": {
-        "pass": 0.19876395165920258,
-        "rewrite": 0.013758284039795399,
-        "block": 0.030528927221894264,
-        "escalate": 0.7569488883018494
+        "pass": 0.36830031871795654,
+        "rewrite": 0.005496797151863575,
+        "block": 0.010674986988306046,
+        "escalate": 0.615527868270874
       },
-      "latency_ms": 14.21,
+      "latency_ms": 15.85,
       "cache_hit": false
     },
     {
@@ -795,15 +795,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.7223701477050781,
+      "predicted": "pass",
+      "confidence": 0.9469130635261536,
       "probabilities": {
-        "pass": 0.16349150240421295,
-        "rewrite": 0.03432251140475273,
-        "block": 0.07981579005718231,
-        "escalate": 0.7223701477050781
+        "pass": 0.9469130635261536,
+        "rewrite": 0.0004095021868124604,
+        "block": 0.0005537004326470196,
+        "escalate": 0.052123717963695526
       },
-      "latency_ms": 17.0,
+      "latency_ms": 16.41,
       "cache_hit": false
     },
     {
@@ -819,14 +819,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9990684390068054,
+      "confidence": 0.9993711113929749,
       "probabilities": {
-        "pass": 0.9990684390068054,
-        "rewrite": 0.00035903931711800396,
-        "block": 0.0003408496268093586,
-        "escalate": 0.0002316770696779713
+        "pass": 0.9993711113929749,
+        "rewrite": 0.00021200573246460408,
+        "block": 0.00018058928253594786,
+        "escalate": 0.00023626939218956977
       },
-      "latency_ms": 17.89,
+      "latency_ms": 17.01,
       "cache_hit": false
     },
     {
@@ -842,14 +842,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.6763023138046265,
+      "confidence": 0.9867619276046753,
       "probabilities": {
-        "pass": 0.6763023138046265,
-        "rewrite": 0.10011405497789383,
-        "block": 0.0933423712849617,
-        "escalate": 0.13024121522903442
+        "pass": 0.9867619276046753,
+        "rewrite": 0.004294434562325478,
+        "block": 0.003531124209985137,
+        "escalate": 0.005412487778812647
       },
-      "latency_ms": 17.41,
+      "latency_ms": 17.86,
       "cache_hit": false
     },
     {
@@ -865,14 +865,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.3487236201763153,
+      "confidence": 0.9980248212814331,
       "probabilities": {
-        "pass": 0.3487236201763153,
-        "rewrite": 0.17399862408638,
-        "block": 0.18991254270076752,
-        "escalate": 0.28736522793769836
+        "pass": 0.9980248212814331,
+        "rewrite": 0.000337034318363294,
+        "block": 0.00027295370819047093,
+        "escalate": 0.001365211675874889
       },
-      "latency_ms": 17.17,
+      "latency_ms": 17.57,
       "cache_hit": false
     },
     {
@@ -888,14 +888,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9994055032730103,
+      "confidence": 0.9989479184150696,
       "probabilities": {
-        "pass": 6.573985729119158e-07,
-        "rewrite": 0.0004771198728121817,
-        "block": 0.00011676658323267475,
-        "escalate": 0.9994055032730103
+        "pass": 1.0776182080007857e-07,
+        "rewrite": 0.0010027840035036206,
+        "block": 4.9232923629460856e-05,
+        "escalate": 0.9989479184150696
       },
-      "latency_ms": 24.6,
+      "latency_ms": 16.61,
       "cache_hit": false
     },
     {
@@ -911,14 +911,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.5553426146507263,
+      "confidence": 0.8816392421722412,
       "probabilities": {
-        "pass": 0.05190306901931763,
-        "rewrite": 0.28228262066841125,
-        "block": 0.1104717031121254,
-        "escalate": 0.5553426146507263
+        "pass": 0.00047931354492902756,
+        "rewrite": 0.10869365185499191,
+        "block": 0.009187741205096245,
+        "escalate": 0.8816392421722412
       },
-      "latency_ms": 25.62,
+      "latency_ms": 17.67,
       "cache_hit": false
     },
     {
@@ -934,14 +934,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.4064604640007019,
+      "confidence": 0.9994788765907288,
       "probabilities": {
-        "pass": 0.11395525932312012,
-        "rewrite": 0.29432910680770874,
-        "block": 0.18525518476963043,
-        "escalate": 0.4064604640007019
+        "pass": 2.2078475936382347e-08,
+        "rewrite": 0.0004904359229840338,
+        "block": 3.073095285799354e-05,
+        "escalate": 0.9994788765907288
       },
-      "latency_ms": 23.44,
+      "latency_ms": 18.95,
       "cache_hit": false
     },
     {
@@ -958,14 +958,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9923507571220398,
+      "confidence": 0.9996289014816284,
       "probabilities": {
-        "pass": 0.0073073687963187695,
-        "rewrite": 0.0001280831202166155,
-        "block": 0.00021381446276791394,
-        "escalate": 0.9923507571220398
+        "pass": 0.0003267600550316274,
+        "rewrite": 2.916110315709375e-05,
+        "block": 1.5204734154394828e-05,
+        "escalate": 0.9996289014816284
       },
-      "latency_ms": 19.89,
+      "latency_ms": 17.48,
       "cache_hit": false
     },
     {
@@ -982,14 +982,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.575244128704071,
+      "confidence": 0.8641595840454102,
       "probabilities": {
-        "pass": 0.3806613087654114,
-        "rewrite": 0.011215202510356903,
-        "block": 0.032879311591386795,
-        "escalate": 0.575244128704071
+        "pass": 0.13020482659339905,
+        "rewrite": 0.0025028723757714033,
+        "block": 0.00313269579783082,
+        "escalate": 0.8641595840454102
       },
-      "latency_ms": 13.62,
+      "latency_ms": 17.48,
       "cache_hit": false
     },
     {
@@ -1006,14 +1006,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.7097554206848145,
+      "confidence": 0.9999703168869019,
       "probabilities": {
-        "pass": 0.19099457561969757,
-        "rewrite": 0.024689404293894768,
-        "block": 0.07456059008836746,
-        "escalate": 0.7097554206848145
+        "pass": 2.08860856218962e-05,
+        "rewrite": 5.1374477152421605e-06,
+        "block": 3.6131118577031884e-06,
+        "escalate": 0.9999703168869019
       },
-      "latency_ms": 13.72,
+      "latency_ms": 17.25,
       "cache_hit": false
     },
     {
@@ -1028,15 +1028,15 @@
       "version": "v1",
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.9833383560180664,
+      "predicted": "rewrite",
+      "confidence": 0.7730371356010437,
       "probabilities": {
-        "pass": 2.2277848898966113e-08,
-        "rewrite": 0.016631867736577988,
-        "block": 2.9754522984148934e-05,
-        "escalate": 0.9833383560180664
+        "pass": 3.1430367197771147e-09,
+        "rewrite": 0.7730371356010437,
+        "block": 1.4927852134860586e-05,
+        "escalate": 0.22694793343544006
       },
-      "latency_ms": 14.48,
+      "latency_ms": 17.38,
       "cache_hit": false
     },
     {
@@ -1052,14 +1052,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.5738440752029419,
+      "confidence": 0.8392544388771057,
       "probabilities": {
-        "pass": 0.00961195770651102,
-        "rewrite": 0.5738440752029419,
-        "block": 0.02637895755469799,
-        "escalate": 0.3901650309562683
+        "pass": 5.0872408792201895e-06,
+        "rewrite": 0.8392544388771057,
+        "block": 0.000378050230210647,
+        "escalate": 0.16036246716976166
       },
-      "latency_ms": 19.28,
+      "latency_ms": 16.67,
       "cache_hit": false
     },
     {
@@ -1075,14 +1075,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.5327165722846985,
+      "confidence": 0.8009792566299438,
       "probabilities": {
-        "pass": 0.05804158374667168,
-        "rewrite": 0.5327165722846985,
-        "block": 0.09043817222118378,
-        "escalate": 0.31880372762680054
+        "pass": 1.5016689003388706e-09,
+        "rewrite": 0.8009792566299438,
+        "block": 9.958801456377842e-06,
+        "escalate": 0.19901077449321747
       },
-      "latency_ms": 16.8,
+      "latency_ms": 15.9,
       "cache_hit": false
     },
     {
@@ -1098,14 +1098,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.9948280453681946,
+      "confidence": 0.9996496438980103,
       "probabilities": {
-        "pass": 2.561394296662911e-07,
-        "rewrite": 0.9948280453681946,
-        "block": 0.0001250583736691624,
-        "escalate": 0.005046654026955366
+        "pass": 1.5980416989691548e-08,
+        "rewrite": 0.9996496438980103,
+        "block": 1.2312754734011833e-05,
+        "escalate": 0.0003380332491360605
       },
-      "latency_ms": 17.94,
+      "latency_ms": 14.33,
       "cache_hit": false
     },
     {
@@ -1121,14 +1121,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.9443917870521545,
+      "confidence": 0.9931358098983765,
       "probabilities": {
-        "pass": 0.004200453869998455,
-        "rewrite": 0.9443917870521545,
-        "block": 0.012549564242362976,
-        "escalate": 0.03885815665125847
+        "pass": 1.1119829650851898e-05,
+        "rewrite": 0.9931358098983765,
+        "block": 0.000361867860192433,
+        "escalate": 0.006491126958280802
       },
-      "latency_ms": 19.73,
+      "latency_ms": 14.91,
       "cache_hit": false
     },
     {
@@ -1144,14 +1144,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.8066526651382446,
+      "confidence": 0.9998874664306641,
       "probabilities": {
-        "pass": 0.03494961932301521,
-        "rewrite": 0.8066526651382446,
-        "block": 0.05672716349363327,
-        "escalate": 0.10167045146226883
+        "pass": 3.9274720364801396e-08,
+        "rewrite": 0.9998874664306641,
+        "block": 8.261431503342465e-06,
+        "escalate": 0.00010426942753838375
       },
-      "latency_ms": 17.45,
+      "latency_ms": 16.46,
       "cache_hit": false
     },
     {
@@ -1167,14 +1167,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9999364614486694,
+      "confidence": 0.9978665709495544,
       "probabilities": {
-        "pass": 5.420122306531994e-07,
-        "rewrite": 6.101416511228308e-05,
-        "block": 1.9652197806863114e-06,
-        "escalate": 0.9999364614486694
+        "pass": 3.675125981317251e-06,
+        "rewrite": 0.0021200880873948336,
+        "block": 9.69985831034137e-06,
+        "escalate": 0.9978665709495544
       },
-      "latency_ms": 17.32,
+      "latency_ms": 18.54,
       "cache_hit": false
     },
     {
@@ -1190,14 +1190,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8914304971694946,
+      "confidence": 0.9703648090362549,
       "probabilities": {
-        "pass": 0.043637003749608994,
-        "rewrite": 0.05142628401517868,
-        "block": 0.013506187126040459,
-        "escalate": 0.8914304971694946
+        "pass": 0.0014627559576183558,
+        "rewrite": 0.027377769351005554,
+        "block": 0.0007946346886456013,
+        "escalate": 0.9703648090362549
       },
-      "latency_ms": 17.49,
+      "latency_ms": 18.15,
       "cache_hit": false
     },
     {
@@ -1213,14 +1213,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.7063793540000916,
+      "confidence": 0.9990261793136597,
       "probabilities": {
-        "pass": 0.11194171756505966,
-        "rewrite": 0.11411628872156143,
-        "block": 0.06756258010864258,
-        "escalate": 0.7063793540000916
+        "pass": 2.3770792267896468e-06,
+        "rewrite": 0.0009656648035161197,
+        "block": 5.738419986300869e-06,
+        "escalate": 0.9990261793136597
       },
-      "latency_ms": 17.97,
+      "latency_ms": 18.11,
       "cache_hit": false
     },
     {
@@ -1236,14 +1236,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9973344802856445,
+      "confidence": 0.9978266358375549,
       "probabilities": {
-        "pass": 4.13397210650146e-05,
-        "rewrite": 0.0020479268860071898,
-        "block": 0.9973344802856445,
-        "escalate": 0.0005762632354162633
+        "pass": 4.871856435784139e-05,
+        "rewrite": 0.0010392757831141353,
+        "block": 0.9978266358375549,
+        "escalate": 0.0010853183921426535
       },
-      "latency_ms": 20.8,
+      "latency_ms": 19.65,
       "cache_hit": false
     },
     {
@@ -1259,14 +1259,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9454061985015869,
+      "confidence": 0.986426591873169,
       "probabilities": {
-        "pass": 0.014697187580168247,
-        "rewrite": 0.028588511049747467,
-        "block": 0.9454061985015869,
-        "escalate": 0.011308136396110058
+        "pass": 0.0026038207579404116,
+        "rewrite": 0.0069381436333060265,
+        "block": 0.986426591873169,
+        "escalate": 0.004031470976769924
       },
-      "latency_ms": 21.77,
+      "latency_ms": 19.61,
       "cache_hit": false
     },
     {
@@ -1282,14 +1282,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.7757211923599243,
+      "confidence": 0.9991631507873535,
       "probabilities": {
-        "pass": 0.06728685647249222,
-        "rewrite": 0.09519628435373306,
-        "block": 0.7757211923599243,
-        "escalate": 0.0617956817150116
+        "pass": 2.9130536859156564e-05,
+        "rewrite": 0.00048318327753804624,
+        "block": 0.9991631507873535,
+        "escalate": 0.0003245922562200576
       },
-      "latency_ms": 24.27,
+      "latency_ms": 20.31,
       "cache_hit": false
     },
     {
@@ -1305,14 +1305,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9926041960716248,
+      "confidence": 0.9773147106170654,
       "probabilities": {
-        "pass": 2.8073347493773326e-05,
-        "rewrite": 0.00037770046037621796,
-        "block": 0.9926041960716248,
-        "escalate": 0.006990072317421436
+        "pass": 1.8426946553518064e-05,
+        "rewrite": 0.0002555730170570314,
+        "block": 0.9773147106170654,
+        "escalate": 0.022411227226257324
       },
-      "latency_ms": 20.04,
+      "latency_ms": 19.71,
       "cache_hit": false
     },
     {
@@ -1328,14 +1328,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9042835235595703,
+      "confidence": 0.944782018661499,
       "probabilities": {
-        "pass": 0.023622766137123108,
-        "rewrite": 0.01420422364026308,
-        "block": 0.9042835235595703,
-        "escalate": 0.05788950249552727
+        "pass": 0.001058674417436123,
+        "rewrite": 0.0024741862434893847,
+        "block": 0.944782018661499,
+        "escalate": 0.051685139536857605
       },
-      "latency_ms": 18.1,
+      "latency_ms": 19.91,
       "cache_hit": false
     },
     {
@@ -1351,14 +1351,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.6831967830657959,
+      "confidence": 0.9660860300064087,
       "probabilities": {
-        "pass": 0.08430265635251999,
-        "rewrite": 0.050970785319805145,
-        "block": 0.6831967830657959,
-        "escalate": 0.18152979016304016
+        "pass": 1.116306862058991e-06,
+        "rewrite": 8.4635270468425e-05,
+        "block": 0.9660860300064087,
+        "escalate": 0.03382822126150131
       },
-      "latency_ms": 19.8,
+      "latency_ms": 19.28,
       "cache_hit": false
     },
     {
@@ -1374,15 +1374,15 @@
       "version": "v1",
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "block",
-      "confidence": 0.6003305315971375,
+      "predicted": "pass",
+      "confidence": 0.5702739953994751,
       "probabilities": {
-        "pass": 0.3996213674545288,
-        "rewrite": 4.765355697600171e-05,
-        "block": 0.6003305315971375,
-        "escalate": 4.496022825151158e-07
+        "pass": 0.5702739953994751,
+        "rewrite": 4.6651854063384235e-05,
+        "block": 0.42967915534973145,
+        "escalate": 1.890049787789394e-07
       },
-      "latency_ms": 17.02,
+      "latency_ms": 21.25,
       "cache_hit": false
     },
     {
@@ -1398,15 +1398,15 @@
       "version": "v2",
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "block",
-      "confidence": 0.6093980669975281,
+      "predicted": "pass",
+      "confidence": 0.5973395705223083,
       "probabilities": {
-        "pass": 0.26902058720588684,
-        "rewrite": 0.002204577438533306,
-        "block": 0.6093980669975281,
-        "escalate": 0.1193767711520195
+        "pass": 0.5973395705223083,
+        "rewrite": 0.0002645317872520536,
+        "block": 0.4001195728778839,
+        "escalate": 0.0022763251326978207
       },
-      "latency_ms": 15.39,
+      "latency_ms": 23.01,
       "cache_hit": false
     },
     {
@@ -1422,15 +1422,15 @@
       "version": "v1",
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.600983202457428,
+      "predicted": "pass",
+      "confidence": 0.5272138118743896,
       "probabilities": {
-        "pass": 0.11798408627510071,
-        "rewrite": 0.009359869174659252,
-        "block": 0.2716728746891022,
-        "escalate": 0.600983202457428
+        "pass": 0.5272138118743896,
+        "rewrite": 4.4399657781468704e-05,
+        "block": 0.47273653745651245,
+        "escalate": 5.235648131929338e-06
       },
-      "latency_ms": 19.85,
+      "latency_ms": 24.04,
       "cache_hit": false
     },
     {
@@ -1447,14 +1447,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9167037010192871,
+      "confidence": 0.8663289546966553,
       "probabilities": {
-        "pass": 0.9167037010192871,
-        "rewrite": 5.7873912737704813e-05,
-        "block": 0.0075642988085746765,
-        "escalate": 0.07567399740219116
+        "pass": 0.8663289546966553,
+        "rewrite": 0.00012084145419066772,
+        "block": 0.0038830756675451994,
+        "escalate": 0.12966708838939667
       },
-      "latency_ms": 22.57,
+      "latency_ms": 19.52,
       "cache_hit": false
     },
     {
@@ -1470,15 +1470,15 @@
       "version": "v2",
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.666685938835144,
+      "predicted": "pass",
+      "confidence": 0.5734122395515442,
       "probabilities": {
-        "pass": 0.3129809498786926,
-        "rewrite": 0.0005813384777866304,
-        "block": 0.019751759245991707,
-        "escalate": 0.666685938835144
+        "pass": 0.5734122395515442,
+        "rewrite": 0.0001484598615206778,
+        "block": 0.005491045769304037,
+        "escalate": 0.4209482669830322
       },
-      "latency_ms": 20.98,
+      "latency_ms": 16.89,
       "cache_hit": false
     },
     {
@@ -1495,14 +1495,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8789914846420288,
+      "confidence": 0.5869449377059937,
       "probabilities": {
-        "pass": 0.0876726433634758,
-        "rewrite": 0.002570671495050192,
-        "block": 0.030765151605010033,
-        "escalate": 0.8789914846420288
+        "pass": 0.4117140471935272,
+        "rewrite": 3.919886876246892e-05,
+        "block": 0.0013018085155636072,
+        "escalate": 0.5869449377059937
       },
-      "latency_ms": 21.64,
+      "latency_ms": 29.29,
       "cache_hit": false
     },
     {
@@ -1519,14 +1519,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.5388835072517395,
+      "confidence": 0.9982308745384216,
       "probabilities": {
-        "pass": 0.41251397132873535,
-        "rewrite": 0.0007824379717931151,
-        "block": 0.04782003536820412,
-        "escalate": 0.5388835072517395
+        "pass": 0.0007156353094615042,
+        "rewrite": 0.0001887593389255926,
+        "block": 0.0008647803915664554,
+        "escalate": 0.9982308745384216
       },
-      "latency_ms": 18.12,
+      "latency_ms": 22.97,
       "cache_hit": false
     },
     {
@@ -1543,14 +1543,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.6512166261672974,
+      "confidence": 0.969607949256897,
       "probabilities": {
-        "pass": 0.3068525195121765,
-        "rewrite": 0.0021088283974677324,
-        "block": 0.039821967482566833,
-        "escalate": 0.6512166261672974
+        "pass": 0.02496027573943138,
+        "rewrite": 0.0005831022281199694,
+        "block": 0.004848619922995567,
+        "escalate": 0.969607949256897
       },
-      "latency_ms": 13.66,
+      "latency_ms": 27.19,
       "cache_hit": false
     },
     {
@@ -1567,14 +1567,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8465881943702698,
+      "confidence": 0.9992940425872803,
       "probabilities": {
-        "pass": 0.10079953819513321,
-        "rewrite": 0.006353938952088356,
-        "block": 0.046258315443992615,
-        "escalate": 0.8465881943702698
+        "pass": 0.0004578616935759783,
+        "rewrite": 3.993024438386783e-05,
+        "block": 0.00020811309514101595,
+        "escalate": 0.9992940425872803
       },
-      "latency_ms": 14.17,
+      "latency_ms": 22.46,
       "cache_hit": false
     }
   ],
@@ -1587,27 +1587,28 @@
     "cedar/v1": "models/control-cedar-v1"
   },
   "batch_size": 1,
+  "dataset_revision": "data-v6",
   "invalid_outputs": 0,
   "calibration": {
-    "ece": 0.184825,
-    "brier": 0.339522,
+    "ece": 0.059604,
+    "brier": 0.149355,
     "cases": 66,
     "caveat": "Conditional verdict probabilities; synthetic reliability estimate, not a compliance guarantee."
   },
   "artifact_fingerprints": {
     "models/control-harbor-v1/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
     "models/control-harbor-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/control-harbor-v1/run_manifest.json": "a754fcfe624f3f1d97a850a3f603db923793cfc14aeaad87dfae6b63b5186bf5",
-    "models/control-harbor-v1/evidence_head.safetensors": "c18754b0b738d55a9481d61db298c2535efe3247bb317450dad226caa836ace8",
+    "models/control-harbor-v1/run_manifest.json": "c9294991d1a2cea8ec0102c568afcae7a2c8ec17fee15cee9e1b0ccda2c64e35",
+    "models/control-harbor-v1/evidence_head.safetensors": "7148769d72a00b8a7ef9c3658db609906cabf483068d5b2089f87da6b7ac2713",
     "models/control-harbor-v2/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
-    "models/control-harbor-v2/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/control-harbor-v2/run_manifest.json": "b257fc801b8c45f219ae13b969475ff88da12b4846271cf50d4580fcb9c8a8ec",
-    "models/control-harbor-v2/evidence_head.safetensors": "1d055180b8a8aa5775acdffa1be54579f0118515d44b010be136bd4dad601090",
+    "models/control-harbor-v2/adapter_config.json": "56d4fd177e4768493984422988a0741e6e873cdcaa8a82ff7fae2c128bafa70f",
+    "models/control-harbor-v2/run_manifest.json": "c2930b157e0d1a8c1139e60270f3084e1a0730bb144fa83799d182ef4ba9e166",
+    "models/control-harbor-v2/evidence_head.safetensors": "22e132051261d26c355fa28a3050d5b9ad98d06eafe6871d1ced73c62dd9fdd9",
     "models/control-cedar-v1/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
-    "models/control-cedar-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/control-cedar-v1/run_manifest.json": "9af3f113827eb86f8ef3d8e287d75add399798b5842473107838bb2d1c120883",
-    "models/control-cedar-v1/evidence_head.safetensors": "336d08555db61120b70bfdbfaa6e2dc45cb24dbe626a228d6d4f746831c4d392"
+    "models/control-cedar-v1/adapter_config.json": "56d4fd177e4768493984422988a0741e6e873cdcaa8a82ff7fae2c128bafa70f",
+    "models/control-cedar-v1/run_manifest.json": "ccbff85e0d99896ab8cde7e598d091eb8bb331d489f9b072da500a639854d8a2",
+    "models/control-cedar-v1/evidence_head.safetensors": "ff9f24fe46ff3a95b720dd97ebf96d7c297ae038469258b6e67c772334e3d2fd"
   },
   "case_file_sha256": "f1a484dea7a41cb436a74735ac4fb525c592d5adc65df4f0acbde0d3941527d5",
-  "unsafe_allows": 1
+  "unsafe_allows": 7
 }

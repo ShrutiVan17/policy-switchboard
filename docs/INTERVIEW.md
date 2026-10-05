@@ -2,9 +2,9 @@
 
 ## Current evidence to lead with
 
-I trained three customer/version LoRA adapters on a pinned semantic encoder, paired identical refund text with changed approval and amount facts, and compared adaptation with a frozen-encoder/head-only control. LoRA improved smoke accuracy from 61/72 to 70/72 and unseen challenge accuracy from 55/66 to 59/66. Smoke unsafe allows fell from 1 to 0, but the challenge still contains one unsafe approval. The release gate rejects it and customer delivery stays disabled.
+I repaired semantic gaps using staged customer LoRA adapters, checked them against an unchanged benchmark and a newly frozen test, and compared with a matched frozen-encoder/head-only control. LoRA scored 72/72 and 66/66; the control scored 67/72 and 62/66. No unsafe approvals were observed for LoRA on these small synthetic sets. The old challenge is now a development regression set, not an unseen test.
 
-I selected checkpoints using monitored validation safety, accuracy and loss, rather than treating more epochs as automatically better. Training/validation contain no exact shared messages; semantic families remain related and the data is synthetic. A clean Linux CPU container reproduces an adapter from source, serves it offline and verifies a trusted-ticket API request. This demonstrates model-serving engineering, not a real-client production deployment or expert-reviewed compliance accuracy. [Study and reproduction](MODEL_STUDY.md) · [Serving evidence](SERVICE.md).
+I also fixed inflated-summary display, dataset/manifest mismatches, policy-path validation and unsafe adapter replacement. Tests cover interrupted multi-customer promotion rollback. The project uses a CPU MiniLM classifier, not ZeroDrift's proprietary Gemma enforcement model, and does not generate customer rewrites. The gate allows shadow research only. [Architecture and audit](ARCHITECTURE_AUDIT.md).
 
 The remaining sections describe the historical causal-model experiment and the broader design.
 

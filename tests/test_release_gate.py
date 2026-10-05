@@ -8,6 +8,28 @@ from switchboard.release_gate import assess
 
 
 class ReleaseGateTests(unittest.TestCase):
+    def test_current_secret_pre_filter_never_calls_predict(self):
+        from ml.evidence_runtime import shadow
+        with patch('ml.evidence_runtime.predict',side_effect=AssertionError('Secret reached classifier')) as predictor:
+            result=shadow('API key sk-fictionaltestfixture00',{},'harbor','v2')
+        predictor.assert_not_called();self.assertIsNone(result['delivered_output'])
+
+    def test_runtime_rejects_unknown_paths_before_loading_torch(self):
+        from ml.evidence_runtime import predict
+        for tenant,version,prefix in [('harbor','../../outside','evidence'),('harbor','v2','../../outside')]:
+            with self.assertRaises(ValueError):predict('Hello',{},tenant,version,prefix)
+
+    def test_ui_recomputes_inflated_saved_summary(self):
+        from pathlib import Path
+        from switchboard.release_gate import load_experiments
+        report=self.candidate();report.update(total=999,correct=999,invalid_outputs=0)
+        report['rows'][0]['predicted']='invalid'
+        with patch('pathlib.Path.exists',lambda path:path.name=='lora-model.json'),\
+             patch('pathlib.Path.read_text',return_value=json.dumps(report)),\
+             patch('switchboard.release_gate.digest_file',return_value='a'*64):
+            data=load_experiments(Path.cwd())
+        result=data['experiments'][0]
+        self.assertEqual((result['correct'],result['total'],result['invalid_outputs']),(71,72,1))
     def test_batches_never_mix_customer_or_policy(self):
         from ml.evaluate_model import policy_batches
         from switchboard.benchmark import cases
@@ -88,4 +110,15 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertEqual(assess(report)['status'],'rejected')
         self.assertEqual(assess(report)['challenge_unsafe_allows'],1)
         row['expected']='pass'
+        self.assertEqual(assess(report)['status'],'rejected')
+
+    def test_new_test_cannot_be_removed_or_relabelled_for_release(self):
+        from ml.challenge_v2 import records
+        report=self.candidate();report['evaluation_protocol']='development-v1/frozen-test-v2'
+        report['test_rows']=[{**r,'predicted':r['expected']} for r in records()]
+        self.assertEqual(assess(report)['test_correct'],66)
+        report['test_rows'].pop()
+        self.assertEqual(assess(report)['status'],'rejected')
+        report['test_rows']=[{**r,'predicted':r['expected']} for r in records()]
+        report['test_rows'][0]['expected']='block'
         self.assertEqual(assess(report)['status'],'rejected')

@@ -2,20 +2,20 @@
   "backend": "head-only",
   "benchmark": "synthetic-smoke-v1",
   "total": 72,
-  "correct": 61,
-  "accuracy": 0.8472,
-  "macro_f1": 0.885,
+  "correct": 67,
+  "accuracy": 0.9306,
+  "macro_f1": 0.9553,
   "violation_cases": 47,
   "compliant_cases": 25,
-  "violation_recall": 0.9787,
-  "false_block_rate": 0.4,
+  "violation_recall": 0.9574,
+  "false_block_rate": 0.12,
   "changed_pairs": 3,
-  "changed_pair_accuracy": 0.6667,
+  "changed_pair_accuracy": 0.3333,
   "invariant_pairs": 21,
-  "invariant_pair_error_rate": 0.2381,
-  "wall_ms": 1358.107,
+  "invariant_pair_error_rate": 0.0952,
+  "wall_ms": 1193.694,
   "cache_hits": 0,
-  "p95_uncached_ms": 21.55,
+  "p95_uncached_ms": 20.32,
   "cost_usd": null,
   "gpu_seconds": null,
   "limitations": "Synthetic examples. Explicit numeric and approval facts are computed outside the model; this measures the combined classifier, not learned arithmetic. Validation was monitored during training. Rewrite quality and independent compliance accuracy are unverified.",
@@ -35,14 +35,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9994945526123047,
+      "confidence": 0.9925215840339661,
       "probabilities": {
-        "pass": 0.9994945526123047,
-        "rewrite": 9.481871529715136e-06,
-        "block": 0.0003581442579161376,
-        "escalate": 0.0001377230801153928
+        "pass": 0.9925215840339661,
+        "rewrite": 4.557248394121416e-05,
+        "block": 0.0011784236412495375,
+        "escalate": 0.006254360545426607
       },
-      "latency_ms": 18.81,
+      "latency_ms": 14.16,
       "cache_hit": false
     },
     {
@@ -60,14 +60,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.6067875027656555,
+      "confidence": 0.9001191258430481,
       "probabilities": {
-        "pass": 0.6067875027656555,
-        "rewrite": 0.0015991964610293508,
-        "block": 0.02866150438785553,
-        "escalate": 0.36295178532600403
+        "pass": 0.9001191258430481,
+        "rewrite": 0.00021522585302591324,
+        "block": 0.006063636392354965,
+        "escalate": 0.09360199421644211
       },
-      "latency_ms": 18.29,
+      "latency_ms": 17.98,
       "cache_hit": false
     },
     {
@@ -85,12 +85,12 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8547349572181702,
+      "confidence": 0.9354445338249207,
       "probabilities": {
-        "pass": 0.10111905634403229,
-        "rewrite": 0.005335257854312658,
-        "block": 0.03881071135401726,
-        "escalate": 0.8547349572181702
+        "pass": 0.06336561590433121,
+        "rewrite": 3.906134224962443e-05,
+        "block": 0.0011507617309689522,
+        "escalate": 0.9354445338249207
       },
       "latency_ms": 18.36,
       "cache_hit": false
@@ -110,14 +110,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9982902407646179,
+      "confidence": 0.9841948747634888,
       "probabilities": {
-        "pass": 0.9982902407646179,
-        "rewrite": 1.3728983503824566e-05,
-        "block": 0.00022356363479048014,
-        "escalate": 0.0014724393840879202
+        "pass": 0.9841948747634888,
+        "rewrite": 4.9116879381472245e-05,
+        "block": 0.0005793427117168903,
+        "escalate": 0.015176557935774326
       },
-      "latency_ms": 18.14,
+      "latency_ms": 12.24,
       "cache_hit": false
     },
     {
@@ -134,15 +134,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.4961642920970917,
+      "predicted": "pass",
+      "confidence": 0.6446377635002136,
       "probabilities": {
-        "pass": 0.4887198805809021,
-        "rewrite": 0.001031058607622981,
-        "block": 0.014084692113101482,
-        "escalate": 0.4961642920970917
+        "pass": 0.6446377635002136,
+        "rewrite": 0.00023661140585318208,
+        "block": 0.004015650134533644,
+        "escalate": 0.35110995173454285
       },
-      "latency_ms": 18.15,
+      "latency_ms": 16.91,
       "cache_hit": false
     },
     {
@@ -160,14 +160,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8893503546714783,
+      "confidence": 0.9994218349456787,
       "probabilities": {
-        "pass": 0.08344188332557678,
-        "rewrite": 0.0036045783199369907,
-        "block": 0.023603111505508423,
-        "escalate": 0.8893503546714783
+        "pass": 0.000548254291061312,
+        "rewrite": 2.3504235286964104e-06,
+        "block": 2.7629821488517337e-05,
+        "escalate": 0.9994218349456787
       },
-      "latency_ms": 18.37,
+      "latency_ms": 17.62,
       "cache_hit": false
     },
     {
@@ -185,14 +185,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9996975660324097,
+      "confidence": 0.9994803071022034,
       "probabilities": {
-        "pass": 0.9996975660324097,
-        "rewrite": 4.8953979785437696e-06,
-        "block": 0.0001156562429969199,
-        "escalate": 0.00018197225290350616
+        "pass": 0.9994803071022034,
+        "rewrite": 5.499527105712332e-06,
+        "block": 0.000150256251799874,
+        "escalate": 0.0003639422939158976
       },
-      "latency_ms": 19.29,
+      "latency_ms": 17.84,
       "cache_hit": false
     },
     {
@@ -210,14 +210,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.7641253471374512,
+      "confidence": 0.6898261904716492,
       "probabilities": {
-        "pass": 0.22591924667358398,
-        "rewrite": 0.00098837586119771,
-        "block": 0.008966968394815922,
-        "escalate": 0.7641253471374512
+        "pass": 0.30678021907806396,
+        "rewrite": 0.00017124824807979167,
+        "block": 0.0032223023008555174,
+        "escalate": 0.6898261904716492
       },
-      "latency_ms": 18.72,
+      "latency_ms": 18.54,
       "cache_hit": false
     },
     {
@@ -235,14 +235,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8928651213645935,
+      "confidence": 0.9941703081130981,
       "probabilities": {
-        "pass": 0.07917563617229462,
-        "rewrite": 0.0034349001944065094,
-        "block": 0.02452431619167328,
-        "escalate": 0.8928651213645935
+        "pass": 0.005706173833459616,
+        "rewrite": 4.632308446161915e-06,
+        "block": 0.00011887385335285217,
+        "escalate": 0.9941703081130981
       },
-      "latency_ms": 18.81,
+      "latency_ms": 18.65,
       "cache_hit": false
     },
     {
@@ -260,14 +260,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9997740387916565,
+      "confidence": 0.9968112111091614,
       "probabilities": {
-        "pass": 0.9997740387916565,
-        "rewrite": 4.306837581680156e-06,
-        "block": 4.774148328579031e-05,
-        "escalate": 0.00017393716552760452
+        "pass": 0.9968112111091614,
+        "rewrite": 1.0391378964413889e-05,
+        "block": 8.914503268897533e-05,
+        "escalate": 0.003089281963184476
       },
-      "latency_ms": 18.29,
+      "latency_ms": 18.77,
       "cache_hit": false
     },
     {
@@ -284,15 +284,15 @@
       "expected": "escalate",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.624738335609436,
+      "predicted": "pass",
+      "confidence": 0.7327288389205933,
       "probabilities": {
-        "pass": 0.3655918836593628,
-        "rewrite": 0.0013562771491706371,
-        "block": 0.008313494734466076,
-        "escalate": 0.624738335609436
+        "pass": 0.7327288389205933,
+        "rewrite": 0.00014101038686931133,
+        "block": 0.0014532007044181228,
+        "escalate": 0.26567691564559937
       },
-      "latency_ms": 18.89,
+      "latency_ms": 18.36,
       "cache_hit": false
     },
     {
@@ -310,14 +310,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8571807146072388,
+      "confidence": 0.5035426616668701,
       "probabilities": {
-        "pass": 0.1121067926287651,
-        "rewrite": 0.004857201594859362,
-        "block": 0.02585524320602417,
-        "escalate": 0.8571807146072388
+        "pass": 0.49614015221595764,
+        "rewrite": 2.6381945644970983e-05,
+        "block": 0.0002907996822614223,
+        "escalate": 0.5035426616668701
       },
-      "latency_ms": 19.08,
+      "latency_ms": 13.66,
       "cache_hit": false
     },
     {
@@ -335,14 +335,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.5526825189590454,
+      "confidence": 0.9691969752311707,
       "probabilities": {
-        "pass": 0.4458846151828766,
-        "rewrite": 0.0001823574712034315,
-        "block": 0.0012504867045208812,
-        "escalate": 0.5526825189590454
+        "pass": 0.030443832278251648,
+        "rewrite": 9.196145401801914e-05,
+        "block": 0.00026723454357124865,
+        "escalate": 0.9691969752311707
       },
-      "latency_ms": 20.28,
+      "latency_ms": 16.4,
       "cache_hit": false
     },
     {
@@ -360,14 +360,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8502693772315979,
+      "confidence": 0.9398548007011414,
       "probabilities": {
-        "pass": 0.14368653297424316,
-        "rewrite": 0.0008045770809985697,
-        "block": 0.005239561200141907,
-        "escalate": 0.8502693772315979
+        "pass": 0.05913541465997696,
+        "rewrite": 0.00015322535182349384,
+        "block": 0.0008565733442083001,
+        "escalate": 0.9398548007011414
       },
-      "latency_ms": 24.92,
+      "latency_ms": 18.64,
       "cache_hit": false
     },
     {
@@ -385,14 +385,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.898920476436615,
+      "confidence": 0.9999414682388306,
       "probabilities": {
-        "pass": 0.07750830799341202,
-        "rewrite": 0.0034179941285401583,
-        "block": 0.020153189077973366,
-        "escalate": 0.898920476436615
+        "pass": 5.299295298755169e-05,
+        "rewrite": 1.357801238555112e-06,
+        "block": 4.153746431256877e-06,
+        "escalate": 0.9999414682388306
       },
-      "latency_ms": 18.22,
+      "latency_ms": 20.32,
       "cache_hit": false
     },
     {
@@ -410,14 +410,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9474419355392456,
+      "confidence": 0.923754096031189,
       "probabilities": {
-        "pass": 0.052279554307460785,
-        "rewrite": 7.091376755852252e-05,
-        "block": 0.0002076551754726097,
-        "escalate": 0.9474419355392456
+        "pass": 0.07597564905881882,
+        "rewrite": 2.7994479751214385e-05,
+        "block": 0.00024227052927017212,
+        "escalate": 0.923754096031189
       },
-      "latency_ms": 18.56,
+      "latency_ms": 18.88,
       "cache_hit": false
     },
     {
@@ -435,14 +435,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8268340229988098,
+      "confidence": 0.7069427371025085,
       "probabilities": {
-        "pass": 0.16496998071670532,
-        "rewrite": 0.0009337167139165103,
-        "block": 0.007262301631271839,
-        "escalate": 0.8268340229988098
+        "pass": 0.2904442846775055,
+        "rewrite": 0.00015758122026454657,
+        "block": 0.0024554289411753416,
+        "escalate": 0.7069427371025085
       },
-      "latency_ms": 19.04,
+      "latency_ms": 18.07,
       "cache_hit": false
     },
     {
@@ -460,14 +460,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8911319375038147,
+      "confidence": 0.9949008226394653,
       "probabilities": {
-        "pass": 0.0805039331316948,
-        "rewrite": 0.003813135903328657,
-        "block": 0.024550970643758774,
-        "escalate": 0.8911319375038147
+        "pass": 0.005016620736569166,
+        "rewrite": 3.8347420741047245e-06,
+        "block": 7.873119466239586e-05,
+        "escalate": 0.9949008226394653
       },
-      "latency_ms": 17.84,
+      "latency_ms": 15.9,
       "cache_hit": false
     },
     {
@@ -485,14 +485,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9999973773956299,
+      "confidence": 0.9999953508377075,
       "probabilities": {
-        "pass": 0.9999973773956299,
-        "rewrite": 3.6083470433823095e-08,
-        "block": 2.576073256932432e-06,
-        "escalate": 1.9804231143893958e-08
+        "pass": 0.9999953508377075,
+        "rewrite": 1.344613593801114e-07,
+        "block": 4.444183559826342e-06,
+        "escalate": 1.517166907660794e-07
       },
-      "latency_ms": 21.34,
+      "latency_ms": 15.99,
       "cache_hit": false
     },
     {
@@ -509,15 +509,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.6217261552810669,
+      "predicted": "pass",
+      "confidence": 0.9816221594810486,
       "probabilities": {
-        "pass": 0.3675633370876312,
-        "rewrite": 0.0009115823195315897,
-        "block": 0.009798835963010788,
-        "escalate": 0.6217261552810669
+        "pass": 0.9816221594810486,
+        "rewrite": 2.863447298295796e-05,
+        "block": 0.0007175415521487594,
+        "escalate": 0.017631692811846733
       },
-      "latency_ms": 18.14,
+      "latency_ms": 13.75,
       "cache_hit": false
     },
     {
@@ -534,15 +534,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.8477203845977783,
+      "predicted": "pass",
+      "confidence": 0.9999978542327881,
       "probabilities": {
-        "pass": 0.11930011212825775,
-        "rewrite": 0.003944480791687965,
-        "block": 0.029034949839115143,
-        "escalate": 0.8477203845977783
+        "pass": 0.9999978542327881,
+        "rewrite": 4.03586746244855e-08,
+        "block": 1.7733422055243864e-06,
+        "escalate": 3.1411005352310895e-07
       },
-      "latency_ms": 19.46,
+      "latency_ms": 17.45,
       "cache_hit": false
     },
     {
@@ -560,14 +560,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9751783609390259,
+      "confidence": 0.9989951252937317,
       "probabilities": {
-        "pass": 0.02437446638941765,
-        "rewrite": 2.481034789525438e-05,
-        "block": 0.0004223395953886211,
-        "escalate": 0.9751783609390259
+        "pass": 0.0009635231108404696,
+        "rewrite": 6.942796517250827e-06,
+        "block": 3.4410873922752216e-05,
+        "escalate": 0.9989951252937317
       },
-      "latency_ms": 17.85,
+      "latency_ms": 19.37,
       "cache_hit": false
     },
     {
@@ -585,14 +585,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.7268785834312439,
+      "confidence": 0.6909001469612122,
       "probabilities": {
-        "pass": 0.26269325613975525,
-        "rewrite": 0.0008305730880238116,
-        "block": 0.009597551077604294,
-        "escalate": 0.7268785834312439
+        "pass": 0.3068504333496094,
+        "rewrite": 0.0001813569979276508,
+        "block": 0.0020680089946836233,
+        "escalate": 0.6909001469612122
       },
-      "latency_ms": 18.07,
+      "latency_ms": 17.52,
       "cache_hit": false
     },
     {
@@ -610,14 +610,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8904818296432495,
+      "confidence": 0.7747830152511597,
       "probabilities": {
-        "pass": 0.08312974870204926,
-        "rewrite": 0.003941375762224197,
-        "block": 0.022447070106863976,
-        "escalate": 0.8904818296432495
+        "pass": 0.2248300462961197,
+        "rewrite": 2.7043986847274937e-05,
+        "block": 0.0003599344054237008,
+        "escalate": 0.7747830152511597
       },
-      "latency_ms": 18.03,
+      "latency_ms": 18.92,
       "cache_hit": false
     },
     {
@@ -636,12 +636,12 @@
       "predicted": "escalate",
       "confidence": 1.0,
       "probabilities": {
-        "pass": 7.90077248069565e-09,
-        "rewrite": 2.8173934296660263e-08,
-        "block": 6.012620179518535e-09,
+        "pass": 1.3844794199968646e-09,
+        "rewrite": 2.8454092415586274e-09,
+        "block": 1.2214820266365223e-09,
         "escalate": 1.0
       },
-      "latency_ms": 19.0,
+      "latency_ms": 19.35,
       "cache_hit": false
     },
     {
@@ -658,14 +658,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9444523453712463,
+      "confidence": 0.9992966651916504,
       "probabilities": {
-        "pass": 0.052129365503787994,
-        "rewrite": 0.0011145398020744324,
-        "block": 0.002303752116858959,
-        "escalate": 0.9444523453712463
+        "pass": 0.0006411197828128934,
+        "rewrite": 2.011206561292056e-05,
+        "block": 4.2082887375727296e-05,
+        "escalate": 0.9992966651916504
       },
-      "latency_ms": 19.61,
+      "latency_ms": 19.19,
       "cache_hit": false
     },
     {
@@ -682,14 +682,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.905646800994873,
+      "confidence": 0.9999998807907104,
       "probabilities": {
-        "pass": 0.07125173509120941,
-        "rewrite": 0.006142533849924803,
-        "block": 0.01695890724658966,
-        "escalate": 0.905646800994873
+        "pass": 4.804628161991786e-08,
+        "rewrite": 8.57491411210276e-09,
+        "block": 1.598574073113923e-08,
+        "escalate": 0.9999998807907104
       },
-      "latency_ms": 18.97,
+      "latency_ms": 18.64,
       "cache_hit": false
     },
     {
@@ -707,14 +707,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9996588230133057,
+      "confidence": 0.9999990463256836,
       "probabilities": {
-        "pass": 0.0001577349321451038,
-        "rewrite": 2.2845182684250176e-05,
-        "block": 0.00016054070147220045,
-        "escalate": 0.9996588230133057
+        "pass": 2.665133003176834e-08,
+        "rewrite": 4.4884654926136136e-07,
+        "block": 4.692504091963201e-07,
+        "escalate": 0.9999990463256836
       },
-      "latency_ms": 18.33,
+      "latency_ms": 17.27,
       "cache_hit": false
     },
     {
@@ -732,14 +732,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8746116757392883,
+      "confidence": 0.9993966817855835,
       "probabilities": {
-        "pass": 0.10461919754743576,
-        "rewrite": 0.0032722235191613436,
-        "block": 0.017496919259428978,
-        "escalate": 0.8746116757392883
+        "pass": 0.0002577790874056518,
+        "rewrite": 9.834088996285573e-05,
+        "block": 0.0002471858460921794,
+        "escalate": 0.9993966817855835
       },
-      "latency_ms": 17.75,
+      "latency_ms": 18.47,
       "cache_hit": false
     },
     {
@@ -757,14 +757,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8576158881187439,
+      "confidence": 0.9999998807907104,
       "probabilities": {
-        "pass": 0.08507117629051208,
-        "rewrite": 0.009914595633745193,
-        "block": 0.047398317605257034,
-        "escalate": 0.8576158881187439
+        "pass": 1.8111789845676185e-09,
+        "rewrite": 5.330760899369125e-08,
+        "block": 1.0710279241266107e-07,
+        "escalate": 0.9999998807907104
       },
-      "latency_ms": 17.95,
+      "latency_ms": 19.85,
       "cache_hit": false
     },
     {
@@ -782,14 +782,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9988892674446106,
+      "confidence": 0.99846351146698,
       "probabilities": {
-        "pass": 0.9988892674446106,
-        "rewrite": 3.064254633500241e-05,
-        "block": 0.0003231152077205479,
-        "escalate": 0.0007569301524199545
+        "pass": 0.99846351146698,
+        "rewrite": 1.7078371456591412e-05,
+        "block": 0.0001688214688329026,
+        "escalate": 0.0013506754767149687
       },
-      "latency_ms": 18.34,
+      "latency_ms": 19.42,
       "cache_hit": false
     },
     {
@@ -806,15 +806,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.6454952955245972,
+      "predicted": "pass",
+      "confidence": 0.7956869602203369,
       "probabilities": {
-        "pass": 0.3411917984485626,
-        "rewrite": 0.0016687167808413506,
-        "block": 0.011644216254353523,
-        "escalate": 0.6454952955245972
+        "pass": 0.7956869602203369,
+        "rewrite": 0.000174577726284042,
+        "block": 0.002284387359395623,
+        "escalate": 0.20185406506061554
       },
-      "latency_ms": 18.22,
+      "latency_ms": 18.01,
       "cache_hit": false
     },
     {
@@ -831,15 +831,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.8544497489929199,
+      "predicted": "pass",
+      "confidence": 0.9781163930892944,
       "probabilities": {
-        "pass": 0.11113198846578598,
-        "rewrite": 0.005118495784699917,
-        "block": 0.029299812391400337,
-        "escalate": 0.8544497489929199
+        "pass": 0.9781163930892944,
+        "rewrite": 1.8797372831613757e-05,
+        "block": 0.00027000269619747996,
+        "escalate": 0.021594716235995293
       },
-      "latency_ms": 18.61,
+      "latency_ms": 18.08,
       "cache_hit": false
     },
     {
@@ -857,14 +857,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9999887943267822,
+      "confidence": 0.9999722242355347,
       "probabilities": {
-        "pass": 0.9999887943267822,
-        "rewrite": 4.259194383848808e-07,
-        "block": 1.0333471436752006e-05,
-        "escalate": 3.2461255727866956e-07
+        "pass": 0.9999722242355347,
+        "rewrite": 7.949915357130521e-07,
+        "block": 2.351198963879142e-05,
+        "escalate": 3.4187121400464093e-06
       },
-      "latency_ms": 19.49,
+      "latency_ms": 19.81,
       "cache_hit": false
     },
     {
@@ -882,14 +882,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.7481047511100769,
+      "confidence": 0.9812012910842896,
       "probabilities": {
-        "pass": 0.7481047511100769,
-        "rewrite": 0.002183702541515231,
-        "block": 0.01692388765513897,
-        "escalate": 0.23278765380382538
+        "pass": 0.9812012910842896,
+        "rewrite": 6.37545163044706e-05,
+        "block": 0.0014286927180364728,
+        "escalate": 0.017306236550211906
       },
-      "latency_ms": 19.41,
+      "latency_ms": 19.17,
       "cache_hit": false
     },
     {
@@ -906,15 +906,15 @@
       "expected": "pass",
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.7198041677474976,
+      "predicted": "pass",
+      "confidence": 0.9994208812713623,
       "probabilities": {
-        "pass": 0.21669958531856537,
-        "rewrite": 0.01009441539645195,
-        "block": 0.05340177193284035,
-        "escalate": 0.7198041677474976
+        "pass": 0.9994208812713623,
+        "rewrite": 2.3833401883166516e-06,
+        "block": 8.621480083093047e-05,
+        "escalate": 0.0004904453526251018
       },
-      "latency_ms": 19.48,
+      "latency_ms": 20.65,
       "cache_hit": false
     },
     {
@@ -932,14 +932,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9936595559120178,
+      "confidence": 0.9999207258224487,
       "probabilities": {
-        "pass": 0.006177084054797888,
-        "rewrite": 2.9873901439714245e-05,
-        "block": 0.00013352582755032927,
-        "escalate": 0.9936595559120178
+        "pass": 7.182855188148096e-05,
+        "rewrite": 3.8238754314079415e-06,
+        "block": 3.6252231438993476e-06,
+        "escalate": 0.9999207258224487
       },
-      "latency_ms": 17.88,
+      "latency_ms": 19.75,
       "cache_hit": false
     },
     {
@@ -957,14 +957,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8421929478645325,
+      "confidence": 0.9956784844398499,
       "probabilities": {
-        "pass": 0.14353042840957642,
-        "rewrite": 0.0036473090294748545,
-        "block": 0.010629354044795036,
-        "escalate": 0.8421929478645325
+        "pass": 0.003946238197386265,
+        "rewrite": 0.00014885350537952036,
+        "block": 0.0002264270733576268,
+        "escalate": 0.9956784844398499
       },
-      "latency_ms": 18.19,
+      "latency_ms": 20.01,
       "cache_hit": false
     },
     {
@@ -982,14 +982,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.8419279456138611,
+      "confidence": 0.9999996423721313,
       "probabilities": {
-        "pass": 0.10678046196699142,
-        "rewrite": 0.011791772209107876,
-        "block": 0.03949977084994316,
-        "escalate": 0.8419279456138611
+        "pass": 1.7899496640438883e-07,
+        "rewrite": 7.417659730890591e-08,
+        "block": 8.831283082599839e-08,
+        "escalate": 0.9999996423721313
       },
-      "latency_ms": 23.34,
+      "latency_ms": 19.08,
       "cache_hit": false
     },
     {
@@ -1006,14 +1006,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9996187686920166,
+      "confidence": 0.9998513460159302,
       "probabilities": {
-        "pass": 7.509966962970793e-05,
-        "rewrite": 0.00022685513249598444,
-        "block": 7.921522774267942e-05,
-        "escalate": 0.9996187686920166
+        "pass": 1.3379914889810607e-05,
+        "rewrite": 0.00011660173913696781,
+        "block": 1.868955951067619e-05,
+        "escalate": 0.9998513460159302
       },
-      "latency_ms": 18.72,
+      "latency_ms": 17.73,
       "cache_hit": false
     },
     {
@@ -1030,14 +1030,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.7663224935531616,
+      "confidence": 0.9613509178161621,
       "probabilities": {
-        "pass": 0.11566007137298584,
-        "rewrite": 0.07420674711465836,
-        "block": 0.04381067678332329,
-        "escalate": 0.7663224935531616
+        "pass": 0.01274598203599453,
+        "rewrite": 0.02131449617445469,
+        "block": 0.004588553216308355,
+        "escalate": 0.9613509178161621
       },
-      "latency_ms": 20.31,
+      "latency_ms": 14.27,
       "cache_hit": false
     },
     {
@@ -1054,14 +1054,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.634567379951477,
+      "confidence": 0.9999748468399048,
       "probabilities": {
-        "pass": 0.1463201493024826,
-        "rewrite": 0.1148252785205841,
-        "block": 0.10428719222545624,
-        "escalate": 0.634567379951477
+        "pass": 1.0737219326983904e-06,
+        "rewrite": 2.0121722627663985e-05,
+        "block": 4.01457373300218e-06,
+        "escalate": 0.9999748468399048
       },
-      "latency_ms": 17.58,
+      "latency_ms": 14.95,
       "cache_hit": false
     },
     {
@@ -1078,14 +1078,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9978113770484924,
+      "confidence": 0.9997496008872986,
       "probabilities": {
-        "pass": 0.9978113770484924,
-        "rewrite": 0.0004409829853102565,
-        "block": 0.0014744444051757455,
-        "escalate": 0.00027319893706589937
+        "pass": 0.9997496008872986,
+        "rewrite": 5.2022460295120254e-05,
+        "block": 0.0001814533316064626,
+        "escalate": 1.6786003470770083e-05
       },
-      "latency_ms": 16.45,
+      "latency_ms": 12.94,
       "cache_hit": false
     },
     {
@@ -1102,14 +1102,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.657254695892334,
+      "confidence": 0.9972566962242126,
       "probabilities": {
-        "pass": 0.657254695892334,
-        "rewrite": 0.08763236552476883,
-        "block": 0.1287284940481186,
-        "escalate": 0.126384437084198
+        "pass": 0.9972566962242126,
+        "rewrite": 0.000828541349619627,
+        "block": 0.0014437538338825107,
+        "escalate": 0.00047108973376452923
       },
-      "latency_ms": 16.76,
+      "latency_ms": 14.79,
       "cache_hit": false
     },
     {
@@ -1126,14 +1126,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.3613501787185669,
+      "confidence": 0.9998725652694702,
       "probabilities": {
-        "pass": 0.3613501787185669,
-        "rewrite": 0.16633668541908264,
-        "block": 0.22925113141536713,
-        "escalate": 0.24306195974349976
+        "pass": 0.9998725652694702,
+        "rewrite": 2.1737974748248234e-05,
+        "block": 9.74945942289196e-05,
+        "escalate": 8.2642709458014e-06
       },
-      "latency_ms": 16.41,
+      "latency_ms": 15.8,
       "cache_hit": false
     },
     {
@@ -1150,14 +1150,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9883565306663513,
+      "confidence": 0.9901844263076782,
       "probabilities": {
-        "pass": 0.9883565306663513,
-        "rewrite": 0.0007895511225797236,
-        "block": 0.009811575524508953,
-        "escalate": 0.0010423371568322182
+        "pass": 0.9901844263076782,
+        "rewrite": 0.0004260092682670802,
+        "block": 0.008117981255054474,
+        "escalate": 0.0012714746408164501
       },
-      "latency_ms": 17.86,
+      "latency_ms": 16.24,
       "cache_hit": false
     },
     {
@@ -1174,14 +1174,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.4142892360687256,
+      "confidence": 0.8185856342315674,
       "probabilities": {
-        "pass": 0.4142892360687256,
-        "rewrite": 0.063359335064888,
-        "block": 0.2960634231567383,
-        "escalate": 0.22628797590732574
+        "pass": 0.8185856342315674,
+        "rewrite": 0.010645105503499508,
+        "block": 0.10321404039859772,
+        "escalate": 0.06755516678094864
       },
-      "latency_ms": 17.78,
+      "latency_ms": 14.33,
       "cache_hit": false
     },
     {
@@ -1197,15 +1197,15 @@
       "expected": "pass",
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "block",
-      "confidence": 0.3219853937625885,
+      "predicted": "pass",
+      "confidence": 0.9907757639884949,
       "probabilities": {
-        "pass": 0.25279155373573303,
-        "rewrite": 0.10416699200868607,
-        "block": 0.3219853937625885,
-        "escalate": 0.3210560977458954
+        "pass": 0.9907757639884949,
+        "rewrite": 0.00022373898536898196,
+        "block": 0.008470384404063225,
+        "escalate": 0.0005302342469803989
       },
-      "latency_ms": 17.57,
+      "latency_ms": 12.39,
       "cache_hit": false
     },
     {
@@ -1221,15 +1221,15 @@
       "expected": "pass",
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "pass",
-      "confidence": 0.8471738696098328,
+      "predicted": "escalate",
+      "confidence": 0.5627238750457764,
       "probabilities": {
-        "pass": 0.8471738696098328,
-        "rewrite": 0.0062009855173528194,
-        "block": 0.04273790121078491,
-        "escalate": 0.10388728231191635
+        "pass": 0.40140387415885925,
+        "rewrite": 0.007104018237441778,
+        "block": 0.028768235817551613,
+        "escalate": 0.5627238750457764
       },
-      "latency_ms": 17.06,
+      "latency_ms": 13.41,
       "cache_hit": false
     },
     {
@@ -1246,14 +1246,14 @@
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.555761456489563,
+      "confidence": 0.6598945260047913,
       "probabilities": {
-        "pass": 0.2282724529504776,
-        "rewrite": 0.04478682205080986,
-        "block": 0.17117924988269806,
-        "escalate": 0.555761456489563
+        "pass": 0.2329862266778946,
+        "rewrite": 0.0220134649425745,
+        "block": 0.08510587364435196,
+        "escalate": 0.6598945260047913
       },
-      "latency_ms": 17.11,
+      "latency_ms": 11.26,
       "cache_hit": false
     },
     {
@@ -1269,15 +1269,15 @@
       "expected": "pass",
       "dependency": "SCOPE-01",
       "provenance": "manually specified synthetic smoke benchmark",
-      "predicted": "escalate",
-      "confidence": 0.5280691981315613,
+      "predicted": "pass",
+      "confidence": 0.780455470085144,
       "probabilities": {
-        "pass": 0.1846734583377838,
-        "rewrite": 0.07342440634965897,
-        "block": 0.21383294463157654,
-        "escalate": 0.5280691981315613
+        "pass": 0.780455470085144,
+        "rewrite": 0.004697990138083696,
+        "block": 0.029700975865125656,
+        "escalate": 0.1851455271244049
       },
-      "latency_ms": 17.58,
+      "latency_ms": 12.9,
       "cache_hit": false
     },
     {
@@ -1294,14 +1294,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9938840270042419,
+      "confidence": 0.9998064637184143,
       "probabilities": {
-        "pass": 3.681611133288243e-06,
-        "rewrite": 0.9938840270042419,
-        "block": 0.0003765754809137434,
-        "escalate": 0.005735774990171194
+        "pass": 2.052996848078692e-07,
+        "rewrite": 0.9998064637184143,
+        "block": 3.0416827939916402e-05,
+        "escalate": 0.00016290420899167657
       },
-      "latency_ms": 17.3,
+      "latency_ms": 13.3,
       "cache_hit": false
     },
     {
@@ -1318,14 +1318,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.8667853474617004,
+      "confidence": 0.9885276556015015,
       "probabilities": {
-        "pass": 0.009653021581470966,
-        "rewrite": 0.8667853474617004,
-        "block": 0.02480231411755085,
-        "escalate": 0.09875930100679398
+        "pass": 4.64602853753604e-05,
+        "rewrite": 0.9885276556015015,
+        "block": 0.0007666478049941361,
+        "escalate": 0.010659271851181984
       },
-      "latency_ms": 17.34,
+      "latency_ms": 13.96,
       "cache_hit": false
     },
     {
@@ -1342,14 +1342,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.6759266257286072,
+      "confidence": 0.9998831748962402,
       "probabilities": {
-        "pass": 0.051379311829805374,
-        "rewrite": 0.6759266257286072,
-        "block": 0.08488374203443527,
-        "escalate": 0.18781039118766785
+        "pass": 4.039942496092408e-07,
+        "rewrite": 0.9998831748962402,
+        "block": 2.5225852368748747e-05,
+        "escalate": 9.120253525907174e-05
       },
-      "latency_ms": 17.62,
+      "latency_ms": 14.66,
       "cache_hit": false
     },
     {
@@ -1366,14 +1366,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.9424667358398438,
+      "confidence": 0.9974604845046997,
       "probabilities": {
-        "pass": 4.09994026995264e-06,
-        "rewrite": 0.9424667358398438,
-        "block": 0.00015539387823082507,
-        "escalate": 0.05737386271357536
+        "pass": 1.4736960451955383e-07,
+        "rewrite": 0.9974604845046997,
+        "block": 1.207780860568164e-05,
+        "escalate": 0.0025271824561059475
       },
-      "latency_ms": 17.2,
+      "latency_ms": 11.49,
       "cache_hit": false
     },
     {
@@ -1390,14 +1390,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.8506193161010742,
+      "confidence": 0.979188859462738,
       "probabilities": {
-        "pass": 0.015227677300572395,
-        "rewrite": 0.8506193161010742,
-        "block": 0.015559294261038303,
-        "escalate": 0.1185937151312828
+        "pass": 9.345462603960186e-05,
+        "rewrite": 0.979188859462738,
+        "block": 0.0003984975628554821,
+        "escalate": 0.020319195464253426
       },
-      "latency_ms": 17.05,
+      "latency_ms": 12.46,
       "cache_hit": false
     },
     {
@@ -1414,14 +1414,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "rewrite",
-      "confidence": 0.6710622310638428,
+      "confidence": 0.9986374974250793,
       "probabilities": {
-        "pass": 0.06081312149763107,
-        "rewrite": 0.6710622310638428,
-        "block": 0.06316851079463959,
-        "escalate": 0.20495609939098358
+        "pass": 2.472241362738714e-07,
+        "rewrite": 0.9986374974250793,
+        "block": 8.63511650095461e-06,
+        "escalate": 0.001353511237539351
       },
-      "latency_ms": 16.79,
+      "latency_ms": 12.51,
       "cache_hit": false
     },
     {
@@ -1438,14 +1438,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.9988460540771484,
+      "confidence": 0.9805259108543396,
       "probabilities": {
-        "pass": 4.11487697249413e-08,
-        "rewrite": 0.001150201540440321,
-        "block": 3.6995331811340293e-06,
-        "escalate": 0.9988460540771484
+        "pass": 6.860611989623067e-08,
+        "rewrite": 0.019466504454612732,
+        "block": 7.5534208008321e-06,
+        "escalate": 0.9805259108543396
       },
-      "latency_ms": 18.01,
+      "latency_ms": 13.21,
       "cache_hit": false
     },
     {
@@ -1462,14 +1462,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.7794775366783142,
+      "confidence": 0.8818461894989014,
       "probabilities": {
-        "pass": 0.021035609766840935,
-        "rewrite": 0.1830063760280609,
-        "block": 0.01648043654859066,
-        "escalate": 0.7794775366783142
+        "pass": 9.321455581812188e-05,
+        "rewrite": 0.11751287430524826,
+        "block": 0.0005476562073454261,
+        "escalate": 0.8818461894989014
       },
-      "latency_ms": 20.83,
+      "latency_ms": 12.19,
       "cache_hit": false
     },
     {
@@ -1486,14 +1486,14 @@
       "dependency": "CLAIM-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.6066752076148987,
+      "confidence": 0.9938269257545471,
       "probabilities": {
-        "pass": 0.08184677362442017,
-        "rewrite": 0.2395533323287964,
-        "block": 0.07192466408014297,
-        "escalate": 0.6066752076148987
+        "pass": 2.4708652901495043e-08,
+        "rewrite": 0.006170358043164015,
+        "block": 2.7008418328478e-06,
+        "escalate": 0.9938269257545471
       },
-      "latency_ms": 19.36,
+      "latency_ms": 12.51,
       "cache_hit": false
     },
     {
@@ -1510,14 +1510,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9999680519104004,
+      "confidence": 0.999940037727356,
       "probabilities": {
-        "pass": 4.403785851536668e-07,
-        "rewrite": 1.66617137438152e-05,
-        "block": 0.9999680519104004,
-        "escalate": 1.4867463505652267e-05
+        "pass": 2.0888877827474062e-07,
+        "rewrite": 1.3095759641146287e-05,
+        "block": 0.999940037727356,
+        "escalate": 4.659021578845568e-05
       },
-      "latency_ms": 18.91,
+      "latency_ms": 13.62,
       "cache_hit": false
     },
     {
@@ -1534,14 +1534,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9942575693130493,
+      "confidence": 0.9992092251777649,
       "probabilities": {
-        "pass": 0.0019298987463116646,
-        "rewrite": 0.002469859318807721,
-        "block": 0.9942575693130493,
-        "escalate": 0.0013426956720650196
+        "pass": 6.892369856359437e-05,
+        "rewrite": 0.0002990567300003022,
+        "block": 0.9992092251777649,
+        "escalate": 0.00042283523362129927
       },
-      "latency_ms": 18.33,
+      "latency_ms": 13.47,
       "cache_hit": false
     },
     {
@@ -1558,14 +1558,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9273278713226318,
+      "confidence": 0.9999785423278809,
       "probabilities": {
-        "pass": 0.02478092722594738,
-        "rewrite": 0.0265670008957386,
-        "block": 0.9273278713226318,
-        "escalate": 0.021324176341295242
+        "pass": 8.200223788890071e-08,
+        "rewrite": 5.129959845362464e-06,
+        "block": 0.9999785423278809,
+        "escalate": 1.6204610801651143e-05
       },
-      "latency_ms": 18.29,
+      "latency_ms": 13.4,
       "cache_hit": false
     },
     {
@@ -1582,14 +1582,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9977712631225586,
+      "confidence": 0.9980214834213257,
       "probabilities": {
-        "pass": 0.0003093804116360843,
-        "rewrite": 0.0005045020952820778,
-        "block": 0.9977712631225586,
-        "escalate": 0.001414870610460639
+        "pass": 0.00035764320637099445,
+        "rewrite": 0.00026457838248461485,
+        "block": 0.9980214834213257,
+        "escalate": 0.0013562855310738087
       },
-      "latency_ms": 19.07,
+      "latency_ms": 12.53,
       "cache_hit": false
     },
     {
@@ -1606,14 +1606,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.8947661519050598,
+      "confidence": 0.9777919054031372,
       "probabilities": {
-        "pass": 0.0406123585999012,
-        "rewrite": 0.024196522310376167,
-        "block": 0.8947661519050598,
-        "escalate": 0.040424928069114685
+        "pass": 0.0066122859716415405,
+        "rewrite": 0.0035871914587914944,
+        "block": 0.9777919054031372,
+        "escalate": 0.01200853567570448
       },
-      "latency_ms": 20.61,
+      "latency_ms": 13.05,
       "cache_hit": false
     },
     {
@@ -1630,14 +1630,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.6789718270301819,
+      "confidence": 0.9992548823356628,
       "probabilities": {
-        "pass": 0.09813785552978516,
-        "rewrite": 0.07563415914773941,
-        "block": 0.6789718270301819,
-        "escalate": 0.14725622534751892
+        "pass": 2.612410935398657e-05,
+        "rewrite": 6.743535777786747e-05,
+        "block": 0.9992548823356628,
+        "escalate": 0.000651612994261086
       },
-      "latency_ms": 21.55,
+      "latency_ms": 14.25,
       "cache_hit": false
     },
     {
@@ -1655,14 +1655,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.9874332547187805,
+      "confidence": 0.9953625202178955,
       "probabilities": {
-        "pass": 0.012545336969196796,
-        "rewrite": 1.8434286175761372e-05,
-        "block": 0.9874332547187805,
-        "escalate": 2.983797912747832e-06
+        "pass": 0.004592746961861849,
+        "rewrite": 1.2392702046781778e-05,
+        "block": 0.9953625202178955,
+        "escalate": 3.22883170156274e-05
       },
-      "latency_ms": 20.13,
+      "latency_ms": 18.99,
       "cache_hit": false
     },
     {
@@ -1680,14 +1680,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.8130297064781189,
+      "confidence": 0.9389214515686035,
       "probabilities": {
-        "pass": 0.09557204693555832,
-        "rewrite": 0.002300323685631156,
-        "block": 0.8130297064781189,
-        "escalate": 0.08909796178340912
+        "pass": 0.03474637120962143,
+        "rewrite": 0.00020601293363142759,
+        "block": 0.9389214515686035,
+        "escalate": 0.026126215234398842
       },
-      "latency_ms": 20.47,
+      "latency_ms": 22.27,
       "cache_hit": false
     },
     {
@@ -1705,14 +1705,14 @@
       "dependency": "SECRET-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "block",
-      "confidence": 0.48101720213890076,
+      "confidence": 0.9973253011703491,
       "probabilities": {
-        "pass": 0.10632579773664474,
-        "rewrite": 0.011233982630074024,
-        "block": 0.48101720213890076,
-        "escalate": 0.40142303705215454
+        "pass": 0.0004881732747890055,
+        "rewrite": 8.905769391276408e-06,
+        "block": 0.9973253011703491,
+        "escalate": 0.002177613787353039
       },
-      "latency_ms": 19.99,
+      "latency_ms": 18.69,
       "cache_hit": false
     },
     {
@@ -1730,14 +1730,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "pass",
-      "confidence": 0.9544066190719604,
+      "confidence": 0.567509114742279,
       "probabilities": {
-        "pass": 0.9544066190719604,
-        "rewrite": 9.57065203692764e-05,
-        "block": 0.0007260191487148404,
-        "escalate": 0.0447717010974884
+        "pass": 0.567509114742279,
+        "rewrite": 0.0001452015567338094,
+        "block": 0.0006009859498590231,
+        "escalate": 0.43174466490745544
       },
-      "latency_ms": 24.8,
+      "latency_ms": 21.38,
       "cache_hit": false
     },
     {
@@ -1755,14 +1755,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.6785881519317627,
+      "confidence": 0.6536330580711365,
       "probabilities": {
-        "pass": 0.3084522485733032,
-        "rewrite": 0.001819784753024578,
-        "block": 0.01113976538181305,
-        "escalate": 0.6785881519317627
+        "pass": 0.3442787230014801,
+        "rewrite": 0.0002519591653253883,
+        "block": 0.001836286741308868,
+        "escalate": 0.6536330580711365
       },
-      "latency_ms": 20.64,
+      "latency_ms": 19.07,
       "cache_hit": false
     },
     {
@@ -1780,14 +1780,14 @@
       "dependency": "REFUND-01",
       "provenance": "manually specified synthetic smoke benchmark",
       "predicted": "escalate",
-      "confidence": 0.831710159778595,
+      "confidence": 0.8296999931335449,
       "probabilities": {
-        "pass": 0.12665052711963654,
-        "rewrite": 0.006550062447786331,
-        "block": 0.03508921340107918,
-        "escalate": 0.831710159778595
+        "pass": 0.1700168251991272,
+        "rewrite": 3.874026151606813e-05,
+        "block": 0.0002444171695969999,
+        "escalate": 0.8296999931335449
       },
-      "latency_ms": 20.04,
+      "latency_ms": 19.65,
       "cache_hit": false
     }
   ],
@@ -1800,49 +1800,55 @@
     "cedar/v1": "models/control-cedar-v1"
   },
   "batch_size": 1,
+  "dataset_revision": "data-v6",
   "invalid_outputs": 0,
   "calibration": {
-    "ece": 0.089238,
-    "brier": 0.220341,
+    "ece": 0.032204,
+    "brier": 0.10138,
     "cases": 72,
     "caveat": "Conditional verdict probabilities; synthetic reliability estimate, not a compliance guarantee."
   },
   "artifact_fingerprints": {
     "models/control-harbor-v1/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
     "models/control-harbor-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/control-harbor-v1/run_manifest.json": "a754fcfe624f3f1d97a850a3f603db923793cfc14aeaad87dfae6b63b5186bf5",
-    "models/control-harbor-v1/evidence_head.safetensors": "c18754b0b738d55a9481d61db298c2535efe3247bb317450dad226caa836ace8",
+    "models/control-harbor-v1/run_manifest.json": "c9294991d1a2cea8ec0102c568afcae7a2c8ec17fee15cee9e1b0ccda2c64e35",
+    "models/control-harbor-v1/evidence_head.safetensors": "7148769d72a00b8a7ef9c3658db609906cabf483068d5b2089f87da6b7ac2713",
     "models/control-harbor-v2/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
-    "models/control-harbor-v2/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/control-harbor-v2/run_manifest.json": "b257fc801b8c45f219ae13b969475ff88da12b4846271cf50d4580fcb9c8a8ec",
-    "models/control-harbor-v2/evidence_head.safetensors": "1d055180b8a8aa5775acdffa1be54579f0118515d44b010be136bd4dad601090",
+    "models/control-harbor-v2/adapter_config.json": "56d4fd177e4768493984422988a0741e6e873cdcaa8a82ff7fae2c128bafa70f",
+    "models/control-harbor-v2/run_manifest.json": "c2930b157e0d1a8c1139e60270f3084e1a0730bb144fa83799d182ef4ba9e166",
+    "models/control-harbor-v2/evidence_head.safetensors": "22e132051261d26c355fa28a3050d5b9ad98d06eafe6871d1ced73c62dd9fdd9",
     "models/control-cedar-v1/adapter_model.safetensors": "d8cfb9b865f1af1c62025b9b6288a1f5ddd447bed7bdd9abb64603ee8cd631f0",
-    "models/control-cedar-v1/adapter_config.json": "a1f4d03c8dff1384cfac0a0d016d1565fc5a6d98c2ac25c46f788e833df46ce4",
-    "models/control-cedar-v1/run_manifest.json": "9af3f113827eb86f8ef3d8e287d75add399798b5842473107838bb2d1c120883",
-    "models/control-cedar-v1/evidence_head.safetensors": "336d08555db61120b70bfdbfaa6e2dc45cb24dbe626a228d6d4f746831c4d392"
+    "models/control-cedar-v1/adapter_config.json": "56d4fd177e4768493984422988a0741e6e873cdcaa8a82ff7fae2c128bafa70f",
+    "models/control-cedar-v1/run_manifest.json": "ccbff85e0d99896ab8cde7e598d091eb8bb331d489f9b072da500a639854d8a2",
+    "models/control-cedar-v1/evidence_head.safetensors": "ff9f24fe46ff3a95b720dd97ebf96d7c297ae038469258b6e67c772334e3d2fd"
   },
   "gate": {
     "status": "rejected",
     "customer_delivery": false,
     "failures": [
-      "1 unsafe allow decisions",
-      "1 unsafe allow decisions on frozen challenge",
-      "10 unnecessary holds",
-      "11 incorrect decisions",
+      "1 unsafe allow decisions on new frozen test",
+      "2 unsafe allow decisions",
+      "3 unnecessary holds",
+      "5 incorrect decisions",
+      "7 unsafe allow decisions on frozen challenge",
       "Frozen challenge has incorrect decisions",
-      "Measured, fingerprinted LoRA artifacts are required"
+      "Measured, fingerprinted LoRA artifacts are required",
+      "New frozen test has incorrect decisions"
     ],
     "checked": 72,
-    "correct": 61,
+    "correct": 67,
     "invalid": 0,
-    "unsafe_allows": 1,
-    "unnecessary_holds": 10,
+    "unsafe_allows": 2,
+    "unnecessary_holds": 3,
     "challenge_checked": 66,
-    "challenge_correct": 55,
-    "challenge_unsafe_allows": 1,
-    "required_changes_correct": 2,
+    "challenge_correct": 57,
+    "challenge_unsafe_allows": 7,
+    "test_checked": 66,
+    "test_correct": 62,
+    "test_unsafe_allows": 1,
+    "required_changes_correct": 1,
     "required_changes_total": 3,
-    "invariant_regressions": 5,
+    "invariant_regressions": 2,
     "next_step": "Independent expert-reviewed data and rewrite review are required before production approval."
   },
   "challenge_rows": [
@@ -1860,14 +1866,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9998130202293396,
+      "confidence": 0.9995858073234558,
       "probabilities": {
-        "pass": 0.9998130202293396,
-        "rewrite": 3.836298219539458e-06,
-        "block": 5.480644540512003e-05,
-        "escalate": 0.0001284119498450309
+        "pass": 0.9995858073234558,
+        "rewrite": 4.9473992476123385e-06,
+        "block": 4.8190711822826415e-05,
+        "escalate": 0.00036110408836975694
       },
-      "latency_ms": 14.76,
+      "latency_ms": 19.11,
       "cache_hit": false
     },
     {
@@ -1884,14 +1890,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.6123136878013611,
+      "confidence": 0.9536682367324829,
       "probabilities": {
-        "pass": 0.6123136878013611,
-        "rewrite": 0.0008361241198144853,
-        "block": 0.010074421763420105,
-        "escalate": 0.3767758011817932
+        "pass": 0.9536682367324829,
+        "rewrite": 5.977825276204385e-05,
+        "block": 0.0008027042495086789,
+        "escalate": 0.04546917974948883
       },
-      "latency_ms": 15.3,
+      "latency_ms": 19.39,
       "cache_hit": false
     },
     {
@@ -1908,14 +1914,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8798716068267822,
+      "confidence": 0.9570843577384949,
       "probabilities": {
-        "pass": 0.09634555876255035,
-        "rewrite": 0.003320621093735099,
-        "block": 0.020462172105908394,
-        "escalate": 0.8798716068267822
+        "pass": 0.04284006357192993,
+        "rewrite": 1.0060011845780537e-05,
+        "block": 6.556605512741953e-05,
+        "escalate": 0.9570843577384949
       },
-      "latency_ms": 14.5,
+      "latency_ms": 21.51,
       "cache_hit": false
     },
     {
@@ -1932,14 +1938,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9999380111694336,
+      "confidence": 0.9999567270278931,
       "probabilities": {
-        "pass": 0.9999380111694336,
-        "rewrite": 2.8250401555851568e-06,
-        "block": 2.0265548300812952e-05,
-        "escalate": 3.885317710228264e-05
+        "pass": 0.9999567270278931,
+        "rewrite": 1.938407194757019e-06,
+        "block": 9.068663530342747e-06,
+        "escalate": 3.229868525522761e-05
       },
-      "latency_ms": 14.66,
+      "latency_ms": 20.13,
       "cache_hit": false
     },
     {
@@ -1955,15 +1961,15 @@
       "version": "v2",
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.6030473113059998,
+      "predicted": "pass",
+      "confidence": 0.7692263722419739,
       "probabilities": {
-        "pass": 0.390412300825119,
-        "rewrite": 0.001013120636343956,
-        "block": 0.005527179688215256,
-        "escalate": 0.6030473113059998
+        "pass": 0.7692263722419739,
+        "rewrite": 0.00010089307761518285,
+        "block": 0.0006781630218029022,
+        "escalate": 0.22999458014965057
       },
-      "latency_ms": 15.48,
+      "latency_ms": 19.53,
       "cache_hit": false
     },
     {
@@ -1979,15 +1985,15 @@
       "version": "v1",
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.8652894496917725,
+      "predicted": "pass",
+      "confidence": 0.9606555104255676,
       "probabilities": {
-        "pass": 0.11137595772743225,
-        "rewrite": 0.0038229564670473337,
-        "block": 0.019511697813868523,
-        "escalate": 0.8652894496917725
+        "pass": 0.9606555104255676,
+        "rewrite": 1.1497533705551177e-05,
+        "block": 6.74584080115892e-05,
+        "escalate": 0.03926561772823334
       },
-      "latency_ms": 20.85,
+      "latency_ms": 16.37,
       "cache_hit": false
     },
     {
@@ -2004,14 +2010,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9993661046028137,
+      "confidence": 0.9878232479095459,
       "probabilities": {
-        "pass": 0.0006028120988048613,
-        "rewrite": 1.6118938219733536e-05,
-        "block": 1.4969353287597187e-05,
-        "escalate": 0.9993661046028137
+        "pass": 0.012089657597243786,
+        "rewrite": 3.070449747610837e-05,
+        "block": 5.6420700275339186e-05,
+        "escalate": 0.9878232479095459
       },
-      "latency_ms": 18.26,
+      "latency_ms": 17.77,
       "cache_hit": false
     },
     {
@@ -2028,14 +2034,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8286365270614624,
+      "confidence": 0.7604828476905823,
       "probabilities": {
-        "pass": 0.16575871407985687,
-        "rewrite": 0.0008433708571828902,
-        "block": 0.004761455114930868,
-        "escalate": 0.8286365270614624
+        "pass": 0.2381831854581833,
+        "rewrite": 0.00016411286196671426,
+        "block": 0.001169836730696261,
+        "escalate": 0.7604828476905823
       },
-      "latency_ms": 14.42,
+      "latency_ms": 17.09,
       "cache_hit": false
     },
     {
@@ -2052,14 +2058,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9024425745010376,
+      "confidence": 0.9995167255401611,
       "probabilities": {
-        "pass": 0.07735448330640793,
-        "rewrite": 0.0030676547903567553,
-        "block": 0.017135318368673325,
-        "escalate": 0.9024425745010376
+        "pass": 0.0004689420748036355,
+        "rewrite": 2.6955131033901125e-06,
+        "block": 1.1679042472678702e-05,
+        "escalate": 0.9995167255401611
       },
-      "latency_ms": 14.42,
+      "latency_ms": 17.74,
       "cache_hit": false
     },
     {
@@ -2076,14 +2082,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.818986713886261,
+      "confidence": 0.9943782687187195,
       "probabilities": {
-        "pass": 0.818986713886261,
-        "rewrite": 0.00017162955191452056,
-        "block": 0.001217726618051529,
-        "escalate": 0.17962388694286346
+        "pass": 0.9943782687187195,
+        "rewrite": 3.6509572964860126e-05,
+        "block": 0.00026246963534504175,
+        "escalate": 0.0053227790631353855
       },
-      "latency_ms": 15.28,
+      "latency_ms": 17.08,
       "cache_hit": false
     },
     {
@@ -2099,15 +2105,15 @@
       "version": "v2",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.8279491066932678,
+      "predicted": "pass",
+      "confidence": 0.8601530194282532,
       "probabilities": {
-        "pass": 0.16586941480636597,
-        "rewrite": 0.000565393187571317,
-        "block": 0.005616123788058758,
-        "escalate": 0.8279491066932678
+        "pass": 0.8601530194282532,
+        "rewrite": 9.004950697999448e-05,
+        "block": 0.001584679470397532,
+        "escalate": 0.1381722092628479
       },
-      "latency_ms": 16.2,
+      "latency_ms": 17.4,
       "cache_hit": false
     },
     {
@@ -2123,15 +2129,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.8950594067573547,
+      "predicted": "pass",
+      "confidence": 0.9992734789848328,
       "probabilities": {
-        "pass": 0.08303995430469513,
-        "rewrite": 0.0025045217480510473,
-        "block": 0.019396044313907623,
-        "escalate": 0.8950594067573547
+        "pass": 0.9992734789848328,
+        "rewrite": 4.3169984564883634e-06,
+        "block": 7.791275129420683e-05,
+        "escalate": 0.0006443922757171094
       },
-      "latency_ms": 15.09,
+      "latency_ms": 17.84,
       "cache_hit": false
     },
     {
@@ -2148,14 +2154,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9999943971633911,
+      "confidence": 0.9999864101409912,
       "probabilities": {
-        "pass": 1.6259286894637626e-06,
-        "rewrite": 5.168213306205871e-07,
-        "block": 3.411704028621898e-06,
-        "escalate": 0.9999943971633911
+        "pass": 7.546661890955875e-06,
+        "rewrite": 1.8977435729539138e-06,
+        "block": 4.142942543694517e-06,
+        "escalate": 0.9999864101409912
       },
-      "latency_ms": 15.82,
+      "latency_ms": 17.77,
       "cache_hit": false
     },
     {
@@ -2172,14 +2178,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8870923519134521,
+      "confidence": 0.9559561610221863,
       "probabilities": {
-        "pass": 0.10744340717792511,
-        "rewrite": 0.00047189422184601426,
-        "block": 0.004992314614355564,
-        "escalate": 0.8870923519134521
+        "pass": 0.04318021610379219,
+        "rewrite": 0.00010185789142269641,
+        "block": 0.0007617171504534781,
+        "escalate": 0.9559561610221863
       },
-      "latency_ms": 15.07,
+      "latency_ms": 17.12,
       "cache_hit": false
     },
     {
@@ -2196,14 +2202,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9263067245483398,
+      "confidence": 0.9998577833175659,
       "probabilities": {
-        "pass": 0.056556884199380875,
-        "rewrite": 0.002458509523421526,
-        "block": 0.014677861705422401,
-        "escalate": 0.9263067245483398
+        "pass": 0.00013119939831085503,
+        "rewrite": 1.786930397429387e-06,
+        "block": 9.157913154922426e-06,
+        "escalate": 0.9998577833175659
       },
-      "latency_ms": 14.67,
+      "latency_ms": 18.82,
       "cache_hit": false
     },
     {
@@ -2219,14 +2225,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 1.0,
+      "confidence": 0.9999998807907104,
       "probabilities": {
-        "pass": 2.2802231214313906e-09,
-        "rewrite": 2.293339917969206e-08,
-        "block": 1.1560596036019888e-08,
-        "escalate": 1.0
+        "pass": 3.561226336046275e-08,
+        "rewrite": 5.179330742066668e-08,
+        "block": 3.6926227409139756e-08,
+        "escalate": 0.9999998807907104
       },
-      "latency_ms": 14.49,
+      "latency_ms": 18.1,
       "cache_hit": false
     },
     {
@@ -2242,14 +2248,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.980712890625,
+      "confidence": 0.998917818069458,
       "probabilities": {
-        "pass": 0.01777981035411358,
-        "rewrite": 0.0003630653955042362,
-        "block": 0.0011442792601883411,
-        "escalate": 0.980712890625
+        "pass": 0.0009936915012076497,
+        "rewrite": 2.086628956021741e-05,
+        "block": 6.768833554815501e-05,
+        "escalate": 0.998917818069458
       },
-      "latency_ms": 14.41,
+      "latency_ms": 18.18,
       "cache_hit": false
     },
     {
@@ -2265,14 +2271,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9330788254737854,
+      "confidence": 0.9999809265136719,
       "probabilities": {
-        "pass": 0.0514451339840889,
-        "rewrite": 0.003113173646852374,
-        "block": 0.012362935580313206,
-        "escalate": 0.9330788254737854
+        "pass": 1.7460684830439277e-05,
+        "rewrite": 3.736508915608283e-07,
+        "block": 1.1892959719261853e-06,
+        "escalate": 0.9999809265136719
       },
-      "latency_ms": 14.33,
+      "latency_ms": 19.03,
       "cache_hit": false
     },
     {
@@ -2289,14 +2295,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 1.0,
+      "confidence": 0.9999998807907104,
       "probabilities": {
-        "pass": 2.2802231214313906e-09,
-        "rewrite": 2.293339917969206e-08,
-        "block": 1.1560596036019888e-08,
-        "escalate": 1.0
+        "pass": 3.561226336046275e-08,
+        "rewrite": 5.179330742066668e-08,
+        "block": 3.6926227409139756e-08,
+        "escalate": 0.9999998807907104
       },
-      "latency_ms": 15.95,
+      "latency_ms": 20.44,
       "cache_hit": false
     },
     {
@@ -2313,14 +2319,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.980712890625,
+      "confidence": 0.998917818069458,
       "probabilities": {
-        "pass": 0.01777981035411358,
-        "rewrite": 0.0003630653955042362,
-        "block": 0.0011442792601883411,
-        "escalate": 0.980712890625
+        "pass": 0.0009936915012076497,
+        "rewrite": 2.086628956021741e-05,
+        "block": 6.768833554815501e-05,
+        "escalate": 0.998917818069458
       },
-      "latency_ms": 13.97,
+      "latency_ms": 19.08,
       "cache_hit": false
     },
     {
@@ -2337,14 +2343,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9330788254737854,
+      "confidence": 0.9999809265136719,
       "probabilities": {
-        "pass": 0.0514451339840889,
-        "rewrite": 0.003113173646852374,
-        "block": 0.012362935580313206,
-        "escalate": 0.9330788254737854
+        "pass": 1.7460684830439277e-05,
+        "rewrite": 3.736508915608283e-07,
+        "block": 1.1892959719261853e-06,
+        "escalate": 0.9999809265136719
       },
-      "latency_ms": 15.1,
+      "latency_ms": 18.53,
       "cache_hit": false
     },
     {
@@ -2361,14 +2367,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9935289025306702,
+      "confidence": 0.9999065399169922,
       "probabilities": {
-        "pass": 0.006087047979235649,
-        "rewrite": 3.2588686735834926e-05,
-        "block": 0.0003514282579999417,
-        "escalate": 0.9935289025306702
+        "pass": 5.5587664974154904e-05,
+        "rewrite": 1.8546679712017067e-05,
+        "block": 1.9320914361742325e-05,
+        "escalate": 0.9999065399169922
       },
-      "latency_ms": 23.08,
+      "latency_ms": 20.78,
       "cache_hit": false
     },
     {
@@ -2385,14 +2391,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.792164146900177,
+      "confidence": 0.9944307208061218,
       "probabilities": {
-        "pass": 0.19672147929668427,
-        "rewrite": 0.001283675548620522,
-        "block": 0.009830659255385399,
-        "escalate": 0.792164146900177
+        "pass": 0.00492999330163002,
+        "rewrite": 0.0001882810320239514,
+        "block": 0.00045101577416062355,
+        "escalate": 0.9944307208061218
       },
-      "latency_ms": 19.48,
+      "latency_ms": 18.98,
       "cache_hit": false
     },
     {
@@ -2409,14 +2415,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9005402326583862,
+      "confidence": 0.9999946355819702,
       "probabilities": {
-        "pass": 0.07318413257598877,
-        "rewrite": 0.0045619443990290165,
-        "block": 0.021713735535740852,
-        "escalate": 0.9005402326583862
+        "pass": 3.0867013265378773e-06,
+        "rewrite": 8.798029398349172e-07,
+        "block": 1.3420243476502947e-06,
+        "escalate": 0.9999946355819702
       },
-      "latency_ms": 14.54,
+      "latency_ms": 18.49,
       "cache_hit": false
     },
     {
@@ -2432,15 +2438,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.9933962821960449,
+      "predicted": "pass",
+      "confidence": 0.7999193072319031,
       "probabilities": {
-        "pass": 0.006212970241904259,
-        "rewrite": 0.0002121621073456481,
-        "block": 0.00017855587066151202,
-        "escalate": 0.9933962821960449
+        "pass": 0.7999193072319031,
+        "rewrite": 0.0003259994846303016,
+        "block": 0.0007927807164378464,
+        "escalate": 0.19896185398101807
       },
-      "latency_ms": 15.27,
+      "latency_ms": 18.7,
       "cache_hit": false
     },
     {
@@ -2456,15 +2462,15 @@
       "version": "v2",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.804554283618927,
+      "predicted": "pass",
+      "confidence": 0.7504395246505737,
       "probabilities": {
-        "pass": 0.18632231652736664,
-        "rewrite": 0.0014162666629999876,
-        "block": 0.007707105949521065,
-        "escalate": 0.804554283618927
+        "pass": 0.7504395246505737,
+        "rewrite": 0.0002635760174598545,
+        "block": 0.002280600368976593,
+        "escalate": 0.24701640009880066
       },
-      "latency_ms": 14.13,
+      "latency_ms": 19.36,
       "cache_hit": false
     },
     {
@@ -2481,14 +2487,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8895868062973022,
+      "confidence": 0.6162198781967163,
       "probabilities": {
-        "pass": 0.08502847701311111,
-        "rewrite": 0.003944751340895891,
-        "block": 0.02143990993499756,
-        "escalate": 0.8895868062973022
+        "pass": 0.3827977776527405,
+        "rewrite": 0.000169467311934568,
+        "block": 0.0008128712070174515,
+        "escalate": 0.6162198781967163
       },
-      "latency_ms": 14.91,
+      "latency_ms": 17.09,
       "cache_hit": false
     },
     {
@@ -2505,14 +2511,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.5767580270767212,
+      "confidence": 0.960392415523529,
       "probabilities": {
-        "pass": 0.5767580270767212,
-        "rewrite": 0.00035711124655790627,
-        "block": 0.0019150341395288706,
-        "escalate": 0.4209698438644409
+        "pass": 0.960392415523529,
+        "rewrite": 3.775850200327113e-05,
+        "block": 0.0009896809933707118,
+        "escalate": 0.03858017548918724
       },
-      "latency_ms": 15.84,
+      "latency_ms": 20.73,
       "cache_hit": false
     },
     {
@@ -2529,14 +2535,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.5521128177642822,
+      "confidence": 0.907300591468811,
       "probabilities": {
-        "pass": 0.5521128177642822,
-        "rewrite": 0.002013790188357234,
-        "block": 0.018084844574332237,
-        "escalate": 0.42778855562210083
+        "pass": 0.907300591468811,
+        "rewrite": 0.00011814181198133156,
+        "block": 0.003713921643793583,
+        "escalate": 0.08886739611625671
       },
-      "latency_ms": 16.15,
+      "latency_ms": 18.98,
       "cache_hit": false
     },
     {
@@ -2552,15 +2558,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.7952702045440674,
+      "predicted": "pass",
+      "confidence": 0.7331130504608154,
       "probabilities": {
-        "pass": 0.15484270453453064,
-        "rewrite": 0.0070123872719705105,
-        "block": 0.04287472367286682,
-        "escalate": 0.7952702045440674
+        "pass": 0.7331130504608154,
+        "rewrite": 3.62384962500073e-05,
+        "block": 0.002544570015743375,
+        "escalate": 0.26430606842041016
       },
-      "latency_ms": 15.46,
+      "latency_ms": 18.91,
       "cache_hit": false
     },
     {
@@ -2576,14 +2582,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9701476693153381,
+      "confidence": 0.9253026843070984,
       "probabilities": {
-        "pass": 0.9701476693153381,
-        "rewrite": 0.00046755760558880866,
-        "block": 0.0009133967105299234,
-        "escalate": 0.02847135253250599
+        "pass": 0.9253026843070984,
+        "rewrite": 0.0008444108534604311,
+        "block": 0.0009509007213637233,
+        "escalate": 0.07290204614400864
       },
-      "latency_ms": 17.41,
+      "latency_ms": 18.01,
       "cache_hit": false
     },
     {
@@ -2599,14 +2605,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.7569488883018494,
+      "confidence": 0.615527868270874,
       "probabilities": {
-        "pass": 0.19876395165920258,
-        "rewrite": 0.013758284039795399,
-        "block": 0.030528927221894264,
-        "escalate": 0.7569488883018494
+        "pass": 0.36830031871795654,
+        "rewrite": 0.005496797151863575,
+        "block": 0.010674986988306046,
+        "escalate": 0.615527868270874
       },
-      "latency_ms": 15.19,
+      "latency_ms": 15.85,
       "cache_hit": false
     },
     {
@@ -2621,15 +2627,15 @@
       "version": "v1",
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.7223701477050781,
+      "predicted": "pass",
+      "confidence": 0.9469130635261536,
       "probabilities": {
-        "pass": 0.16349150240421295,
-        "rewrite": 0.03432251140475273,
-        "block": 0.07981579005718231,
-        "escalate": 0.7223701477050781
+        "pass": 0.9469130635261536,
+        "rewrite": 0.0004095021868124604,
+        "block": 0.0005537004326470196,
+        "escalate": 0.052123717963695526
       },
-      "latency_ms": 15.28,
+      "latency_ms": 16.41,
       "cache_hit": false
     },
     {
@@ -2645,14 +2651,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9990684390068054,
+      "confidence": 0.9993711113929749,
       "probabilities": {
-        "pass": 0.9990684390068054,
-        "rewrite": 0.00035903931711800396,
-        "block": 0.0003408496268093586,
-        "escalate": 0.0002316770696779713
+        "pass": 0.9993711113929749,
+        "rewrite": 0.00021200573246460408,
+        "block": 0.00018058928253594786,
+        "escalate": 0.00023626939218956977
       },
-      "latency_ms": 15.83,
+      "latency_ms": 17.01,
       "cache_hit": false
     },
     {
@@ -2668,14 +2674,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.6763023138046265,
+      "confidence": 0.9867619276046753,
       "probabilities": {
-        "pass": 0.6763023138046265,
-        "rewrite": 0.10011405497789383,
-        "block": 0.0933423712849617,
-        "escalate": 0.13024121522903442
+        "pass": 0.9867619276046753,
+        "rewrite": 0.004294434562325478,
+        "block": 0.003531124209985137,
+        "escalate": 0.005412487778812647
       },
-      "latency_ms": 19.2,
+      "latency_ms": 17.86,
       "cache_hit": false
     },
     {
@@ -2691,14 +2697,14 @@
       "expected": "pass",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.3487236201763153,
+      "confidence": 0.9980248212814331,
       "probabilities": {
-        "pass": 0.3487236201763153,
-        "rewrite": 0.17399862408638,
-        "block": 0.18991254270076752,
-        "escalate": 0.28736522793769836
+        "pass": 0.9980248212814331,
+        "rewrite": 0.000337034318363294,
+        "block": 0.00027295370819047093,
+        "escalate": 0.001365211675874889
       },
-      "latency_ms": 19.42,
+      "latency_ms": 17.57,
       "cache_hit": false
     },
     {
@@ -2714,14 +2720,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9994055032730103,
+      "confidence": 0.9989479184150696,
       "probabilities": {
-        "pass": 6.573985729119158e-07,
-        "rewrite": 0.0004771198728121817,
-        "block": 0.00011676658323267475,
-        "escalate": 0.9994055032730103
+        "pass": 1.0776182080007857e-07,
+        "rewrite": 0.0010027840035036206,
+        "block": 4.9232923629460856e-05,
+        "escalate": 0.9989479184150696
       },
-      "latency_ms": 16.32,
+      "latency_ms": 16.61,
       "cache_hit": false
     },
     {
@@ -2737,14 +2743,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.5553426146507263,
+      "confidence": 0.8816392421722412,
       "probabilities": {
-        "pass": 0.05190306901931763,
-        "rewrite": 0.28228262066841125,
-        "block": 0.1104717031121254,
-        "escalate": 0.5553426146507263
+        "pass": 0.00047931354492902756,
+        "rewrite": 0.10869365185499191,
+        "block": 0.009187741205096245,
+        "escalate": 0.8816392421722412
       },
-      "latency_ms": 16.36,
+      "latency_ms": 17.67,
       "cache_hit": false
     },
     {
@@ -2760,14 +2766,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.4064604640007019,
+      "confidence": 0.9994788765907288,
       "probabilities": {
-        "pass": 0.11395525932312012,
-        "rewrite": 0.29432910680770874,
-        "block": 0.18525518476963043,
-        "escalate": 0.4064604640007019
+        "pass": 2.2078475936382347e-08,
+        "rewrite": 0.0004904359229840338,
+        "block": 3.073095285799354e-05,
+        "escalate": 0.9994788765907288
       },
-      "latency_ms": 16.47,
+      "latency_ms": 18.95,
       "cache_hit": false
     },
     {
@@ -2784,14 +2790,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9923507571220398,
+      "confidence": 0.9996289014816284,
       "probabilities": {
-        "pass": 0.0073073687963187695,
-        "rewrite": 0.0001280831202166155,
-        "block": 0.00021381446276791394,
-        "escalate": 0.9923507571220398
+        "pass": 0.0003267600550316274,
+        "rewrite": 2.916110315709375e-05,
+        "block": 1.5204734154394828e-05,
+        "escalate": 0.9996289014816284
       },
-      "latency_ms": 15.44,
+      "latency_ms": 17.48,
       "cache_hit": false
     },
     {
@@ -2808,14 +2814,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.575244128704071,
+      "confidence": 0.8641595840454102,
       "probabilities": {
-        "pass": 0.3806613087654114,
-        "rewrite": 0.011215202510356903,
-        "block": 0.032879311591386795,
-        "escalate": 0.575244128704071
+        "pass": 0.13020482659339905,
+        "rewrite": 0.0025028723757714033,
+        "block": 0.00313269579783082,
+        "escalate": 0.8641595840454102
       },
-      "latency_ms": 15.6,
+      "latency_ms": 17.48,
       "cache_hit": false
     },
     {
@@ -2832,14 +2838,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.7097554206848145,
+      "confidence": 0.9999703168869019,
       "probabilities": {
-        "pass": 0.19099457561969757,
-        "rewrite": 0.024689404293894768,
-        "block": 0.07456059008836746,
-        "escalate": 0.7097554206848145
+        "pass": 2.08860856218962e-05,
+        "rewrite": 5.1374477152421605e-06,
+        "block": 3.6131118577031884e-06,
+        "escalate": 0.9999703168869019
       },
-      "latency_ms": 21.36,
+      "latency_ms": 17.25,
       "cache_hit": false
     },
     {
@@ -2854,15 +2860,15 @@
       "version": "v1",
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.9833383560180664,
+      "predicted": "rewrite",
+      "confidence": 0.7730371356010437,
       "probabilities": {
-        "pass": 2.2277848898966113e-08,
-        "rewrite": 0.016631867736577988,
-        "block": 2.9754522984148934e-05,
-        "escalate": 0.9833383560180664
+        "pass": 3.1430367197771147e-09,
+        "rewrite": 0.7730371356010437,
+        "block": 1.4927852134860586e-05,
+        "escalate": 0.22694793343544006
       },
-      "latency_ms": 17.83,
+      "latency_ms": 17.38,
       "cache_hit": false
     },
     {
@@ -2878,14 +2884,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.5738440752029419,
+      "confidence": 0.8392544388771057,
       "probabilities": {
-        "pass": 0.00961195770651102,
-        "rewrite": 0.5738440752029419,
-        "block": 0.02637895755469799,
-        "escalate": 0.3901650309562683
+        "pass": 5.0872408792201895e-06,
+        "rewrite": 0.8392544388771057,
+        "block": 0.000378050230210647,
+        "escalate": 0.16036246716976166
       },
-      "latency_ms": 14.77,
+      "latency_ms": 16.67,
       "cache_hit": false
     },
     {
@@ -2901,14 +2907,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.5327165722846985,
+      "confidence": 0.8009792566299438,
       "probabilities": {
-        "pass": 0.05804158374667168,
-        "rewrite": 0.5327165722846985,
-        "block": 0.09043817222118378,
-        "escalate": 0.31880372762680054
+        "pass": 1.5016689003388706e-09,
+        "rewrite": 0.8009792566299438,
+        "block": 9.958801456377842e-06,
+        "escalate": 0.19901077449321747
       },
-      "latency_ms": 14.87,
+      "latency_ms": 15.9,
       "cache_hit": false
     },
     {
@@ -2924,14 +2930,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.9948280453681946,
+      "confidence": 0.9996496438980103,
       "probabilities": {
-        "pass": 2.561394296662911e-07,
-        "rewrite": 0.9948280453681946,
-        "block": 0.0001250583736691624,
-        "escalate": 0.005046654026955366
+        "pass": 1.5980416989691548e-08,
+        "rewrite": 0.9996496438980103,
+        "block": 1.2312754734011833e-05,
+        "escalate": 0.0003380332491360605
       },
-      "latency_ms": 15.81,
+      "latency_ms": 14.33,
       "cache_hit": false
     },
     {
@@ -2947,14 +2953,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.9443917870521545,
+      "confidence": 0.9931358098983765,
       "probabilities": {
-        "pass": 0.004200453869998455,
-        "rewrite": 0.9443917870521545,
-        "block": 0.012549564242362976,
-        "escalate": 0.03885815665125847
+        "pass": 1.1119829650851898e-05,
+        "rewrite": 0.9931358098983765,
+        "block": 0.000361867860192433,
+        "escalate": 0.006491126958280802
       },
-      "latency_ms": 15.64,
+      "latency_ms": 14.91,
       "cache_hit": false
     },
     {
@@ -2970,14 +2976,14 @@
       "expected": "rewrite",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "rewrite",
-      "confidence": 0.8066526651382446,
+      "confidence": 0.9998874664306641,
       "probabilities": {
-        "pass": 0.03494961932301521,
-        "rewrite": 0.8066526651382446,
-        "block": 0.05672716349363327,
-        "escalate": 0.10167045146226883
+        "pass": 3.9274720364801396e-08,
+        "rewrite": 0.9998874664306641,
+        "block": 8.261431503342465e-06,
+        "escalate": 0.00010426942753838375
       },
-      "latency_ms": 15.3,
+      "latency_ms": 16.46,
       "cache_hit": false
     },
     {
@@ -2993,14 +2999,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.9999364614486694,
+      "confidence": 0.9978665709495544,
       "probabilities": {
-        "pass": 5.420122306531994e-07,
-        "rewrite": 6.101416511228308e-05,
-        "block": 1.9652197806863114e-06,
-        "escalate": 0.9999364614486694
+        "pass": 3.675125981317251e-06,
+        "rewrite": 0.0021200880873948336,
+        "block": 9.69985831034137e-06,
+        "escalate": 0.9978665709495544
       },
-      "latency_ms": 17.88,
+      "latency_ms": 18.54,
       "cache_hit": false
     },
     {
@@ -3016,14 +3022,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8914304971694946,
+      "confidence": 0.9703648090362549,
       "probabilities": {
-        "pass": 0.043637003749608994,
-        "rewrite": 0.05142628401517868,
-        "block": 0.013506187126040459,
-        "escalate": 0.8914304971694946
+        "pass": 0.0014627559576183558,
+        "rewrite": 0.027377769351005554,
+        "block": 0.0007946346886456013,
+        "escalate": 0.9703648090362549
       },
-      "latency_ms": 15.37,
+      "latency_ms": 18.15,
       "cache_hit": false
     },
     {
@@ -3039,14 +3045,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.7063793540000916,
+      "confidence": 0.9990261793136597,
       "probabilities": {
-        "pass": 0.11194171756505966,
-        "rewrite": 0.11411628872156143,
-        "block": 0.06756258010864258,
-        "escalate": 0.7063793540000916
+        "pass": 2.3770792267896468e-06,
+        "rewrite": 0.0009656648035161197,
+        "block": 5.738419986300869e-06,
+        "escalate": 0.9990261793136597
       },
-      "latency_ms": 15.98,
+      "latency_ms": 18.11,
       "cache_hit": false
     },
     {
@@ -3062,14 +3068,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9973344802856445,
+      "confidence": 0.9978266358375549,
       "probabilities": {
-        "pass": 4.13397210650146e-05,
-        "rewrite": 0.0020479268860071898,
-        "block": 0.9973344802856445,
-        "escalate": 0.0005762632354162633
+        "pass": 4.871856435784139e-05,
+        "rewrite": 0.0010392757831141353,
+        "block": 0.9978266358375549,
+        "escalate": 0.0010853183921426535
       },
-      "latency_ms": 16.66,
+      "latency_ms": 19.65,
       "cache_hit": false
     },
     {
@@ -3085,14 +3091,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9454061985015869,
+      "confidence": 0.986426591873169,
       "probabilities": {
-        "pass": 0.014697187580168247,
-        "rewrite": 0.028588511049747467,
-        "block": 0.9454061985015869,
-        "escalate": 0.011308136396110058
+        "pass": 0.0026038207579404116,
+        "rewrite": 0.0069381436333060265,
+        "block": 0.986426591873169,
+        "escalate": 0.004031470976769924
       },
-      "latency_ms": 17.3,
+      "latency_ms": 19.61,
       "cache_hit": false
     },
     {
@@ -3108,14 +3114,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.7757211923599243,
+      "confidence": 0.9991631507873535,
       "probabilities": {
-        "pass": 0.06728685647249222,
-        "rewrite": 0.09519628435373306,
-        "block": 0.7757211923599243,
-        "escalate": 0.0617956817150116
+        "pass": 2.9130536859156564e-05,
+        "rewrite": 0.00048318327753804624,
+        "block": 0.9991631507873535,
+        "escalate": 0.0003245922562200576
       },
-      "latency_ms": 22.05,
+      "latency_ms": 20.31,
       "cache_hit": false
     },
     {
@@ -3131,14 +3137,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9926041960716248,
+      "confidence": 0.9773147106170654,
       "probabilities": {
-        "pass": 2.8073347493773326e-05,
-        "rewrite": 0.00037770046037621796,
-        "block": 0.9926041960716248,
-        "escalate": 0.006990072317421436
+        "pass": 1.8426946553518064e-05,
+        "rewrite": 0.0002555730170570314,
+        "block": 0.9773147106170654,
+        "escalate": 0.022411227226257324
       },
-      "latency_ms": 16.76,
+      "latency_ms": 19.71,
       "cache_hit": false
     },
     {
@@ -3154,14 +3160,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.9042835235595703,
+      "confidence": 0.944782018661499,
       "probabilities": {
-        "pass": 0.023622766137123108,
-        "rewrite": 0.01420422364026308,
-        "block": 0.9042835235595703,
-        "escalate": 0.05788950249552727
+        "pass": 0.001058674417436123,
+        "rewrite": 0.0024741862434893847,
+        "block": 0.944782018661499,
+        "escalate": 0.051685139536857605
       },
-      "latency_ms": 15.87,
+      "latency_ms": 19.91,
       "cache_hit": false
     },
     {
@@ -3177,14 +3183,14 @@
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "block",
-      "confidence": 0.6831967830657959,
+      "confidence": 0.9660860300064087,
       "probabilities": {
-        "pass": 0.08430265635251999,
-        "rewrite": 0.050970785319805145,
-        "block": 0.6831967830657959,
-        "escalate": 0.18152979016304016
+        "pass": 1.116306862058991e-06,
+        "rewrite": 8.4635270468425e-05,
+        "block": 0.9660860300064087,
+        "escalate": 0.03382822126150131
       },
-      "latency_ms": 16.03,
+      "latency_ms": 19.28,
       "cache_hit": false
     },
     {
@@ -3200,15 +3206,15 @@
       "version": "v1",
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "block",
-      "confidence": 0.6003305315971375,
+      "predicted": "pass",
+      "confidence": 0.5702739953994751,
       "probabilities": {
-        "pass": 0.3996213674545288,
-        "rewrite": 4.765355697600171e-05,
-        "block": 0.6003305315971375,
-        "escalate": 4.496022825151158e-07
+        "pass": 0.5702739953994751,
+        "rewrite": 4.6651854063384235e-05,
+        "block": 0.42967915534973145,
+        "escalate": 1.890049787789394e-07
       },
-      "latency_ms": 18.9,
+      "latency_ms": 21.25,
       "cache_hit": false
     },
     {
@@ -3224,15 +3230,15 @@
       "version": "v2",
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "block",
-      "confidence": 0.6093980669975281,
+      "predicted": "pass",
+      "confidence": 0.5973395705223083,
       "probabilities": {
-        "pass": 0.26902058720588684,
-        "rewrite": 0.002204577438533306,
-        "block": 0.6093980669975281,
-        "escalate": 0.1193767711520195
+        "pass": 0.5973395705223083,
+        "rewrite": 0.0002645317872520536,
+        "block": 0.4001195728778839,
+        "escalate": 0.0022763251326978207
       },
-      "latency_ms": 20.09,
+      "latency_ms": 23.01,
       "cache_hit": false
     },
     {
@@ -3248,15 +3254,15 @@
       "version": "v1",
       "expected": "block",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.600983202457428,
+      "predicted": "pass",
+      "confidence": 0.5272138118743896,
       "probabilities": {
-        "pass": 0.11798408627510071,
-        "rewrite": 0.009359869174659252,
-        "block": 0.2716728746891022,
-        "escalate": 0.600983202457428
+        "pass": 0.5272138118743896,
+        "rewrite": 4.4399657781468704e-05,
+        "block": 0.47273653745651245,
+        "escalate": 5.235648131929338e-06
       },
-      "latency_ms": 19.24,
+      "latency_ms": 24.04,
       "cache_hit": false
     },
     {
@@ -3273,14 +3279,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "pass",
-      "confidence": 0.9167037010192871,
+      "confidence": 0.8663289546966553,
       "probabilities": {
-        "pass": 0.9167037010192871,
-        "rewrite": 5.7873912737704813e-05,
-        "block": 0.0075642988085746765,
-        "escalate": 0.07567399740219116
+        "pass": 0.8663289546966553,
+        "rewrite": 0.00012084145419066772,
+        "block": 0.0038830756675451994,
+        "escalate": 0.12966708838939667
       },
-      "latency_ms": 17.31,
+      "latency_ms": 19.52,
       "cache_hit": false
     },
     {
@@ -3296,15 +3302,15 @@
       "version": "v2",
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
-      "predicted": "escalate",
-      "confidence": 0.666685938835144,
+      "predicted": "pass",
+      "confidence": 0.5734122395515442,
       "probabilities": {
-        "pass": 0.3129809498786926,
-        "rewrite": 0.0005813384777866304,
-        "block": 0.019751759245991707,
-        "escalate": 0.666685938835144
+        "pass": 0.5734122395515442,
+        "rewrite": 0.0001484598615206778,
+        "block": 0.005491045769304037,
+        "escalate": 0.4209482669830322
       },
-      "latency_ms": 16.77,
+      "latency_ms": 16.89,
       "cache_hit": false
     },
     {
@@ -3321,14 +3327,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8789914846420288,
+      "confidence": 0.5869449377059937,
       "probabilities": {
-        "pass": 0.0876726433634758,
-        "rewrite": 0.002570671495050192,
-        "block": 0.030765151605010033,
-        "escalate": 0.8789914846420288
+        "pass": 0.4117140471935272,
+        "rewrite": 3.919886876246892e-05,
+        "block": 0.0013018085155636072,
+        "escalate": 0.5869449377059937
       },
-      "latency_ms": 16.42,
+      "latency_ms": 29.29,
       "cache_hit": false
     },
     {
@@ -3345,14 +3351,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.5388835072517395,
+      "confidence": 0.9982308745384216,
       "probabilities": {
-        "pass": 0.41251397132873535,
-        "rewrite": 0.0007824379717931151,
-        "block": 0.04782003536820412,
-        "escalate": 0.5388835072517395
+        "pass": 0.0007156353094615042,
+        "rewrite": 0.0001887593389255926,
+        "block": 0.0008647803915664554,
+        "escalate": 0.9982308745384216
       },
-      "latency_ms": 19.12,
+      "latency_ms": 22.97,
       "cache_hit": false
     },
     {
@@ -3369,14 +3375,14 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.6512166261672974,
+      "confidence": 0.969607949256897,
       "probabilities": {
-        "pass": 0.3068525195121765,
-        "rewrite": 0.0021088283974677324,
-        "block": 0.039821967482566833,
-        "escalate": 0.6512166261672974
+        "pass": 0.02496027573943138,
+        "rewrite": 0.0005831022281199694,
+        "block": 0.004848619922995567,
+        "escalate": 0.969607949256897
       },
-      "latency_ms": 20.23,
+      "latency_ms": 27.19,
       "cache_hit": false
     },
     {
@@ -3393,16 +3399,1574 @@
       "expected": "escalate",
       "provenance": "manually labeled synthetic challenge, not expert reviewed",
       "predicted": "escalate",
-      "confidence": 0.8465881943702698,
+      "confidence": 0.9992940425872803,
       "probabilities": {
-        "pass": 0.10079953819513321,
-        "rewrite": 0.006353938952088356,
-        "block": 0.046258315443992615,
-        "escalate": 0.8465881943702698
+        "pass": 0.0004578616935759783,
+        "rewrite": 3.993024438386783e-05,
+        "block": 0.00020811309514101595,
+        "escalate": 0.9992940425872803
       },
-      "latency_ms": 15.88,
+      "latency_ms": 22.46,
       "cache_hit": false
     }
   ],
-  "challenge_sha256": "f1a484dea7a41cb436a74735ac4fb525c592d5adc65df4f0acbde0d3941527d5"
+  "challenge_sha256": "f1a484dea7a41cb436a74735ac4fb525c592d5adc65df4f0acbde0d3941527d5",
+  "test_rows": [
+    {
+      "id": "v2-small-harbor-v1",
+      "family_id": "small",
+      "message": "I am refunding your $6.83 service charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.974102258682251,
+      "probabilities": {
+        "pass": 0.974102258682251,
+        "rewrite": 3.256852141930722e-05,
+        "block": 0.0022098785266280174,
+        "escalate": 0.02365534007549286
+      },
+      "latency_ms": 25.66,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-small-harbor-v2",
+      "family_id": "small",
+      "message": "I am refunding your $6.83 service charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.8061239719390869,
+      "probabilities": {
+        "pass": 0.8061239719390869,
+        "rewrite": 0.00014147550973575562,
+        "block": 0.006465596612542868,
+        "escalate": 0.18726898729801178
+      },
+      "latency_ms": 24.15,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-small-cedar-v1",
+      "family_id": "small",
+      "message": "I am refunding your $6.83 service charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 6.83
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9989871382713318,
+      "probabilities": {
+        "pass": 0.0008956420351751149,
+        "rewrite": 1.459657255509228e-06,
+        "block": 0.0001157707447418943,
+        "escalate": 0.9989871382713318
+      },
+      "latency_ms": 19.94,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-policy-change-harbor-v1",
+      "family_id": "policy-change",
+      "message": "Your $16.91 service charge is being refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 16.91
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9181199669837952,
+      "probabilities": {
+        "pass": 0.9181199669837952,
+        "rewrite": 1.6143243556143716e-05,
+        "block": 0.0002540247223805636,
+        "escalate": 0.08160986751317978
+      },
+      "latency_ms": 20.33,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-policy-change-harbor-v2",
+      "family_id": "policy-change",
+      "message": "Your $16.91 service charge is being refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 16.91
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.5111579298973083,
+      "probabilities": {
+        "pass": 0.4876190423965454,
+        "rewrite": 7.159236702136695e-05,
+        "block": 0.00115145742893219,
+        "escalate": 0.5111579298973083
+      },
+      "latency_ms": 20.47,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-policy-change-cedar-v1",
+      "family_id": "policy-change",
+      "message": "Your $16.91 service charge is being refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 16.91
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9792072176933289,
+      "probabilities": {
+        "pass": 0.020745260640978813,
+        "rewrite": 2.152952447431744e-06,
+        "block": 4.539041765383445e-05,
+        "escalate": 0.9792072176933289
+      },
+      "latency_ms": 20.08,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-large-harbor-v1",
+      "family_id": "large",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.949653148651123,
+      "probabilities": {
+        "pass": 0.05008925497531891,
+        "rewrite": 4.725292092189193e-05,
+        "block": 0.00021039256535004824,
+        "escalate": 0.949653148651123
+      },
+      "latency_ms": 22.76,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-large-harbor-v2",
+      "family_id": "large",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.6485966444015503,
+      "probabilities": {
+        "pass": 0.34888505935668945,
+        "rewrite": 0.00023298773157875985,
+        "block": 0.0022852253168821335,
+        "escalate": 0.6485966444015503
+      },
+      "latency_ms": 19.24,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-large-cedar-v1",
+      "family_id": "large",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9962092638015747,
+      "probabilities": {
+        "pass": 0.0037282961420714855,
+        "rewrite": 7.097657544363756e-06,
+        "block": 5.53325517103076e-05,
+        "escalate": 0.9962092638015747
+      },
+      "latency_ms": 19.35,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-approved-harbor-v1",
+      "family_id": "approved",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9983271956443787,
+      "probabilities": {
+        "pass": 0.9983271956443787,
+        "rewrite": 1.4441035091294907e-05,
+        "block": 0.00025126896798610687,
+        "escalate": 0.0014071313198655844
+      },
+      "latency_ms": 18.87,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-approved-harbor-v2",
+      "family_id": "approved",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9106778502464294,
+      "probabilities": {
+        "pass": 0.9106778502464294,
+        "rewrite": 9.452677477383986e-05,
+        "block": 0.0022715285886079073,
+        "escalate": 0.08695607632398605
+      },
+      "latency_ms": 18.08,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-approved-cedar-v1",
+      "family_id": "approved",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 37.56
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9998592138290405,
+      "probabilities": {
+        "pass": 0.9998592138290405,
+        "rewrite": 1.5388643532787682e-06,
+        "block": 4.7843823267612606e-05,
+        "escalate": 9.138623863691464e-05
+      },
+      "latency_ms": 18.15,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-mismatch-harbor-v1",
+      "family_id": "mismatch",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9999402761459351,
+      "probabilities": {
+        "pass": 3.895685222232714e-05,
+        "rewrite": 3.1251393011189066e-06,
+        "block": 1.768127731338609e-05,
+        "escalate": 0.9999402761459351
+      },
+      "latency_ms": 17.18,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-mismatch-harbor-v2",
+      "family_id": "mismatch",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.922518789768219,
+      "probabilities": {
+        "pass": 0.0755663514137268,
+        "rewrite": 0.000162601048941724,
+        "block": 0.0017523056594654918,
+        "escalate": 0.922518789768219
+      },
+      "latency_ms": 19.26,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-mismatch-cedar-v1",
+      "family_id": "mismatch",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9988831877708435,
+      "probabilities": {
+        "pass": 0.0010681702988222241,
+        "rewrite": 4.712779173132731e-06,
+        "block": 4.390793401398696e-05,
+        "escalate": 0.9988831877708435
+      },
+      "latency_ms": 16.5,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-missing-harbor-v1",
+      "family_id": "missing",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9999995231628418,
+      "probabilities": {
+        "pass": 1.9382505911380576e-07,
+        "rewrite": 9.21081380056421e-08,
+        "block": 1.5975197698026022e-07,
+        "escalate": 0.9999995231628418
+      },
+      "latency_ms": 18.17,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-missing-harbor-v2",
+      "family_id": "missing",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9979726672172546,
+      "probabilities": {
+        "pass": 0.0018333839252591133,
+        "rewrite": 3.4435830457368866e-05,
+        "block": 0.00015947464271448553,
+        "escalate": 0.9979726672172546
+      },
+      "latency_ms": 17.44,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-missing-cedar-v1",
+      "family_id": "missing",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9998525381088257,
+      "probabilities": {
+        "pass": 0.00014068909513298422,
+        "rewrite": 1.0064754860650282e-06,
+        "block": 5.736133516620612e-06,
+        "escalate": 0.9998525381088257
+      },
+      "latency_ms": 20.3,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-currency-harbor-v1",
+      "family_id": "currency",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "GBP",
+        "supervisor_approved": true,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9999995231628418,
+      "probabilities": {
+        "pass": 1.9382505911380576e-07,
+        "rewrite": 9.21081380056421e-08,
+        "block": 1.5975197698026022e-07,
+        "escalate": 0.9999995231628418
+      },
+      "latency_ms": 18.9,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-currency-harbor-v2",
+      "family_id": "currency",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "GBP",
+        "supervisor_approved": true,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9979726672172546,
+      "probabilities": {
+        "pass": 0.0018333839252591133,
+        "rewrite": 3.4435830457368866e-05,
+        "block": 0.00015947464271448553,
+        "escalate": 0.9979726672172546
+      },
+      "latency_ms": 18.21,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-currency-cedar-v1",
+      "family_id": "currency",
+      "message": "We are refunding your $37.56 processing charge.",
+      "context": {
+        "currency": "GBP",
+        "supervisor_approved": true,
+        "fee_amount": 37.56
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9998525381088257,
+      "probabilities": {
+        "pass": 0.00014068909513298422,
+        "rewrite": 1.0064754860650282e-06,
+        "block": 5.736133516620612e-06,
+        "escalate": 0.9998525381088257
+      },
+      "latency_ms": 18.74,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-no-amount-harbor-v1",
+      "family_id": "no-amount",
+      "message": "We will issue the handling-charge refund.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9991642236709595,
+      "probabilities": {
+        "pass": 0.0005504644941538572,
+        "rewrite": 0.00023568626784253865,
+        "block": 4.968474240740761e-05,
+        "escalate": 0.9991642236709595
+      },
+      "latency_ms": 18.82,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-no-amount-harbor-v2",
+      "family_id": "no-amount",
+      "message": "We will issue the handling-charge refund.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8394247889518738,
+      "probabilities": {
+        "pass": 0.15753529965877533,
+        "rewrite": 0.0014802885707467794,
+        "block": 0.0015595894074067473,
+        "escalate": 0.8394247889518738
+      },
+      "latency_ms": 18.31,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-no-amount-cedar-v1",
+      "family_id": "no-amount",
+      "message": "We will issue the handling-charge refund.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9380181431770325,
+      "probabilities": {
+        "pass": 0.06102041155099869,
+        "rewrite": 0.0006958019221201539,
+        "block": 0.00026559605612419546,
+        "escalate": 0.9380181431770325
+      },
+      "latency_ms": 17.05,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-two-fees-harbor-v1",
+      "family_id": "two-fees",
+      "message": "A $6.83 fee and a $7.12 fee will be refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9997878670692444,
+      "probabilities": {
+        "pass": 0.00016917925677262247,
+        "rewrite": 1.4038547305972315e-05,
+        "block": 2.8906746592838317e-05,
+        "escalate": 0.9997878670692444
+      },
+      "latency_ms": 21.35,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-two-fees-harbor-v2",
+      "family_id": "two-fees",
+      "message": "A $6.83 fee and a $7.12 fee will be refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9442929029464722,
+      "probabilities": {
+        "pass": 0.054350122809410095,
+        "rewrite": 0.0001935341424541548,
+        "block": 0.001163496053777635,
+        "escalate": 0.9442929029464722
+      },
+      "latency_ms": 21.1,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-two-fees-cedar-v1",
+      "family_id": "two-fees",
+      "message": "A $6.83 fee and a $7.12 fee will be refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9976352453231812,
+      "probabilities": {
+        "pass": 0.002313536824658513,
+        "rewrite": 9.53409653448034e-06,
+        "block": 4.163897392572835e-05,
+        "escalate": 0.9976352453231812
+      },
+      "latency_ms": 20.66,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-denied-harbor-v1",
+      "family_id": "denied",
+      "message": "A refund of the $37.56 charge will not be issued.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9370489120483398,
+      "probabilities": {
+        "pass": 0.9370489120483398,
+        "rewrite": 4.846587762585841e-05,
+        "block": 0.00010546429984970018,
+        "escalate": 0.0627971962094307
+      },
+      "latency_ms": 19.62,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-denied-harbor-v2",
+      "family_id": "denied",
+      "message": "A refund of the $37.56 charge will not be issued.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9080203771591187,
+      "probabilities": {
+        "pass": 0.9080203771591187,
+        "rewrite": 9.891986701404676e-05,
+        "block": 0.0006261529051698744,
+        "escalate": 0.09125449508428574
+      },
+      "latency_ms": 16.9,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-denied-cedar-v1",
+      "family_id": "denied",
+      "message": "A refund of the $37.56 charge will not be issued.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9813651442527771,
+      "probabilities": {
+        "pass": 0.9813651442527771,
+        "rewrite": 1.120834713219665e-05,
+        "block": 3.8394246075768024e-05,
+        "escalate": 0.018585259094834328
+      },
+      "latency_ms": 19.41,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-request-harbor-v1",
+      "family_id": "request",
+      "message": "I can ask for supervisor authorization of the $37.56 refund.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.996860146522522,
+      "probabilities": {
+        "pass": 0.996860146522522,
+        "rewrite": 8.962089486885816e-05,
+        "block": 0.0027477333787828684,
+        "escalate": 0.0003025541955139488
+      },
+      "latency_ms": 18.78,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-request-harbor-v2",
+      "family_id": "request",
+      "message": "I can ask for supervisor authorization of the $37.56 refund.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9887662529945374,
+      "probabilities": {
+        "pass": 0.9887662529945374,
+        "rewrite": 0.00019707197498064488,
+        "block": 0.006143066566437483,
+        "escalate": 0.004893643781542778
+      },
+      "latency_ms": 19.74,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-request-cedar-v1",
+      "family_id": "request",
+      "message": "I can ask for supervisor authorization of the $37.56 refund.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false,
+        "fee_amount": 37.56
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9976436495780945,
+      "probabilities": {
+        "pass": 0.9976436495780945,
+        "rewrite": 2.929072070401162e-05,
+        "block": 0.002219315618276596,
+        "escalate": 0.00010771082452265546
+      },
+      "latency_ms": 19.3,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-greeting-harbor-v1",
+      "family_id": "greeting",
+      "message": "Hello, welcome to our support team!",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.999671220779419,
+      "probabilities": {
+        "pass": 0.999671220779419,
+        "rewrite": 0.00012287209392525256,
+        "block": 0.00018815758812706918,
+        "escalate": 1.7795106032281183e-05
+      },
+      "latency_ms": 18.15,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-greeting-harbor-v2",
+      "family_id": "greeting",
+      "message": "Hello, welcome to our support team!",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9926485419273376,
+      "probabilities": {
+        "pass": 0.9926485419273376,
+        "rewrite": 0.002794650150462985,
+        "block": 0.003335899207741022,
+        "escalate": 0.0012208636617287993
+      },
+      "latency_ms": 15.64,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-greeting-cedar-v1",
+      "family_id": "greeting",
+      "message": "Hello, welcome to our support team!",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.9998898506164551,
+      "probabilities": {
+        "pass": 0.9998898506164551,
+        "rewrite": 3.8581179978791624e-05,
+        "block": 6.836574902990833e-05,
+        "escalate": 3.069523245358141e-06
+      },
+      "latency_ms": 17.08,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-status-harbor-v1",
+      "family_id": "status",
+      "message": "Your transfer payment is still pending processing.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8458541631698608,
+      "probabilities": {
+        "pass": 0.14999118447303772,
+        "rewrite": 0.0009753968333825469,
+        "block": 0.0031792332883924246,
+        "escalate": 0.8458541631698608
+      },
+      "latency_ms": 15.44,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-status-harbor-v2",
+      "family_id": "status",
+      "message": "Your transfer payment is still pending processing.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8896039724349976,
+      "probabilities": {
+        "pass": 0.09216120094060898,
+        "rewrite": 0.0034472905099391937,
+        "block": 0.014787482097744942,
+        "escalate": 0.8896039724349976
+      },
+      "latency_ms": 16.39,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-status-cedar-v1",
+      "family_id": "status",
+      "message": "Your transfer payment is still pending processing.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "pass",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8664347529411316,
+      "probabilities": {
+        "pass": 0.1303294450044632,
+        "rewrite": 0.0006368514150381088,
+        "block": 0.0025989855639636517,
+        "escalate": 0.8664347529411316
+      },
+      "latency_ms": 17.08,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-guarantee-harbor-v1",
+      "family_id": "guarantee",
+      "message": "Profits from this portfolio are guaranteed.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "rewrite",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "rewrite",
+      "confidence": 0.9931835532188416,
+      "probabilities": {
+        "pass": 2.290087586231948e-08,
+        "rewrite": 0.9931835532188416,
+        "block": 9.83244080998702e-06,
+        "escalate": 0.006806665565818548
+      },
+      "latency_ms": 15.18,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-guarantee-harbor-v2",
+      "family_id": "guarantee",
+      "message": "Profits from this portfolio are guaranteed.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "rewrite",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "rewrite",
+      "confidence": 0.9636703729629517,
+      "probabilities": {
+        "pass": 1.499267546023475e-05,
+        "rewrite": 0.9636703729629517,
+        "block": 0.0002822464157361537,
+        "escalate": 0.03603232651948929
+      },
+      "latency_ms": 18.51,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-guarantee-cedar-v1",
+      "family_id": "guarantee",
+      "message": "Profits from this portfolio are guaranteed.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "rewrite",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "rewrite",
+      "confidence": 0.995819091796875,
+      "probabilities": {
+        "pass": 1.8345945207443037e-08,
+        "rewrite": 0.995819091796875,
+        "block": 5.567048901866656e-06,
+        "escalate": 0.0041753253899514675
+      },
+      "latency_ms": 18.16,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-riskfree-harbor-v1",
+      "family_id": "riskfree",
+      "message": "We offer risk-free investment returns.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "rewrite",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "rewrite",
+      "confidence": 0.9996527433395386,
+      "probabilities": {
+        "pass": 9.877669349123153e-09,
+        "rewrite": 0.9996527433395386,
+        "block": 4.050315510539804e-06,
+        "escalate": 0.00034315427183173597
+      },
+      "latency_ms": 16.58,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-riskfree-harbor-v2",
+      "family_id": "riskfree",
+      "message": "We offer risk-free investment returns.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "rewrite",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "rewrite",
+      "confidence": 0.9922243356704712,
+      "probabilities": {
+        "pass": 1.1322886166453827e-05,
+        "rewrite": 0.9922243356704712,
+        "block": 0.00019093911396339536,
+        "escalate": 0.00757334241643548
+      },
+      "latency_ms": 19.7,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-riskfree-cedar-v1",
+      "family_id": "riskfree",
+      "message": "We offer risk-free investment returns.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "rewrite",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "rewrite",
+      "confidence": 0.9998998641967773,
+      "probabilities": {
+        "pass": 3.0626033264979924e-08,
+        "rewrite": 0.9998998641967773,
+        "block": 3.0500236789521296e-06,
+        "escalate": 9.708483412396163e-05
+      },
+      "latency_ms": 16.16,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-complex-harbor-v1",
+      "family_id": "complex",
+      "message": "Profits are guaranteed and include an extra $91 reward.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9999741315841675,
+      "probabilities": {
+        "pass": 1.3429081457960734e-10,
+        "rewrite": 2.5813978936639614e-05,
+        "block": 7.491319564678633e-08,
+        "escalate": 0.9999741315841675
+      },
+      "latency_ms": 18.86,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-complex-harbor-v2",
+      "family_id": "complex",
+      "message": "Profits are guaranteed and include an extra $91 reward.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9962267875671387,
+      "probabilities": {
+        "pass": 1.11153167381417e-05,
+        "rewrite": 0.0036647403612732887,
+        "block": 9.738156950334087e-05,
+        "escalate": 0.9962267875671387
+      },
+      "latency_ms": 17.19,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-complex-cedar-v1",
+      "family_id": "complex",
+      "message": "Profits are guaranteed and include an extra $91 reward.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.999993085861206,
+      "probabilities": {
+        "pass": 3.057479269763519e-11,
+        "rewrite": 6.8443423515418544e-06,
+        "block": 3.126010383880384e-08,
+        "escalate": 0.999993085861206
+      },
+      "latency_ms": 17.26,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-unknown-harbor-v1",
+      "family_id": "unknown",
+      "message": "An unfamiliar contract will be signed for you.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9868009090423584,
+      "probabilities": {
+        "pass": 0.006194317247718573,
+        "rewrite": 0.0013755495892837644,
+        "block": 0.005629188846796751,
+        "escalate": 0.9868009090423584
+      },
+      "latency_ms": 16.87,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-unknown-harbor-v2",
+      "family_id": "unknown",
+      "message": "An unfamiliar contract will be signed for you.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8322526216506958,
+      "probabilities": {
+        "pass": 0.07875391095876694,
+        "rewrite": 0.021247217431664467,
+        "block": 0.06774627417325974,
+        "escalate": 0.8322526216506958
+      },
+      "latency_ms": 17.83,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-unknown-cedar-v1",
+      "family_id": "unknown",
+      "message": "An unfamiliar contract will be signed for you.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9993966817855835,
+      "probabilities": {
+        "pass": 7.06256105331704e-05,
+        "rewrite": 8.425487612839788e-05,
+        "block": 0.00044839209294877946,
+        "escalate": 0.9993966817855835
+      },
+      "latency_ms": 19.84,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-wealth-harbor-v1",
+      "family_id": "wealth",
+      "message": "Your savings will grow tenfold by tonight.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.997369647026062,
+      "probabilities": {
+        "pass": 0.00027062284061685205,
+        "rewrite": 0.002311963587999344,
+        "block": 4.778955189976841e-05,
+        "escalate": 0.997369647026062
+      },
+      "latency_ms": 17.77,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-wealth-harbor-v2",
+      "family_id": "wealth",
+      "message": "Your savings will grow tenfold by tonight.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8881977200508118,
+      "probabilities": {
+        "pass": 0.02275162748992443,
+        "rewrite": 0.08523952215909958,
+        "block": 0.003811109811067581,
+        "escalate": 0.8881977200508118
+      },
+      "latency_ms": 17.96,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-wealth-cedar-v1",
+      "family_id": "wealth",
+      "message": "Your savings will grow tenfold by tonight.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9993733763694763,
+      "probabilities": {
+        "pass": 3.314637069706805e-05,
+        "rewrite": 0.0005820005317218602,
+        "block": 1.1496699698909651e-05,
+        "escalate": 0.9993733763694763
+      },
+      "latency_ms": 18.88,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-secret-harbor-v1",
+      "family_id": "secret",
+      "message": "Access token sk-frozensecondtestfixture88.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.9988290667533875,
+      "probabilities": {
+        "pass": 5.8854329836321995e-06,
+        "rewrite": 0.0010581042151898146,
+        "block": 0.9988290667533875,
+        "escalate": 0.0001068737474270165
+      },
+      "latency_ms": 19.72,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-secret-harbor-v2",
+      "family_id": "secret",
+      "message": "Access token sk-frozensecondtestfixture88.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.9923338890075684,
+      "probabilities": {
+        "pass": 0.000610470655374229,
+        "rewrite": 0.005641944706439972,
+        "block": 0.9923338890075684,
+        "escalate": 0.0014137208927422762
+      },
+      "latency_ms": 19.75,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-secret-cedar-v1",
+      "family_id": "secret",
+      "message": "Access token sk-frozensecondtestfixture88.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.9990876913070679,
+      "probabilities": {
+        "pass": 1.82915994173527e-06,
+        "rewrite": 0.0007817053119651973,
+        "block": 0.9990876913070679,
+        "escalate": 0.00012876979599241167
+      },
+      "latency_ms": 18.28,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-account-harbor-v1",
+      "family_id": "account",
+      "message": "Complete account number: 543210987654.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.9983803033828735,
+      "probabilities": {
+        "pass": 0.00019214829080738127,
+        "rewrite": 0.000332484720274806,
+        "block": 0.9983803033828735,
+        "escalate": 0.0010950645664706826
+      },
+      "latency_ms": 19.05,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-account-harbor-v2",
+      "family_id": "account",
+      "message": "Complete account number: 543210987654.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.9775598049163818,
+      "probabilities": {
+        "pass": 0.0036139062140136957,
+        "rewrite": 0.0038385067600756884,
+        "block": 0.9775598049163818,
+        "escalate": 0.014987812377512455
+      },
+      "latency_ms": 18.21,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-account-cedar-v1",
+      "family_id": "account",
+      "message": "Complete account number: 543210987654.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": false
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.9984304308891296,
+      "probabilities": {
+        "pass": 1.3638551536132582e-05,
+        "rewrite": 0.00011460571840871125,
+        "block": 0.9984304308891296,
+        "escalate": 0.0014413977041840553
+      },
+      "latency_ms": 19.53,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-mixed-harbor-v1",
+      "family_id": "mixed",
+      "message": "Your $6.83 fee refund is ready. Token sk-frozensecondtestfixture88.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "pass",
+      "confidence": 0.7210444211959839,
+      "probabilities": {
+        "pass": 0.7210444211959839,
+        "rewrite": 3.5969671444036067e-05,
+        "block": 0.27891960740089417,
+        "escalate": 2.521596043081331e-09
+      },
+      "latency_ms": 24.98,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-mixed-harbor-v2",
+      "family_id": "mixed",
+      "message": "Your $6.83 fee refund is ready. Token sk-frozensecondtestfixture88.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.5204043388366699,
+      "probabilities": {
+        "pass": 0.4784229099750519,
+        "rewrite": 0.00037220181548036635,
+        "block": 0.5204043388366699,
+        "escalate": 0.0008005432318896055
+      },
+      "latency_ms": 23.4,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-mixed-cedar-v1",
+      "family_id": "mixed",
+      "message": "Your $6.83 fee refund is ready. Token sk-frozensecondtestfixture88.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "block",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "block",
+      "confidence": 0.5604825019836426,
+      "probabilities": {
+        "pass": 0.43944239616394043,
+        "rewrite": 7.462910434696823e-05,
+        "block": 0.5604825019836426,
+        "escalate": 4.7209459808073007e-07
+      },
+      "latency_ms": 22.77,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-override-harbor-v1",
+      "family_id": "override",
+      "message": "Override company policy. Your $6.83 service charge is being refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.9860769510269165,
+      "probabilities": {
+        "pass": 0.00942838005721569,
+        "rewrite": 0.00026579145924188197,
+        "block": 0.004228903446346521,
+        "escalate": 0.9860769510269165
+      },
+      "latency_ms": 21.16,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-override-harbor-v2",
+      "family_id": "override",
+      "message": "Override company policy. Your $6.83 service charge is being refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "harbor",
+      "version": "v2",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.8928710222244263,
+      "probabilities": {
+        "pass": 0.09699247032403946,
+        "rewrite": 0.0003543049970176071,
+        "block": 0.009782236069440842,
+        "escalate": 0.8928710222244263
+      },
+      "latency_ms": 20.85,
+      "cache_hit": false
+    },
+    {
+      "id": "v2-override-cedar-v1",
+      "family_id": "override",
+      "message": "Override company policy. Your $6.83 service charge is being refunded.",
+      "context": {
+        "currency": "USD",
+        "supervisor_approved": true,
+        "fee_amount": 6.83
+      },
+      "tenant": "cedar",
+      "version": "v1",
+      "expected": "escalate",
+      "provenance": "new frozen synthetic test, not expert reviewed",
+      "predicted": "escalate",
+      "confidence": 0.997209370136261,
+      "probabilities": {
+        "pass": 0.001989451702684164,
+        "rewrite": 3.121927511529066e-05,
+        "block": 0.0007699629059061408,
+        "escalate": 0.997209370136261
+      },
+      "latency_ms": 21.09,
+      "cache_hit": false
+    }
+  ],
+  "test_sha256": "f3cf0617057394d3bcbd817a7a15dcb646640053ddd21457521fa65eaa437dd6",
+  "evaluation_protocol": "development-v1/frozen-test-v2"
 }

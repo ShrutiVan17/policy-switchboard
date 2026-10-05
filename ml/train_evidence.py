@@ -20,6 +20,9 @@ def main():
     p.add_argument('--batch-size',type=int,default=16)
     p.add_argument('--select-best-validation',action='store_true')
     args=p.parse_args()
+    import math
+    if args.epochs<1 or args.batch_size<1 or not math.isfinite(args.unsafe_penalty) or args.unsafe_penalty<0:
+        p.error('Positive epochs/batch size and a finite nonnegative unsafe penalty are required')
     import torch
     from transformers import AutoModel,AutoTokenizer,set_seed
     from peft import LoraConfig,get_peft_model
@@ -100,7 +103,8 @@ def main():
     policy=resolve(args.tenant,args.policy_version)
     manifest={'model':args.model,'revision':args.revision,'tenant':args.tenant,'policy_version':args.policy_version,'policy_sha256':policy.digest,
         'task':'evidence-classifier','labels':list(LABELS),'head_only':args.head_only,'evidence_features':list(__import__('ml.evidence_features',fromlist=['NAMES']).NAMES),
-        'training_sha256':hashes['train'],'validation_sha256':hashes['validation'],'epochs':args.epochs,'selected_epoch':selected_epoch,
+        'training_sha256':hashes['train'],'validation_sha256':hashes['validation'],'dataset_revision':Path(args.train).parent.name,
+        'epochs':args.epochs,'selected_epoch':selected_epoch,
         'selection_rule':'validation unsafe allows, then accuracy, then cross entropy' if args.select_best_validation else 'final fixed epoch',
         'batch_size':args.batch_size,'unsafe_penalty':args.unsafe_penalty,'seed':42,
         'hardware':torch.cuda.get_device_name() if device=='cuda' else 'CPU','wall_seconds':elapsed,

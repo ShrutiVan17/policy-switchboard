@@ -11,6 +11,7 @@ from .build_counterfactual import build
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--epochs',type=int,default=45)
     parser.add_argument('--head-only',action='store_true');args=parser.parse_args()
+    # This historical runner reproduces v5. Use repair_models for v6 candidates.
     prefix='control' if args.head_only else 'evidence'
     root=Path(__file__).resolve().parents[1]
     manifest=build(root/'data-v5')

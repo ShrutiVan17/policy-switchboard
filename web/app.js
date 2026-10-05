@@ -74,7 +74,8 @@ async function experiments(){
   try{const data=await api('/api/experiments');
     $('model-results').replaceChildren(...data.experiments.map(r=>{
       const n=el('article',undefined,'model-card');n.append(el('h3',r.name),el('strong',`${r.correct}/${r.total} correct`),el('p',`${r.invalid_outputs} invalid · ${Math.round(r.p95_ms)} ms batch p95`,'fine-print'),el('span',r.gate.status==='shadow-ready'?'Shadow ready':'Release blocked',`badge ${r.gate.status==='shadow-ready'?'pass':'escalate'}`));
-      if(r.challenge)n.append(el('p',`Unseen challenge: ${r.challenge.correct}/${r.challenge.total} · ${r.challenge.unsafe_allows} unsafe`,'fine-print'));
+      if(r.test)n.append(el('p',`New unseen test: ${r.test.correct}/${r.test.total} · ${r.test.unsafe_allows} unsafe`,'fine-print'));
+      else if(r.challenge)n.append(el('p',`Unseen challenge: ${r.challenge.correct}/${r.challenge.total} · ${r.challenge.unsafe_allows} unsafe`,'fine-print'));
       else if(r.holdout)n.append(el('p',`Synthetic validation: ${r.holdout.correct}/${r.holdout.total}`,'fine-print'));
       const d=el('details');d.append(el('summary','Evidence'),el('p',r.model),el('code',r.revision),el('p',r.gate.failures.join(' · ')||'Synthetic gate passed. Independent review required.'),el('p',`Report SHA-256: ${r.report_sha256}`,'fine-print'));n.append(d);return n;
     }));if(!data.experiments.length)$('model-results').append(el('p','No completed model runs yet.','fine-print'));

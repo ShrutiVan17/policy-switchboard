@@ -17,7 +17,7 @@ A $15 refund is allowed under Harbor's old $20 limit, held under its new $10 lim
 
 The interactive lab now uses **MiniLM with three customer/version LoRA adapters and trained verdict heads**. Explicit approval and amount facts supplement semantic embeddings. AI comparisons never deliver customer text.
 
-**Current measured result:** 70/72 smoke cases correct, zero unsafe allows on that benchmark; 59/66 on a frozen unseen synthetic challenge, including one unsafe allow. The gate rejects release. LoRA beats a frozen-encoder/head-only control (61/72 and 55/66). Monitored validation: 664/672, with zero exact messages shared with training. See [model study and reproduction](docs/MODEL_STUDY.md). The SmolLM results below are historical experiments.
+**Current measured result:** repaired LoRA 72/72 on the original checks, 66/66 on a newly frozen synthetic test, with zero unsafe approvals observed. A matched head-only control scores 67/72 and 62/66. The earlier challenge is now a development regression set after its failures informed coverage repairs. The gate permits shadow research only; customer model delivery remains disabled. See [architecture, company alignment and repaired mistakes](docs/ARCHITECTURE_AUDIT.md).
 
 See [measured results](docs/MODEL_REPORT.md), [trust boundaries](docs/TRUST.md) and [the interview guide](docs/INTERVIEW.md).
 
@@ -44,7 +44,9 @@ python -m pip install -r ml/requirements-tested.txt
 python -c "from ml.checkpoints import download; download('sentence-transformers/all-MiniLM-L6-v2','1110a243fdf4706b3f48f1d95db1a4f5529b4d41')"
 python -m ml.challenge
 python -m ml.improve_fast
-python -m ml.improve_fast --head-only
+python -m ml.challenge_v2
+python -m ml.repair_models
+python -m ml.train_control_v6
 ```
 
 Use a compatible PyTorch build for other hardware. Downloads stay in the project cache. No paid services or real customer data are used. GitHub contains source, manifests and measured reports; the local project bundle also contains adapter weights. Fresh clones can reproduce weights using the command above.
@@ -82,7 +84,7 @@ ZeroDrift publicly describes Gemma E4B, customer LoRA adapters, deterministic ru
 
 ## Evaluation limits
 
-The 72-case smoke suite includes 3 required-change pairs and 21 invariant pairs. Some schema seeds overlap training. The current run uses 608 training records and 224 monitored validation records per adapter. A separate 66-case frozen challenge is never used for training or checkpoint selection. Labels remain synthetic and unreviewed. Invalid JSON counts as wrong. Cached outputs are identified explicitly; uncached p95 excludes them. Dollar costs remain unknown.
+The 72-case smoke suite includes 3 required-change pairs and 21 invariant pairs. Some schema seeds overlap training. The repaired run adds broader semantic coverage. A new 66-case synthetic test is frozen before retraining; the earlier challenge is explicitly a development regression set. Labels remain synthetic and unreviewed. Invalid JSON counts as wrong. Cached outputs are identified explicitly; uncached p95 excludes them. Dollar costs remain unknown.
 
 Even a perfect synthetic gate permits shadow research only. Expert-reviewed representative data, rewrite review, adversarial testing and operational validation are prerequisites for customer deployment.
 

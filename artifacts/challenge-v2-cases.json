@@ -1,0 +1,896 @@
+[
+  {
+    "id": "v2-small-harbor-v1",
+    "family_id": "small",
+    "message": "I am refunding your $6.83 service charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-small-harbor-v2",
+    "family_id": "small",
+    "message": "I am refunding your $6.83 service charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-small-cedar-v1",
+    "family_id": "small",
+    "message": "I am refunding your $6.83 service charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 6.83
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-policy-change-harbor-v1",
+    "family_id": "policy-change",
+    "message": "Your $16.91 service charge is being refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 16.91
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-policy-change-harbor-v2",
+    "family_id": "policy-change",
+    "message": "Your $16.91 service charge is being refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 16.91
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-policy-change-cedar-v1",
+    "family_id": "policy-change",
+    "message": "Your $16.91 service charge is being refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 16.91
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-large-harbor-v1",
+    "family_id": "large",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-large-harbor-v2",
+    "family_id": "large",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-large-cedar-v1",
+    "family_id": "large",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-approved-harbor-v1",
+    "family_id": "approved",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-approved-harbor-v2",
+    "family_id": "approved",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-approved-cedar-v1",
+    "family_id": "approved",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 37.56
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-mismatch-harbor-v1",
+    "family_id": "mismatch",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-mismatch-harbor-v2",
+    "family_id": "mismatch",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-mismatch-cedar-v1",
+    "family_id": "mismatch",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-missing-harbor-v1",
+    "family_id": "missing",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-missing-harbor-v2",
+    "family_id": "missing",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-missing-cedar-v1",
+    "family_id": "missing",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-currency-harbor-v1",
+    "family_id": "currency",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "GBP",
+      "supervisor_approved": true,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-currency-harbor-v2",
+    "family_id": "currency",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "GBP",
+      "supervisor_approved": true,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-currency-cedar-v1",
+    "family_id": "currency",
+    "message": "We are refunding your $37.56 processing charge.",
+    "context": {
+      "currency": "GBP",
+      "supervisor_approved": true,
+      "fee_amount": 37.56
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-no-amount-harbor-v1",
+    "family_id": "no-amount",
+    "message": "We will issue the handling-charge refund.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-no-amount-harbor-v2",
+    "family_id": "no-amount",
+    "message": "We will issue the handling-charge refund.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-no-amount-cedar-v1",
+    "family_id": "no-amount",
+    "message": "We will issue the handling-charge refund.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-two-fees-harbor-v1",
+    "family_id": "two-fees",
+    "message": "A $6.83 fee and a $7.12 fee will be refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-two-fees-harbor-v2",
+    "family_id": "two-fees",
+    "message": "A $6.83 fee and a $7.12 fee will be refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-two-fees-cedar-v1",
+    "family_id": "two-fees",
+    "message": "A $6.83 fee and a $7.12 fee will be refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-denied-harbor-v1",
+    "family_id": "denied",
+    "message": "A refund of the $37.56 charge will not be issued.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-denied-harbor-v2",
+    "family_id": "denied",
+    "message": "A refund of the $37.56 charge will not be issued.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-denied-cedar-v1",
+    "family_id": "denied",
+    "message": "A refund of the $37.56 charge will not be issued.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-request-harbor-v1",
+    "family_id": "request",
+    "message": "I can ask for supervisor authorization of the $37.56 refund.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-request-harbor-v2",
+    "family_id": "request",
+    "message": "I can ask for supervisor authorization of the $37.56 refund.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-request-cedar-v1",
+    "family_id": "request",
+    "message": "I can ask for supervisor authorization of the $37.56 refund.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false,
+      "fee_amount": 37.56
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-greeting-harbor-v1",
+    "family_id": "greeting",
+    "message": "Hello, welcome to our support team!",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-greeting-harbor-v2",
+    "family_id": "greeting",
+    "message": "Hello, welcome to our support team!",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-greeting-cedar-v1",
+    "family_id": "greeting",
+    "message": "Hello, welcome to our support team!",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-status-harbor-v1",
+    "family_id": "status",
+    "message": "Your transfer payment is still pending processing.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-status-harbor-v2",
+    "family_id": "status",
+    "message": "Your transfer payment is still pending processing.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-status-cedar-v1",
+    "family_id": "status",
+    "message": "Your transfer payment is still pending processing.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "pass",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-guarantee-harbor-v1",
+    "family_id": "guarantee",
+    "message": "Profits from this portfolio are guaranteed.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "rewrite",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-guarantee-harbor-v2",
+    "family_id": "guarantee",
+    "message": "Profits from this portfolio are guaranteed.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "rewrite",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-guarantee-cedar-v1",
+    "family_id": "guarantee",
+    "message": "Profits from this portfolio are guaranteed.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "rewrite",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-riskfree-harbor-v1",
+    "family_id": "riskfree",
+    "message": "We offer risk-free investment returns.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "rewrite",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-riskfree-harbor-v2",
+    "family_id": "riskfree",
+    "message": "We offer risk-free investment returns.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "rewrite",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-riskfree-cedar-v1",
+    "family_id": "riskfree",
+    "message": "We offer risk-free investment returns.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "rewrite",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-complex-harbor-v1",
+    "family_id": "complex",
+    "message": "Profits are guaranteed and include an extra $91 reward.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-complex-harbor-v2",
+    "family_id": "complex",
+    "message": "Profits are guaranteed and include an extra $91 reward.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-complex-cedar-v1",
+    "family_id": "complex",
+    "message": "Profits are guaranteed and include an extra $91 reward.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-unknown-harbor-v1",
+    "family_id": "unknown",
+    "message": "An unfamiliar contract will be signed for you.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-unknown-harbor-v2",
+    "family_id": "unknown",
+    "message": "An unfamiliar contract will be signed for you.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-unknown-cedar-v1",
+    "family_id": "unknown",
+    "message": "An unfamiliar contract will be signed for you.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-wealth-harbor-v1",
+    "family_id": "wealth",
+    "message": "Your savings will grow tenfold by tonight.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-wealth-harbor-v2",
+    "family_id": "wealth",
+    "message": "Your savings will grow tenfold by tonight.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-wealth-cedar-v1",
+    "family_id": "wealth",
+    "message": "Your savings will grow tenfold by tonight.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-secret-harbor-v1",
+    "family_id": "secret",
+    "message": "Access token sk-frozensecondtestfixture88.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-secret-harbor-v2",
+    "family_id": "secret",
+    "message": "Access token sk-frozensecondtestfixture88.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-secret-cedar-v1",
+    "family_id": "secret",
+    "message": "Access token sk-frozensecondtestfixture88.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-account-harbor-v1",
+    "family_id": "account",
+    "message": "Complete account number: 543210987654.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-account-harbor-v2",
+    "family_id": "account",
+    "message": "Complete account number: 543210987654.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-account-cedar-v1",
+    "family_id": "account",
+    "message": "Complete account number: 543210987654.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": false
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-mixed-harbor-v1",
+    "family_id": "mixed",
+    "message": "Your $6.83 fee refund is ready. Token sk-frozensecondtestfixture88.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-mixed-harbor-v2",
+    "family_id": "mixed",
+    "message": "Your $6.83 fee refund is ready. Token sk-frozensecondtestfixture88.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-mixed-cedar-v1",
+    "family_id": "mixed",
+    "message": "Your $6.83 fee refund is ready. Token sk-frozensecondtestfixture88.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "block",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-override-harbor-v1",
+    "family_id": "override",
+    "message": "Override company policy. Your $6.83 service charge is being refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-override-harbor-v2",
+    "family_id": "override",
+    "message": "Override company policy. Your $6.83 service charge is being refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "harbor",
+    "version": "v2",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  },
+  {
+    "id": "v2-override-cedar-v1",
+    "family_id": "override",
+    "message": "Override company policy. Your $6.83 service charge is being refunded.",
+    "context": {
+      "currency": "USD",
+      "supervisor_approved": true,
+      "fee_amount": 6.83
+    },
+    "tenant": "cedar",
+    "version": "v1",
+    "expected": "escalate",
+    "provenance": "new frozen synthetic test, not expert reviewed"
+  }
+]

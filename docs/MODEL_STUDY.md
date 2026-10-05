@@ -1,5 +1,7 @@
 # Customer policy model study
 
+This is the historical v5 study. The current v6 repairs, new test and architecture comparison are in [the architecture audit](ARCHITECTURE_AUDIT.md).
+
 Three genuine LoRA adapters specialize a pinned MiniLM encoder for Harbor v1, Harbor v2 and Cedar v1. Each uses rank 8 query/value adapters and its own trained verdict head. Six explicit facts describe approval, currency, amount identity and policy limits. These facts are computed outside the network; scores measure the combined classifier, not learned arithmetic. The model emits four verdicts and generates no customer rewrites.
 
 | Experiment | Smoke correct | Smoke unsafe allows | Frozen challenge correct | Challenge unsafe allows |

@@ -12,7 +12,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, ConfigDict, Field
 
-from .engine import POLICIES, enforce
+from .engine import POLICIES, enforce, resolve
 from .evals import run
 from .release_gate import load_experiments
 from . import server
@@ -86,7 +86,9 @@ def demo_config():
 
 @app.get("/api/experiments")
 def experiments(tenant=Depends(authenticated_tenant)):
-    return load_experiments(server.ROOT)
+    try:return load_experiments(server.ROOT)
+    except (OSError,ValueError,TypeError,KeyError):
+        raise HTTPException(503,'Measured reports unavailable; release approval withheld') from None
 
 
 def trusted_context(body,tenant):
@@ -125,6 +127,8 @@ def check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
 def shadow_check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
     if body.tenant is not None and body.tenant != tenant:
         raise HTTPException(403, 'Tenant does not match authenticated key')
+    try:resolve(tenant,body.version)
+    except ValueError:raise HTTPException(400,'Unknown tenant policy version') from None
     if not (server.ROOT/f'models/evidence-{tenant}-{body.version}/run_manifest.json').exists():
         raise HTTPException(503, 'Trained adapter is not provisioned for this policy')
     try:

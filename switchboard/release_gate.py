@@ -5,7 +5,7 @@ Passing this synthetic gate never authorizes customer-facing model delivery.
 import hashlib
 import json
 from .benchmark import cases
-from .engine import VERDICTS
+from .engine import VERDICTS,resolve
 
 
 def digest_file(path):
@@ -65,6 +65,20 @@ def assess(report):
         if challenge_seen!=set(canonical):failures.append('A complete frozen 66-case challenge is required')
         if challenge_unsafe:failures.append(f'{challenge_unsafe} unsafe allow decisions on frozen challenge')
         if challenge_correct!=len(canonical):failures.append('Frozen challenge has incorrect decisions')
+    test_checked=test_correct=test_unsafe=0
+    if report.get('evaluation_protocol')=='development-v1/frozen-test-v2':
+        from ml.challenge_v2 import records as test_records
+        canonical={row['id']:row for row in test_records()};test_seen=set()
+        for row in report.get('test_rows',[]):
+            truth=canonical.get(row.get('id'))
+            if not truth or row['id'] in test_seen or any(row.get(k)!=truth[k] for k in ('message','context','tenant','version','expected','family_id')):
+                failures.append('New frozen test input or label was changed');continue
+            test_seen.add(row['id']);test_checked+=1
+            test_correct+=row.get('predicted')==truth['expected']
+            test_unsafe+=truth['expected']!='pass' and row.get('predicted')=='pass'
+        if test_seen!=set(canonical):failures.append('A complete new frozen test is required')
+        if test_unsafe:failures.append(f'{test_unsafe} unsafe allow decisions on new frozen test')
+        if test_correct!=len(canonical):failures.append('New frozen test has incorrect decisions')
     pair_map = {}
     for r in matched:
         if r['tenant'] == 'harbor': pair_map.setdefault(r['family_id'],{})[r['version']]=r
@@ -75,6 +89,7 @@ def assess(report):
             'checked': len(matched), 'correct': len(matched)-wrong,
             'invalid': invalid, 'unsafe_allows': unsafe, 'unnecessary_holds': unnecessary,
             'challenge_checked':challenge_checked,'challenge_correct':challenge_correct,'challenge_unsafe_allows':challenge_unsafe,
+            'test_checked':test_checked,'test_correct':test_correct,'test_unsafe_allows':test_unsafe,
             'required_changes_correct':sum(all(r['predicted']==r['expected'] for r in p.values()) for p in changes),
             'required_changes_total':len(changes),
             'invariant_regressions':sum(any(r['predicted']!=r['expected'] for r in p.values()) for p in invariants),
@@ -102,21 +117,43 @@ def load_experiments(root):
                     (root/relative).resolve().is_relative_to((root/'models').resolve()) for relative in fingerprints)
             except OSError:
                 artifacts_verified = False
-        if report.get('backend') == 'lora' and not artifacts_verified:
+        if artifacts_verified and report.get('backend') in {'lora','head-only'}:
+            try:
+                for key,relative in report['adapter_registry'].items():
+                    tenant,version=key.split('/')
+                    manifest=json.loads((root/relative/'run_manifest.json').read_text(encoding='utf-8'))
+                    if (manifest['tenant'],manifest['policy_version'],manifest['policy_sha256'],manifest['model'],manifest['revision'])!=(tenant,version,resolve(tenant,version).digest,report['model'],report['revision']):
+                        raise ValueError('Report and trained model identities differ')
+                    if manifest.get('task')=='evidence-classifier':
+                        if report.get('architecture')!='evidence-classifier' or manifest['labels']!=list(VERDICTS):
+                            raise ValueError('Classifier contract omitted or changed')
+                        if manifest['head_only']!=(report['backend']=='head-only'):
+                            raise ValueError('Control mislabeled as adapted encoder')
+                        if manifest.get('dataset_revision')=='data-v6' and report.get('evaluation_protocol')!='development-v1/frozen-test-v2':
+                            raise ValueError('Required new-test protocol omitted')
+            except (OSError,ValueError,KeyError,TypeError):artifacts_verified=False
+        if report.get('backend') in {'lora','head-only'} and not artifacts_verified:
             gate['status'] = 'rejected'
             gate['failures'].append('Local adapter artifacts are missing or changed')
         holdout_path=root/'artifacts'/name.replace('.json','-holdout.json')
         holdout=json.loads(holdout_path.read_text()) if holdout_path.exists() else None
         challenge_path=root/'artifacts'/name.replace('.json','-challenge.json')
         challenge=json.loads(challenge_path.read_text()) if challenge_path.exists() else None
+        test_path=root/'artifacts'/name.replace('.json','-test.json')
+        test=json.loads(test_path.read_text(encoding='utf-8')) if test_path.exists() else None
+        # UI counts come from checked predictions, not editable summary counters.
+        challenge_summary={'correct':gate['challenge_correct'],'total':gate['challenge_checked'],
+                           'unsafe_allows':gate['challenge_unsafe_allows']} if gate['challenge_checked'] else None
+        test_summary={'correct':gate['test_correct'],'total':gate['test_checked'],
+                      'unsafe_allows':gate['test_unsafe_allows']} if gate['test_checked'] else None
         experiments.append({'name': 'Head-only baseline' if report.get('backend')=='head-only' else 'Customer evidence LoRA' if report.get('architecture')=='evidence-classifier' else 'Customer LoRA' if report.get('backend') == 'lora' else 'Base model',
             'backend': report.get('backend'), 'model': report.get('model'),
-            'revision': report.get('revision'), 'total': report['total'], 'correct': report['correct'],
-            'invalid_outputs': report.get('invalid_outputs'), 'p95_ms': report.get('p95_uncached_ms'),
+            'revision': report.get('revision'), 'total': gate['checked'], 'correct': gate['correct'],
+            'invalid_outputs': gate['invalid'], 'p95_ms': report.get('p95_uncached_ms'),
             'wall_ms': report.get('wall_ms'), 'report_sha256': digest_file(path),
             'batch_size':report.get('batch_size',1),'cases_per_second':report.get('cases_per_second'),
             'artifacts_verified': artifacts_verified, 'gate': gate,
-            'challenge':{'correct':challenge['correct'],'total':challenge['total'],'unsafe_allows':challenge['unsafe_allows']} if challenge else None,
+            'challenge':challenge_summary,'test':test_summary,
             'holdout': {'correct':holdout['correct'],'total':holdout['total'],'invalid':holdout['invalid_outputs']} if holdout else None})
     return {'experiments': experiments, 'live_backend': 'deterministic',
             'delivery_mode': 'Verified rules only', 'data_status': 'Synthetic, awaiting independent review'}
