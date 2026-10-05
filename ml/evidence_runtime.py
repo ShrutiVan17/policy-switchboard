@@ -12,6 +12,7 @@ from .checkpoints import local_source
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = threading.Lock()
 STATE = {}
+MANIFESTS = {}
 
 
 def load(tenant, version, model_prefix='evidence'):
@@ -48,16 +49,23 @@ def predict(message, context, tenant, version, model_prefix='evidence'):
     start = time.perf_counter()
     with LOCK:
         key = (tenant, version, model_prefix)
-        if key not in STATE:
+        path=ROOT/'models'/f'{model_prefix}-{tenant}-{version}'
+        current_manifest=digest_file(path/'run_manifest.json')
+        if key not in STATE or MANIFESTS.get(key)!=current_manifest:
             STATE[key] = load(tenant, version, model_prefix)
+            MANIFESTS[key]=current_manifest
         model, tokenizer, manifest = STATE[key]
+        for filename,field in [('adapter_model.safetensors','adapter_sha256'),('evidence_head.safetensors','head_sha256'),('adapter_config.json','adapter_config_sha256')]:
+            if digest_file(path/filename)!=manifest[field]:raise RuntimeError('Changed serving artifact; inference withheld')
         tokens = tokenizer(message, return_tensors='pt')
         if tokens['input_ids'].shape[-1] > 128:
             raise ValueError('AI comparison supports messages up to 128 tokens')
         facts = features(message, context, tenant, version)
         with torch.inference_mode():
-            probs = model(input_ids=tokens['input_ids'], attention_mask=tokens['attention_mask'],
-                          evidence=torch.tensor([facts], dtype=torch.float32)).softmax(-1)[0].tolist()
+            probabilities=model(input_ids=tokens['input_ids'], attention_mask=tokens['attention_mask'],
+                          evidence=torch.tensor([facts], dtype=torch.float32)).softmax(-1)[0]
+            if not torch.isfinite(probabilities).all():raise RuntimeError('Nonfinite verdict probabilities; inference withheld')
+            probs=probabilities.tolist()
         index = max(range(len(probs)), key=probs.__getitem__)
         return {'model_verdict': LABELS[index], 'confidence': probs[index], 'probabilities': probs,
                 'latency_ms': round((time.perf_counter()-start)*1000, 2),

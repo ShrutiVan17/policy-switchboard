@@ -1,6 +1,6 @@
 # Policy Switchboard
 
-**What should change when a customer's policy changes—and what must stay correct?**
+**What should change when a customer's policy changesâ€”and what must stay correct?**
 
 A $15 refund is allowed under Harbor's old $20 limit, held under its new $10 limit, and held under Cedar's approval policy. This application makes those differences playable, measurable and traceable.
 
@@ -17,7 +17,7 @@ A $15 refund is allowed under Harbor's old $20 limit, held under its new $10 lim
 
 The interactive lab now uses **MiniLM with three customer/version LoRA adapters and trained verdict heads**. Explicit approval and amount facts supplement semantic embeddings. AI comparisons never deliver customer text.
 
-**Current measured result:** 56/72 smoke cases correct, zero invalid verdicts, 14 unsafe allows; warm CPU p95 15 ms. The gate rejects this model. Monitored synthetic validation: 132/144, with 18 messages also present verbatim in training. See [fast-model reproduction and limits](docs/FAST_MODEL.md). The SmolLM results below are historical experiments.
+**Current measured result:** 70/72 smoke cases correct, zero unsafe allows on that benchmark; 59/66 on a frozen unseen synthetic challenge, including one unsafe allow. The gate rejects release. LoRA beats a frozen-encoder/head-only control (61/72 and 55/66). Monitored validation: 664/672, with zero exact messages shared with training. See [model study and reproduction](docs/MODEL_STUDY.md). The SmolLM results below are historical experiments.
 
 See [measured results](docs/MODEL_REPORT.md), [trust boundaries](docs/TRUST.md) and [the interview guide](docs/INTERVIEW.md).
 
@@ -41,7 +41,8 @@ The rules playground works without ML packages. To reproduce the AI lab:
 ```powershell
 python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 python -m pip install -r ml/requirements-tested.txt
-python -m ml.run_experiment --epochs 3
+python -m ml.improve_fast
+python -m ml.improve_fast --head-only
 ```
 
 Use a compatible PyTorch build for other hardware. Downloads stay in the project cache. No paid services or real customer data are used. GitHub contains source, manifests and measured reports; the local project bundle also contains adapter weights. Fresh clones can reproduce weights using the command above.
@@ -62,9 +63,9 @@ The approval toggle is fictional demo context. Production must retrieve approval
 | --- | --- | --- |
 | API | Python, FastAPI, Pydantic, Uvicorn | Typed requests, tenant routing, OpenAPI |
 | UI | HTML, CSS, JavaScript | Responsive animated playground without build tooling |
-| Adaptation | PyTorch, Transformers, PEFT, TRL | Completion-only LoRA training, rank 16 |
-| Base model | SmolLM2-135M-Instruct, pinned commit | Open, small enough for local GPU experiments |
-| Evaluation | Case-level Python harness | Changed/invariant pairs, invalid outputs, held-out wording, exact cache |
+| Adaptation | PyTorch, Transformers, PEFT | Rank 8 encoder LoRA, customer verdict heads, unsafe-allow penalty |
+| Current base | MiniLM-L6-v2, pinned commit | Bounded semantic classification and fast CPU serving |
+| Evaluation | Counterfactual harness and frozen challenge | Raw decisions, policy changes, safety errors, calibration and ablation |
 | Release checks | Canonical cases and SHA-256 identities | Fail closed on errors or changed artifacts |
 | Evidence | SQLite and policy hashes | Tenant-scoped records with matched-secret redaction |
 | Quality | unittest and GitHub Actions | Boundary, API, dataset and release-gate checks |
@@ -79,7 +80,7 @@ ZeroDrift publicly describes Gemma E4B, customer LoRA adapters, deterministic ru
 
 ## Evaluation limits
 
-The 72-case smoke suite includes 3 required-change pairs and 21 invariant pairs. Some schema seeds overlap training. A separate 132-case validation suite holds out complete refund wording families; its labels are still synthetic and unreviewed. Invalid JSON counts as wrong. Cached outputs are identified explicitly; uncached p95 excludes them. Dollar costs remain unknown.
+The 72-case smoke suite includes 3 required-change pairs and 21 invariant pairs. Some schema seeds overlap training. The current run uses 608 training records and 224 monitored validation records per adapter. A separate 66-case frozen challenge is never used for training or checkpoint selection. Labels remain synthetic and unreviewed. Invalid JSON counts as wrong. Cached outputs are identified explicitly; uncached p95 excludes them. Dollar costs remain unknown.
 
 Even a perfect synthetic gate permits shadow research only. Expert-reviewed representative data, rewrite review, adversarial testing and operational validation are prerequisites for customer deployment.
 
@@ -109,4 +110,4 @@ flowchart LR
 
 This is a loopback-only fictional-data research application, with deliberately public demo keys. It is not a hosted production service or regulatory certification.
 
-[Run guide](RUN.md) · [Demo walkthrough](DEMO.md) · [Model report](docs/MODEL_REPORT.md) · [Trust boundaries](docs/TRUST.md) · [Stack alignment](docs/STACK.md)
+[Run guide](RUN.md) Â· [Demo walkthrough](DEMO.md) Â· [Model report](docs/MODEL_REPORT.md) Â· [Trust boundaries](docs/TRUST.md) Â· [Stack alignment](docs/STACK.md)

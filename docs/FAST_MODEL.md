@@ -1,5 +1,7 @@
 # Fast evidence classifier
 
+This records the historical v3 experiment. The improved model, control comparison, challenge and reproduction commands are in [the current model study](MODEL_STUDY.md).
+
 The AI lab now runs a bounded CPU classifier instead of generating up to 220 tokens. The first request loads a locally provisioned checkpoint; subsequent requests use a locked in-process cache. The browser times out after 15 seconds. Inference cannot download models.
 
 Three genuine customer/version LoRA adapters were trained on `sentence-transformers/all-MiniLM-L6-v2`, revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` (Apache-2.0). Query/value projections use rank 8 LoRA. A trained head combines normalized, attention-masked embeddings with six explicit approval, currency and amount facts. Structural facts are computed outside the neural model; reported quality measures the combined system, not learned arithmetic. The classifier produces no rewrites.

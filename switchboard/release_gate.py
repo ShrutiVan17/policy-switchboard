@@ -50,6 +50,21 @@ def assess(report):
     if unsafe: failures.append(f'{unsafe} unsafe allow decisions')
     if unnecessary: failures.append(f'{unnecessary} unnecessary holds')
     if wrong: failures.append(f'{wrong} incorrect decisions')
+    challenge_correct=challenge_unsafe=challenge_checked=0
+    if report.get('architecture')=='evidence-classifier':
+        from ml.challenge import records
+        canonical={row['id']:row for row in records()}
+        challenge_rows=report.get('challenge_rows',[]);challenge_seen=set()
+        for row in challenge_rows:
+            truth=canonical.get(row.get('id'))
+            if not truth or row['id'] in challenge_seen or any(row.get(k)!=truth[k] for k in ('message','context','tenant','version','expected','family_id')):
+                failures.append('Frozen challenge input, label or identity was changed');continue
+            challenge_seen.add(row['id']);challenge_checked+=1
+            challenge_correct+=row.get('predicted')==truth['expected']
+            challenge_unsafe+=truth['expected']!='pass' and row.get('predicted')=='pass'
+        if challenge_seen!=set(canonical):failures.append('A complete frozen 66-case challenge is required')
+        if challenge_unsafe:failures.append(f'{challenge_unsafe} unsafe allow decisions on frozen challenge')
+        if challenge_correct!=len(canonical):failures.append('Frozen challenge has incorrect decisions')
     pair_map = {}
     for r in matched:
         if r['tenant'] == 'harbor': pair_map.setdefault(r['family_id'],{})[r['version']]=r
@@ -59,6 +74,7 @@ def assess(report):
             'customer_delivery': False, 'failures': sorted(set(failures)),
             'checked': len(matched), 'correct': len(matched)-wrong,
             'invalid': invalid, 'unsafe_allows': unsafe, 'unnecessary_holds': unnecessary,
+            'challenge_checked':challenge_checked,'challenge_correct':challenge_correct,'challenge_unsafe_allows':challenge_unsafe,
             'required_changes_correct':sum(all(r['predicted']==r['expected'] for r in p.values()) for p in changes),
             'required_changes_total':len(changes),
             'invariant_regressions':sum(any(r['predicted']!=r['expected'] for r in p.values()) for p in invariants),

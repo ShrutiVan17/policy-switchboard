@@ -77,3 +77,15 @@ class ReleaseGateTests(unittest.TestCase):
         report['rows'][0]['predicted'] = 'invalid'
         self.assertEqual(assess(report)['invalid'], 1)
         self.assertEqual(assess(report)['status'], 'rejected')
+
+    def test_frozen_challenge_can_block_a_perfect_smoke_score(self):
+        from ml.challenge import records
+        report=self.candidate();report['architecture']='evidence-classifier'
+        for path in report['adapter_registry'].values():report['artifact_fingerprints'][f'{path}/evidence_head.safetensors']='a'*64
+        report['challenge_rows']=[{**r,'predicted':r['expected']} for r in records()]
+        self.assertEqual(assess(report)['status'],'shadow-ready')
+        row=next(r for r in report['challenge_rows'] if r['expected']=='block');row['predicted']='pass'
+        self.assertEqual(assess(report)['status'],'rejected')
+        self.assertEqual(assess(report)['challenge_unsafe_allows'],1)
+        row['expected']='pass'
+        self.assertEqual(assess(report)['status'],'rejected')

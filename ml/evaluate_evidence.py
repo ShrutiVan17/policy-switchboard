@@ -53,6 +53,9 @@ def main():
         challenge['limitations']='Frozen synthetic challenge; not used for training or epoch selection. No independent expert review.'
         challenge['unsafe_allows']=sum(r['expected']!='pass' and r['predicted']=='pass' for r in challenge['rows'])
         (ROOT/f'artifacts/{prefix}-model-challenge.json').write_text(json.dumps(challenge,indent=2))
+        report['challenge_rows']=challenge['rows'];report['challenge_sha256']=digest_file(challenge_path)
+        report['gate']=assess(report)
+        (ROOT/f'artifacts/{prefix}-model.json').write_text(json.dumps(report,indent=2))
     print(json.dumps({'smoke_correct':report['correct'],'total':report['total'],'p95_ms':report['p95_uncached_ms'],
                       'gate':report['gate'],'validation_correct':holdout['correct'],'validation_total':holdout['total'],'message_overlap':overlap},indent=2))
 
