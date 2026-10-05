@@ -1,63 +1,72 @@
 'use strict';
-const $ = id => document.getElementById(id);
-let config, report;
-const targets = [['harbor','v1'],['harbor','v2'],['cedar','v1']];
+const $=id=>document.getElementById(id);
+const targets=[['harbor','v1'],['harbor','v2'],['cedar','v1']];
 const labels={pass:'Safe to send',escalate:'Needs review',block:'Blocked',rewrite:'Fixed'};
-const policyNames={'harbor/v1':'Harbor · Previous rules','harbor/v2':'Harbor · New rules','cedar/v1':'Cedar · Different company'};
-function el(tag, text, cls) { const n = document.createElement(tag); if(text !== undefined) n.textContent=text; if(cls) n.className=cls; return n; }
-async function api(path, body, tenant='harbor') {
-  const response = await fetch(path, {method:body ? 'POST':'GET', headers:{'Content-Type':'application/json','Authorization':`Bearer ${config.keys[tenant]}`}, ...(body ? {body:JSON.stringify(body)}:{})});
-  const result = await response.json(); if(!response.ok) throw new Error(result.error || result.detail?.[0]?.msg || 'Please check the message and refund details.'); return result;
+const icons={pass:'✓',escalate:'?',block:'×',rewrite:'✦'};
+const names={'harbor/v1':'Harbor · $20 limit','harbor/v2':'Harbor · $10 limit','cedar/v1':'Cedar · Approval'};
+let config,report;
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
+async function api(path,body,tenant='harbor'){
+  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),8000);
+  try{const r=await fetch(path,{method:body?'POST':'GET',signal:controller.signal,headers:{'Content-Type':'application/json','Authorization':`Bearer ${config.keys[tenant]}`},...(body?{body:JSON.stringify(body)}:{})});const data=await r.json();if(!r.ok)throw new Error(data.error||data.detail?.[0]?.msg||'Check your input.');return data;}
+  finally{clearTimeout(timer);}
 }
-function card(result) {
-  const item=el('article',undefined,'decision'); const head=el('div',undefined,'decision-header');
-  const name=el('div',policyNames[`${result.tenant}/${result.policy_version}`],'tenant-name');
-  head.append(name,el('span',labels[result.verdict],`badge ${result.verdict}`));
-  const limit=result.tenant==='cedar'?'Every refund needs approval.':`Refunds over $${result.policy_version==='v1'?20:10} need approval.`;
-  let reason=result.reason;
-  if(reason==='Message matches supported policy checks.') reason='This message is allowed by the demo rules.';
-  if(reason==='Supervisor approval is required under this policy version.') reason='Ask a supervisor before promising this refund.';
-  item.append(head,el('p',limit,'policy-summary'),el('p',reason));
-  item.append(el('div',result.delivered_output ? `Message allowed: “${result.delivered_output}”` : result.proposed_output ? `Keep the original unsent. Suggested message for review: “${result.proposed_output}”`:'Keep this message unsent. No replacement is approved.','output'));
-  return item;
+function card(result){
+  const n=el('article',undefined,`decision ${result.verdict}`);
+  const icon=el('div',icons[result.verdict],'result-icon');icon.setAttribute('aria-hidden','true');
+  const content=el('div');const head=el('div',undefined,'decision-header');head.append(el('div',names[`${result.tenant}/${result.policy_version}`],'tenant-name'),el('span',labels[result.verdict],`badge ${result.verdict}`));content.append(head);
+  let text='';
+  if(result.verdict==='pass')text='Message allowed.';
+  if(result.verdict==='escalate')text='Wait for a person to approve.';
+  if(result.verdict==='block')text='Private information. Keep it unsent.';
+  if(result.verdict==='rewrite')text=result.delivered_output||'Review the replacement.';
+  content.append(el('div',text,'output'));
+  const detail=el('details');detail.append(el('summary','Why?'),el('p',result.reason));if(result.proposed_output&&!result.delivered_output)detail.append(el('p',result.proposed_output));content.append(detail);n.append(icon,content);return n;
 }
-async function replay() {
-  const controls=[...document.querySelectorAll('.composer button, .composer input, .composer textarea')];
-  controls.forEach(c=>{c.disabled=true;});
-  $('results').replaceChildren(el('p','Checking the company rules…','empty'));
-  $('status').textContent='Checking your message…';
-  try {
-    const context={currency:'USD',supervisor_approved:$('approved').checked};
-    if($('amount').value!=='') context.fee_amount=Number($('amount').value);
-    const results=await Promise.all(targets.map(([tenant,version])=>api('/api/enforce',{message:$('message').value,version,context},tenant)));
-    $('results').replaceChildren(...results.map(card));
-    $('status').textContent=`Checked all ${results.length} rule sets. Results are saved.`;
-    await evidence();
-  } catch(err) { $('status').textContent=`Replay failed: ${err.message}. Output withheld.`; $('results').replaceChildren(el('p','Replay failed. Outputs withheld.','empty')); }
-  finally { controls.forEach(c=>{c.disabled=false;}); }
+function celebrate(){
+  if(reducedMotion.matches)return;
+  const colors=['#b6da7a','#aa87f0','#f4ba74','#ee98b7'];const pieces=[];
+  for(let i=0;i<30;i++){const p=el('i',undefined,'confetti-piece');p.style.setProperty('--x',`${Math.random()*100}%`);p.style.setProperty('--color',colors[i%colors.length]);p.style.setProperty('--delay',`${Math.random()*.3}s`);p.style.setProperty('--drift',`${(Math.random()-.5)*200}px`);p.style.setProperty('--rotation',`${Math.random()*700}deg`);pieces.push(p);}
+  $('confetti').replaceChildren(...pieces);setTimeout(()=>$('confetti').replaceChildren(),1900);
 }
-function metric(label,value,note){const n=el('div');n.append(el('small',label),el('strong',value),el('span',note));return n;}
-const pct=x=>x===null?'N/A':`${(x*100).toFixed(1)}%`;
-async function evaluate(mode) {
-  $('eval-btn').disabled=$('triage-btn').disabled=true;
-  $('eval-note').textContent='Checking the example messages…';
-  try {
-    report=await api('/api/evaluate',{mode});
-    $('metrics').replaceChildren(metric('CORRECT ANSWERS',`${report.correct}/${report.total}`,'Fictional examples checked'),metric('RULE CHANGES HANDLED',pct(report.changed_pair_accuracy),`${report.changed_pairs} answers that should change`),metric('NEW MISTAKES',pct(report.invariant_pair_error_rate),`${report.invariant_pairs} answers that should stay correct`),metric('TIME TAKEN',`${report.wall_ms.toFixed(1)} ms`,`${report.cache_hits} saved results reused`));
-    $('eval-rows').replaceChildren(...report.rows.map(r=>{const row=el('tr'); const ok=r.expected===r.predicted; row.append(el('td',r.message),el('td',policyNames[`${r.tenant}/${r.version}`]),el('td',labels[r.expected]),el('td',labels[r.predicted]||r.predicted),el('td',ok?'✓ Correct':'✕ Incorrect',ok?'ok':'fail'));return row;}));
-    $('eval-note').textContent=`${mode==='triage'?'Changed-rule check finished. Run all 72 examples before considering a release.':'All examples checked.'} This is a small test of built-in rules, not proof of trained AI accuracy or real-world compliance. Cost savings have not been measured.`;
-    $('download-btn').disabled=false;
-  } catch(err) {$('eval-note').textContent=`Evaluation failed: ${err.message}`;}
-  finally {$('eval-btn').disabled=$('triage-btn').disabled=false;}
+async function replay({celebration=true}={}){
+  if(!config){$('status').textContent='Connecting…';return;}
+  const controls=[...document.querySelectorAll('.composer button,.composer input,.composer textarea,.presets button')];controls.forEach(n=>{n.disabled=true;});
+  document.querySelector('.workspace').classList.add('is-checking');
+  const dots=el('div',undefined,'loading-orbit');dots.setAttribute('aria-label','Checking');dots.append(el('i'),el('i'),el('i'));$('results').replaceChildren(dots);$('status').textContent='Checking…';
+  try{
+    const context={currency:'USD',supervisor_approved:$('approved').checked};if($('amount').value!=='')context.fee_amount=Number($('amount').value);
+    const requests=Promise.all(targets.map(([tenant,version])=>api('/api/enforce',{message:$('message').value,version,context},tenant)));
+    // Short presentation animation, never included in measured inference latency.
+    const [results]=await Promise.all([requests,new Promise(resolve=>setTimeout(resolve,reducedMotion.matches?0:650))]);
+    $('results').replaceChildren(...results.map(card));$('status').textContent='Checked ✓';
+    if(celebration&&results.every(r=>r.verified&&['pass','rewrite'].includes(r.verdict)))celebrate();
+    evidence().catch(()=>{});
+  }catch(error){$('status').textContent=error.name==='AbortError'?'Connection timed out.':error.message;$('results').replaceChildren(el('p','Not checked. Keep it unsent.','empty'));}
+  finally{document.querySelector('.workspace').classList.remove('is-checking');controls.forEach(n=>{n.disabled=false;});}
 }
-async function evidence(){
-  const {events}=await api('/api/evidence');
-  $('events').replaceChildren(...events.slice(0,8).map(e=>{const n=el('article',undefined,'event');const left=el('div',`Harbor / ${e.policy_version}`);left.append(el('small',new Date(e.created_at).toLocaleTimeString()));const center=el('div');center.append(el('code',e.evidence_id),el('small',`Policy ${e.policy_hash.slice(0,12)} · ${e.engine_revision}`));n.append(left,center,el('span',e.verdict.toUpperCase(),`badge ${e.verdict}`));const detail=el('details');detail.append(el('summary','Inspect decision evidence'),el('pre',JSON.stringify(e,null,2)));n.append(detail);return n;}));
-  if(!events.length) $('events').append(el('p','No Harbor evidence records yet.','empty'));
+function metric(label,value){const n=el('div');n.append(el('small',label),el('strong',value));return n;}
+const pct=value=>value===null?'—':`${Math.round(value*100)}%`;
+async function evaluate(mode){
+  if(!config)return;
+  $('eval-btn').disabled=$('triage-btn').disabled=true;$('eval-note').textContent='Checking…';
+  try{report=await api('/api/evaluate',{mode});$('metrics').replaceChildren(metric('CORRECT',`${report.correct}/${report.total}`),metric('CHANGED',pct(report.changed_pair_accuracy)),metric('NEW ERRORS',pct(report.invariant_pair_error_rate)),metric('TIME',`${report.wall_ms.toFixed(1)}ms`));
+    $('eval-rows').replaceChildren(...report.rows.map(r=>{const row=el('tr');row.append(el('td',r.message),el('td',names[`${r.tenant}/${r.version}`]),el('td',labels[r.expected]),el('td',labels[r.predicted]||r.predicted,r.expected===r.predicted?'ok':'fail'));return row;}));
+    $('eval-note').textContent=`${report.total} synthetic examples · ${report.cache_hits} saved results reused.`;$('download-btn').disabled=false;
+    if(report.correct===report.total)celebrate();
+  }catch(error){$('eval-note').textContent=error.message;}
+  finally{$('eval-btn').disabled=$('triage-btn').disabled=false;}
 }
-const presets={boundary:['I can refund your $10.01 transfer fee now.','10.01'],invariant:['I can refund your $5 transfer fee now.','5'],claim:['This fund offers guaranteed returns.',''],secret:['Our API key is sk-demo123456789.','']};
-document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{const [message,amount]=presets[b.dataset.preset];$('message').value=message;$('amount').value=amount;$('approved').checked=false;replay();}));
-$('replay-btn').addEventListener('click',replay);$('eval-btn').addEventListener('click',()=>evaluate('full'));$('triage-btn').addEventListener('click',()=>evaluate('triage'));$('refresh-btn').addEventListener('click',()=>evidence().catch(e=>{$('status').textContent=e.message;}));
-$('download-btn').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=`policy-switchboard-${report.mode}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-fetch('/api/demo-config').then(r=>{if(!r.ok)throw new Error('Configuration unavailable');return r.json();}).then(c=>{config=c;return replay();}).catch(e=>{$('status').textContent=`Service unavailable: ${e.message}`;});
-fetch('/api/health').then(r=>r.json()).then(h=>{$('framework-note').textContent=`Active API: ${h.api_framework||'Python standard-library fallback'}. Message checking uses built-in rules. No trained model is active.`;}).catch(()=>{$('framework-note').textContent='API status unavailable.';});
+async function evidence(){const {events}=await api('/api/evidence');$('events').replaceChildren(...events.slice(0,5).map(e=>{const n=el('article',undefined,'event');const left=el('div',e.policy_version==='v1'?'Harbor · $20':'Harbor · $10');left.append(el('small',new Date(e.created_at).toLocaleTimeString()));const center=el('code',e.evidence_id);n.append(left,center,el('span',labels[e.verdict],`badge ${e.verdict}`));const detail=el('details');detail.append(el('summary','Record'),el('pre',JSON.stringify(e,null,2)));n.append(detail);return n;}));}
+const presets={refund:['I can refund your $15 transfer fee now.','15'],boundary:['I can refund your $10.01 transfer fee now.','10.01'],invariant:['I can refund your $5 transfer fee now.','5'],claim:['This fund offers guaranteed returns.',''],secret:['Our API key is sk-demo123456789.','']};
+function choose(key){const [message,amount]=presets[key];$('message').value=message;$('amount').value=amount;$('approved').checked=false;document.querySelectorAll('[data-preset]').forEach(b=>b.classList.toggle('active',b.dataset.preset===key));replay();}
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.preset)));
+$('surprise-btn').addEventListener('click',()=>{const keys=Object.keys(presets);choose(keys[Math.floor(Math.random()*keys.length)]);});
+$('approved').addEventListener('change',()=>replay());
+$('amount').addEventListener('change',()=>{if(/^I can refund your \$[\d.]+ transfer fee now\.$/.test($('message').value)&&$('amount').value!=='')$('message').value=`I can refund your $${$('amount').value} transfer fee now.`;document.querySelectorAll('[data-preset]').forEach(b=>b.classList.remove('active'));replay();});
+$('message').addEventListener('input',()=>{document.querySelectorAll('[data-preset]').forEach(b=>b.classList.remove('active'));$('status').textContent='Edited · check again.';$('results').replaceChildren(el('p','Ready to check.','empty'));});
+$('message').addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();replay();}});
+$('replay-btn').addEventListener('click',()=>replay());$('eval-btn').addEventListener('click',()=>evaluate('full'));$('triage-btn').addEventListener('click',()=>evaluate('triage'));$('refresh-btn').addEventListener('click',()=>evidence().catch(()=>{}));
+$('download-btn').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download=`switchboard-${report.mode}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+fetch('/api/demo-config').then(r=>{if(!r.ok)throw new Error('Connection unavailable.');return r.json();}).then(c=>{config=c;return replay({celebration:false});}).catch(error=>{$('status').textContent=error.message;});
