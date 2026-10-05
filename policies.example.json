@@ -1,0 +1,8 @@
+{
+  "status": "fictional demo policies",
+  "policies": [
+    {"tenant_id":"harbor","version":"v1","policy_id":"REFUND-01","description":"A support agent may authorize a transfer-fee refund up to 20 USD without supervisor approval. Above that amount, verified supervisor approval is required.","currency":"USD","self_approval_limit":20},
+    {"tenant_id":"harbor","version":"v2","policy_id":"REFUND-01","description":"A support agent may authorize a transfer-fee refund up to 10 USD without supervisor approval. Above that amount, verified supervisor approval is required.","currency":"USD","self_approval_limit":10},
+    {"tenant_id":"cedar","version":"v1","policy_id":"REFUND-01","description":"Every transfer-fee refund requires verified supervisor approval.","currency":"USD","self_approval_limit":0}
+  ]
+}

@@ -1,0 +1,11 @@
+__pycache__/
+.venv/
+.env
+artifacts/*.sqlite*
+artifacts/cache*
+models/
+data/
+*.log
+artifacts/tmp*/
+artifacts/test-*/
+artifacts/github-*.json

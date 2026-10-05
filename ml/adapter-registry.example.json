@@ -1,0 +1,5 @@
+{
+  "harbor/v1": "models/harbor-v1",
+  "harbor/v2": "models/harbor-v2",
+  "cedar/v1": "models/cedar-v1"
+}
