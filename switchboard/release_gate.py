@@ -33,7 +33,9 @@ def assess(report):
         failures.append('A complete 72-case benchmark is required')
     registry=report.get('adapter_registry') or {}
     fingerprints=report.get('artifact_fingerprints') or {}
-    required={f'{path}/{name}' for path in registry.values() for name in ('adapter_model.safetensors','adapter_config.json','run_manifest.json')}
+    names=('adapter_model.safetensors','adapter_config.json','run_manifest.json')
+    if report.get('architecture')=='evidence-classifier': names+=('evidence_head.safetensors',)
+    required={f'{path}/{name}' for path in registry.values() for name in names}
     valid_hashes=all(isinstance(value,str) and len(value)==64 and set(value)<=set('0123456789abcdef') for value in fingerprints.values())
     revision=report.get('revision','')
     if (report.get('backend') != 'lora' or set(registry)!={'harbor/v1','harbor/v2','cedar/v1'}
@@ -65,7 +67,7 @@ def assess(report):
 
 def load_experiments(root):
     experiments = []
-    for name in ('baseline-model.json', 'lora-model.json'):
+    for name in ('baseline-model.json', 'lora-model.json', 'evidence-model.json'):
         path = root/'artifacts'/name
         if not path.exists():
             continue
@@ -88,7 +90,7 @@ def load_experiments(root):
             gate['failures'].append('Local adapter artifacts are missing or changed')
         holdout_path=root/'artifacts'/name.replace('.json','-holdout.json')
         holdout=json.loads(holdout_path.read_text()) if holdout_path.exists() else None
-        experiments.append({'name': 'Customer LoRA' if report.get('backend') == 'lora' else 'Base model',
+        experiments.append({'name': 'Fast evidence LoRA' if report.get('architecture')=='evidence-classifier' else 'Customer LoRA' if report.get('backend') == 'lora' else 'Base model',
             'backend': report.get('backend'), 'model': report.get('model'),
             'revision': report.get('revision'), 'total': report['total'], 'correct': report['correct'],
             'invalid_outputs': report.get('invalid_outputs'), 'p95_ms': report.get('p95_uncached_ms'),

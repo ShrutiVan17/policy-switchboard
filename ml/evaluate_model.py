@@ -10,7 +10,7 @@ import time
 from switchboard.benchmark import cases
 from switchboard.engine import VERDICTS, resolve
 from switchboard.evals import summarize
-from .common import prompt
+from .common import prompt as legacy_prompt, prompt_v2
 from switchboard.release_gate import digest_file, assess
 
 
@@ -51,10 +51,21 @@ def main():
     p.add_argument('--mode',choices=['full','triage'],default='full')
     p.add_argument('--cache',help='Exact model/artifact/prompt/generation cache JSON for fictional inputs')
     p.add_argument('--batch-size',type=int,default=8)
+    p.add_argument('--decoder',choices=['free-json','constrained','scored'],default='free-json')
+    p.add_argument('--holdout-dir',default='data')
+    p.add_argument('--target',choices=['harbor/v1','harbor/v2','cedar/v1'])
+    p.add_argument('--offline',action='store_true')
+    p.add_argument('--prompt-version',choices=['1','2'],default='1')
+    p.add_argument('--diagnostics',action='store_true')
+    p.add_argument('--quantized',action='store_true')
     args = p.parse_args()
+    if args.diagnostics:
+        import faulthandler
+        faulthandler.dump_traceback_later(60,repeat=True)
+    prompt=prompt_v2 if args.prompt_version=='2' else legacy_prompt
     try:
         import torch
-        from transformers import AutoModelForCausalLM, AutoTokenizer
+        from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
         from peft import PeftModel
     except ImportError as exc:
         raise SystemExit("Install the optional ML dependencies first.") from exc
@@ -67,11 +78,21 @@ def main():
     registry = json.loads(Path(args.registry).read_text()) if args.registry else None
     if registry is not None and set(registry) != {"harbor/v1","harbor/v2","cedar/v1"}:
         raise SystemExit("Registry must contain exactly harbor/v1, harbor/v2 and cedar/v1.")
-    tokenizer = AutoTokenizer.from_pretrained(args.model,revision=revision,trust_remote_code=False)
+    from .checkpoints import local_source
+    source=local_source(args.model,args.revision)
+    if source==args.model and args.offline and revision:
+        from huggingface_hub import snapshot_download
+        source=snapshot_download(args.model,revision=revision,local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(source,revision=None if args.offline else revision,trust_remote_code=False)
     tokenizer.padding_side='left'
     tokenizer.pad_token=tokenizer.eos_token
     device = "cpu" if args.cpu else "cuda"
-    base = AutoModelForCausalLM.from_pretrained(args.model,revision=revision,trust_remote_code=False,torch_dtype=torch.float32 if args.cpu else torch.float16).to(device)
+    kwargs={'revision':None if args.offline else revision,'trust_remote_code':False,'torch_dtype':torch.float32 if args.cpu else torch.float16}
+    if args.quantized:
+        if args.cpu: raise SystemExit('The recorded NF4 inference path requires CUDA')
+        kwargs.update(quantization_config=BitsAndBytesConfig(load_in_4bit=True,bnb_4bit_quant_type='nf4',bnb_4bit_compute_dtype=torch.float16,bnb_4bit_use_double_quant=True),device_map={'':torch.cuda.current_device()})
+    base = AutoModelForCausalLM.from_pretrained(source,**kwargs)
+    if not args.quantized: base=base.to(device)
     model = base
     if registry:
         for index,(key,path) in enumerate(registry.items()):
@@ -92,7 +113,7 @@ def main():
     if args.holdout:
         evaluation_cases=[]
         for tenant,version in [('harbor','v1'),('harbor','v2'),('cedar','v1')]:
-            for index,line in enumerate(Path(f'data/{tenant}-{version}-validation.jsonl').read_text().splitlines()):
+            for index,line in enumerate(Path(args.holdout_dir,f'{tenant}-{version}-validation.jsonl').read_text().splitlines()):
                 example=json.loads(line)
                 user=json.loads(example['prompt'][1]['content'])
                 label=parse_decision(example['completion'][0]['content'])['verdict']
@@ -101,6 +122,7 @@ def main():
                     'expected':label,'dependency':'REFUND-01','provenance':'Synthetic held-out wording families; not expert-reviewed'})
     if args.mode == 'triage':
         evaluation_cases=[c for c in evaluation_cases if c['dependency']=='REFUND-01' or c['family_id'] in {'hello','secret','guarantee'}]
+    if args.target: evaluation_cases=[c for c in evaluation_cases if f"{c['tenant']}/{c['version']}"==args.target]
     fingerprints={str(Path(path,name).as_posix()):digest_file(Path(path,name))
         for path in (registry or {}).values() for name in ('adapter_model.safetensors','adapter_config.json','run_manifest.json')}
     cache_path=Path(args.cache) if args.cache else None
@@ -113,6 +135,9 @@ def main():
             'prompts':prompts,'dtype':'float32' if args.cpu else 'float16','batch_size':args.batch_size,
             'libraries':{name:__import__(name).__version__ for name in ('torch','transformers','peft')},
             'generation':{'max_new_tokens':220,'do_sample':False},'parser_revision':'strict-json-v2'}
+        identity['decoder']=args.decoder
+        identity['decoder_revision']='joint-verdict-v1' if args.decoder=='scored' else 'verdict-trie-v1'
+        identity['quantization']='nf4-double' if args.quantized else 'none'
         batch_key=hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest()
         keys=[f'{batch_key}/{index}' for index in range(len(batch))]
         if all(key in cache for key in keys):
@@ -120,18 +145,47 @@ def main():
             continue
         if registry:
             model.set_adapter(f"{batch[0]['tenant']}/{batch[0]['version']}")
-        texts=[tokenizer.apply_chat_template(p,tokenize=False,add_generation_prompt=True) for p in prompts]
+        texts=[tokenizer.apply_chat_template(p,tokenize=False,add_generation_prompt=True,enable_thinking=False) for p in prompts]
+        if args.decoder=='scored':
+            from .verdict_scorer import score
+            if not args.cpu: torch.cuda.synchronize()
+            tick=time.perf_counter()
+            decisions=score(model,tokenizer,texts,device)
+            if not args.cpu: torch.cuda.synchronize()
+            duration=(time.perf_counter()-tick)*1000
+            for case,key,decision in zip(batch,keys,decisions):
+                value={**decision,'raw_output':None,'error':None if decision['predicted']!='invalid' else 'Non-finite scores',
+                    'source_batch_latency_ms':duration}
+                rows.append({**case,**value,'cache_hit':False,'latency_ms':duration})
+                cache[key]=value
+            if cache_path:
+                cache_path.parent.mkdir(parents=True,exist_ok=True)
+                cache_path.write_text(json.dumps(cache))
+            print(f'Measured {len(rows)}/{len(evaluation_cases)} scored verdicts',flush=True)
+            continue
+        generation={'max_new_tokens':220,'do_sample':False,'pad_token_id':tokenizer.eos_token_id}
+        if args.decoder=='constrained':
+            from .constrained import PREFIX,build_trie,allowed
+            texts=[text+PREFIX for text in texts]
         inputs=tokenizer(texts,add_special_tokens=False,padding=True,return_tensors='pt').to(device)
+        if args.decoder=='constrained':
+            trie=build_trie(tokenizer)
+            generation.update(max_new_tokens=12,prefix_allowed_tokens_fn=lambda batch_id,tokens:allowed(trie,tokens[inputs['input_ids'].shape[-1]:].tolist(),tokenizer.eos_token_id))
         if not args.cpu: torch.cuda.synchronize()
         t=time.perf_counter()
         with torch.inference_mode():
-            output=model.generate(**inputs,max_new_tokens=220,do_sample=False,pad_token_id=tokenizer.eos_token_id)
+            output=model.generate(**inputs,**generation)
         if not args.cpu: torch.cuda.synchronize()
         duration=(time.perf_counter()-t)*1000
         generated=tokenizer.batch_decode(output[:,inputs['input_ids'].shape[-1]:],skip_special_tokens=True)
         for case,key,text in zip(batch,keys,generated):
             error=None
-            try: predicted=parse_decision(text)['verdict']
+            try:
+                if args.decoder=='constrained':
+                    from .constrained import classify_text
+                    predicted=classify_text(text)
+                    if predicted=='invalid': raise ValueError('Invalid constrained verdict')
+                else: predicted=parse_decision(text)['verdict']
             except (ValueError,TypeError):
                 predicted='invalid'
                 error='Malformed model output; runtime must withhold delivery.'
@@ -145,6 +199,14 @@ def main():
     result=summarize(rows,time.perf_counter()-start,cache_hits=sum(r['cache_hit'] for r in rows),backend="lora" if registry else "prompted-model")
     result['mode']=args.mode
     result['batch_size']=args.batch_size
+    result['decoder']=args.decoder
+    result['prompt_version']=args.prompt_version
+    result['rewrite_quality_measured']=False
+    result['hardware']='CPU' if args.cpu else torch.cuda.get_device_name()
+    result['numeric_precision']='float32' if args.cpu else 'float16'
+    result['quantization']='nf4-double' if args.quantized else 'none'
+    from .verdict_scorer import calibration
+    result['calibration']=calibration(rows)
     result['latency_definition']='Completion time for a homogeneous tenant/policy batch; excludes loading and queue time. Not single-request latency.'
     result['cases_per_second']=round(len(rows)/(result['wall_ms']/1000),3)
     result.update(model=args.model,revision=args.revision,adapter_registry=registry,

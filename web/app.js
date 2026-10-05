@@ -8,7 +8,7 @@ let config,report;
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
 async function api(path,body,tenant='harbor'){
-  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),path==='/api/shadow'?60000:8000);
+  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),path==='/api/shadow'?15000:8000);
   try{const r=await fetch(path,{method:body?'POST':'GET',signal:controller.signal,headers:{'Content-Type':'application/json','Authorization':`Bearer ${config.keys[tenant]}`},...(body?{body:JSON.stringify(body)}:{})});const data=await r.json();if(!r.ok)throw new Error(data.error||data.detail?.[0]?.msg||'Check your input.');return data;}
   finally{clearTimeout(timer);}
 }
@@ -86,7 +86,7 @@ $('shadow-btn').addEventListener('click',async()=>{
   try{const context={currency:'USD',supervisor_approved:$('approved').checked};if($('amount').value!=='')context.fee_amount=Number($('amount').value);
     const r=await api('/api/shadow',{message:$('message').value,version:'v2',context});
     const aiLabel={pass:'Allow',escalate:'Review',block:'Block',rewrite:'Rewrite',invalid:'Invalid answer'}[r.model_verdict]||r.model_verdict;
-    $('shadow-result').textContent=r.model_verdict==='not-run'?'Private info blocked · AI skipped · Nothing sent':`AI: ${aiLabel} (unverified) · Rules: ${labels[r.rule_verdict]} · Nothing sent`;
+    $('shadow-result').textContent=r.model_verdict==='not-run'?'Private info blocked · AI skipped · Nothing sent':`AI: ${aiLabel} (unverified) · Rules: ${labels[r.rule_verdict]} · ${Math.round(r.latency_ms)} ms · Nothing sent`;
   }catch(error){$('shadow-result').textContent=error.name==='AbortError'?'Model is still loading. Try again shortly.':error.message;}
   finally{$('shadow-btn').disabled=false;}
 });

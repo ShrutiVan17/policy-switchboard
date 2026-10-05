@@ -18,6 +18,9 @@ def main():
     p.add_argument("--max-length", type=int, default=512)
     p.add_argument('--verdict-weight',type=float,default=1.0)
     p.add_argument('--batch-size',type=int,choices=[1,2,4,8],default=4)
+    p.add_argument('--learning-rate',type=float,default=2e-4)
+    p.add_argument('--completion-prefix',choices=['none','closed-think'],default='none')
+    p.add_argument('--prompt-version',choices=['1','2'],default='1')
     p.add_argument('--gradient-checkpointing',action='store_true',help='Trade training speed for lower GPU memory')
     p.add_argument("--tenant", required=True, choices=['harbor','cedar'])
     p.add_argument("--policy-version", required=True, choices=['v1','v2'])
@@ -44,8 +47,10 @@ def main():
     if args.revision != "local" and (len(args.revision) != 40 or any(c not in "0123456789abcdef" for c in args.revision.lower())):
         raise SystemExit("--revision must be a 40-character immutable commit SHA, or local.")
     revision = None if args.revision == "local" else args.revision
+    from .checkpoints import local_source
+    source=local_source(args.model,args.revision)
     set_seed(42)
-    tokenizer = AutoTokenizer.from_pretrained(args.model, revision=revision, trust_remote_code=False)
+    tokenizer = AutoTokenizer.from_pretrained(source, revision=revision, trust_remote_code=False)
     if args.verdict_weight < 1: raise SystemExit('Verdict weight must be at least one')
     if not tokenizer.chat_template:
         raise SystemExit("Choose an instruction checkpoint with a chat template.")
@@ -56,10 +61,15 @@ def main():
     if args.qlora:
         kwargs["quantization_config"] = BitsAndBytesConfig(load_in_4bit=True,bnb_4bit_quant_type="nf4",bnb_4bit_compute_dtype=kwargs["torch_dtype"],bnb_4bit_use_double_quant=True)
         kwargs["device_map"] = {"":torch.cuda.current_device()}
-    model = AutoModelForCausalLM.from_pretrained(args.model, **kwargs)
+    model = AutoModelForCausalLM.from_pretrained(source, **kwargs)
     # Load this small local corpus in memory; avoid long Windows dataset-cache lock paths.
     datasets = DatasetDict({name:Dataset.from_list([json.loads(line) for line in Path(path).read_text(encoding='utf-8').splitlines()])
         for name,path in {'train':args.train,'validation':args.validation}.items()})
+    if args.completion_prefix=='closed-think':
+        def close_think(row):
+            row['completion'][0]['content']='<think>\n\n</think>\n\n'+row['completion'][0]['content']
+            return row
+        datasets=DatasetDict({name:split.map(close_think) for name,split in datasets.items()})
     train_families = set(datasets["train"]["family_id"])
     validation_families = set(datasets["validation"]["family_id"])
     if train_families & validation_families:
@@ -70,7 +80,7 @@ def main():
         raise SystemExit(f'Examples need {maximum_tokens} tokens. Increase --max-length to avoid truncating labels.')
     config = SFTConfig(output_dir=args.output, num_train_epochs=args.epochs,
         per_device_train_batch_size=args.batch_size, per_device_eval_batch_size=args.batch_size, gradient_accumulation_steps=max(1,8//args.batch_size),
-        learning_rate=2e-4, max_length=args.max_length, packing=False, completion_only_loss=True,
+        learning_rate=args.learning_rate, max_length=args.max_length, packing=False, completion_only_loss=True,
         bf16=bf16, fp16=not args.cpu and not bf16, use_cpu=args.cpu,
         gradient_checkpointing=args.gradient_checkpointing, eval_strategy="epoch", save_strategy="no",
         logging_steps=5, report_to="none", seed=42)
@@ -94,10 +104,12 @@ def main():
         "max_length":args.max_length,"gradient_checkpointing":args.gradient_checkpointing,
         "verdict_weight":args.verdict_weight,
         "batch_size":args.batch_size,"effective_batch_size":8,
+        "learning_rate":args.learning_rate,"completion_prefix":args.completion_prefix,"prompt_version":args.prompt_version,
         "trainer_source_sha256":trainer_source_hash,"initialization_seed_explicit":True,
         "tenant":args.tenant,"policy_version":args.policy_version,"policy_sha256":policy.digest,
         "hardware": "CPU" if args.cpu else torch.cuda.get_device_name(), "training_metrics":training.metrics,
         "adapter_sha256":digest(Path(args.output,"adapter_model.safetensors")),
+        "adapter_config_sha256":digest(Path(args.output,'adapter_config.json')),
         "versions":{k:__import__(k).__version__ for k in ("torch","transformers","peft","trl","datasets")}},indent=2),encoding="utf-8")
 
 

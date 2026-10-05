@@ -15,7 +15,9 @@ A $15 refund is allowed under Harbor's old $20 limit, held under its new $10 lim
 - Real local shadow inference with authenticated tenant routing, locked adapter switching and checked artifact fingerprints.
 - Rules-based delivery, secret-redacted evidence, exact-configuration caching and selective evaluation.
 
-The base is **SmolLM2-135M-Instruct**, chosen for the local 4 GB GPU. It is much smaller than ZeroDrift's enforcement model. AI-generated text is never delivered to a customer. Synthetic scores do not certify compliance.
+The interactive lab now uses **MiniLM with three customer/version LoRA adapters and trained verdict heads**. Explicit approval and amount facts supplement semantic embeddings. AI comparisons never deliver customer text.
+
+**Current measured result:** 56/72 smoke cases correct, zero invalid verdicts, 14 unsafe allows; warm CPU p95 15 ms. The gate rejects this model. Monitored synthetic validation: 132/144, with 18 messages also present verbatim in training. See [fast-model reproduction and limits](docs/FAST_MODEL.md). The SmolLM results below are historical experiments.
 
 See [measured results](docs/MODEL_REPORT.md), [trust boundaries](docs/TRUST.md) and [the interview guide](docs/INTERVIEW.md).
 
@@ -67,7 +69,7 @@ The approval toggle is fictional demo context. Production must retrieve approval
 | Evidence | SQLite and policy hashes | Tenant-scoped records with matched-secret redaction |
 | Quality | unittest and GitHub Actions | Boundary, API, dataset and release-gate checks |
 
-The recorded ML versions are pinned in [tested requirements](ml/requirements-tested.txt) and each training manifest. Docker packaging is provided; container execution is unverified.
+The recorded ML versions are pinned in [tested requirements](ml/requirements-tested.txt) and each training manifest. Linux Docker CI has verified the rules service and trusted-ticket boundary; trained-model container deployment is unverified. See [service checks](docs/SERVICE.md).
 
 ## Alignment with the role
 

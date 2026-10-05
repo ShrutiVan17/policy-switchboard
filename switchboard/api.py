@@ -73,7 +73,7 @@ async def http_error(request, exc):
 @app.get("/api/health")
 def health():
     return {"status":"ok", "api_framework":"FastAPI", "backend":"deterministic", "trained_model":False,
-            "shadow_adapters_available":(server.ROOT/'models/registry.json').exists(),"model_delivery_enabled":False}
+            "shadow_adapters_available":all((server.ROOT/f'models/evidence-{t}-{v}/run_manifest.json').exists() for t,v in [('harbor','v1'),('harbor','v2'),('cedar','v1')]),"model_delivery_enabled":False}
 
 
 @app.get("/api/demo-config")
@@ -125,10 +125,10 @@ def check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
 def shadow_check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
     if body.tenant is not None and body.tenant != tenant:
         raise HTTPException(403, 'Tenant does not match authenticated key')
-    if not (server.ROOT/'models/registry.json').exists():
-        raise HTTPException(503, 'Complete trained adapter registry is not available')
+    if not (server.ROOT/f'models/evidence-{tenant}-{body.version}/run_manifest.json').exists():
+        raise HTTPException(503, 'Trained adapter is not provisioned for this policy')
     try:
-        from ml.runtime import shadow
+        from ml.evidence_runtime import shadow
         return shadow(body.message,trusted_context(body,tenant),tenant,body.version)
     except ValueError as exc:
         raise HTTPException(400,str(exc)) from None
