@@ -48,7 +48,9 @@ async def demo_boundary(request: Request, call_next):
     if request.method == "POST":
         origin = request.headers.get("origin")
         port = request.url.port or 80
-        if origin and origin not in {f"http://127.0.0.1:{port}", f"http://localhost:{port}"}:
+        allowed={f"http://127.0.0.1:{port}",f"http://localhost:{port}"}
+        if server.PUBLIC_ORIGIN:allowed.add(server.PUBLIC_ORIGIN)
+        if origin and origin not in allowed:
             return JSONResponse({"error":"Cross-origin request denied"}, status_code=403)
         try:
             size = int(request.headers.get("content-length", "0"))
@@ -80,7 +82,7 @@ def health():
 def demo_config():
     if server.PROFILE!='demo' or set(server.TOKENS)!={'demo-harbor-key','demo-cedar-key'}:
         raise HTTPException(404,'Demo credentials unavailable')
-    return {"keys":{tenant:key for key,tenant in server.TOKENS.items()},
+    return {"keys":{tenant:key for key,tenant in server.TOKENS.items()},'public_demo':bool(server.PUBLIC_ORIGIN),
             "policies":[p.public() for p in POLICIES.values()], "local_demo":True}
 
 
@@ -142,6 +144,7 @@ def shadow_check(body: EnforcementRequest, tenant=Depends(authenticated_tenant))
 
 @app.get("/api/evidence")
 def evidence(tenant=Depends(authenticated_tenant)):
+    if server.PROFILE=='demo' and server.PUBLIC_ORIGIN:return {'events':[]}
     if not server.DB.exists():
         return {"events":[]}
     try:

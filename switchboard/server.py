@@ -17,6 +17,11 @@ from .evals import run
 ROOT = Path(__file__).resolve().parent.parent
 PROFILE=os.environ.get('SWITCHBOARD_MODE','demo')
 if PROFILE not in {'demo','service'}: raise RuntimeError('Mode must be demo or service')
+PUBLIC_ORIGIN=os.environ.get('SWITCHBOARD_PUBLIC_ORIGIN','').rstrip('/')
+if PUBLIC_ORIGIN:
+    origin=urlparse(PUBLIC_ORIGIN)
+    if origin.scheme!='https' or not origin.netloc or origin.username or origin.path or origin.query or origin.fragment:
+        raise RuntimeError('Public origin must be an HTTPS origin without a path or credentials')
 if PROFILE=='service' and any(len(os.environ.get(name,''))<32 for name in ('HARBOR_API_KEY','CEDAR_API_KEY')):
     raise RuntimeError('Service mode requires distinct tenant keys of at least 32 characters')
 TOKENS = {os.environ.get("HARBOR_API_KEY", "demo-harbor-key"): "harbor",
@@ -30,6 +35,8 @@ EVAL_LOCK = threading.Lock()
 
 
 def record(result):
+    # Public fictional demos must not expose one visitor's input to another.
+    if PROFILE=='demo' and PUBLIC_ORIGIN:return
     DB.parent.mkdir(exist_ok=True)
     with closing(sqlite3.connect(DB)) as conn, conn:
         conn.execute("CREATE TABLE IF NOT EXISTS evidence (id TEXT PRIMARY KEY, tenant TEXT, created_at TEXT, payload TEXT)")

@@ -73,7 +73,7 @@ async function experiments(){
   $('models-btn').disabled=true;
   try{const data=await api('/api/experiments');
     $('model-results').replaceChildren(...data.experiments.map(r=>{
-      const n=el('article',undefined,'model-card');n.append(el('h3',r.name),el('strong',`${r.correct}/${r.total} correct`),el('p',`${r.invalid_outputs} invalid · ${Math.round(r.p95_ms)} ms batch p95`,'fine-print'),el('span',r.gate.status==='shadow-ready'?'Shadow ready':'Release blocked',`badge ${r.gate.status==='shadow-ready'?'pass':'escalate'}`));
+      const n=el('article',undefined,'model-card');const recorded=!r.artifacts_verified;n.append(el('h3',r.name),el('strong',`${r.correct}/${r.total} correct`),el('p',`${r.invalid_outputs} invalid · ${Math.round(r.p95_ms)} ms batch p95`,'fine-print'),el('span',recorded?'Recorded study':r.gate.status==='shadow-ready'?'Shadow ready':'Release blocked',`badge ${!recorded&&r.gate.status==='shadow-ready'?'pass':'escalate'}`));
       if(r.test)n.append(el('p',`New unseen test: ${r.test.correct}/${r.test.total} · ${r.test.unsafe_allows} unsafe`,'fine-print'));
       else if(r.challenge)n.append(el('p',`Unseen challenge: ${r.challenge.correct}/${r.challenge.total} · ${r.challenge.unsafe_allows} unsafe`,'fine-print'));
       else if(r.holdout)n.append(el('p',`Synthetic validation: ${r.holdout.correct}/${r.holdout.total}`,'fine-print'));
@@ -92,4 +92,4 @@ $('shadow-btn').addEventListener('click',async()=>{
   }catch(error){$('shadow-result').textContent=error.name==='AbortError'?'Model is still loading. Try again shortly.':error.message;}
   finally{$('shadow-btn').disabled=false;}
 });
-fetch('/api/demo-config').then(r=>{if(!r.ok)throw new Error('Connection unavailable.');return r.json();}).then(c=>{config=c;return replay({celebration:false});}).catch(error=>{$('status').textContent=error.message;});
+fetch('/api/demo-config').then(r=>{if(!r.ok)throw new Error('Connection unavailable.');return r.json();}).then(c=>{config=c;if(c.public_demo)document.querySelector('.demo-pill').textContent='Fictional demo · messages not saved';return replay({celebration:false});}).catch(error=>{$('status').textContent=error.message;});

@@ -5,6 +5,7 @@ RUN pip install --no-cache-dir -r requirements.lock.txt
 COPY switchboard ./switchboard
 COPY ml ./ml
 COPY web ./web
+COPY artifacts/evidence-model.json artifacts/control-model.json artifacts/evidence-model-test.json artifacts/control-model-test.json ./artifacts/
 # Loopback binding is intentional. Run with host networking on Linux for a local demo.
 CMD ["python", "-m", "switchboard.launch"]
 

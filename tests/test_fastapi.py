@@ -14,6 +14,20 @@ except ImportError:
 
 @unittest.skipUnless(AVAILABLE, "Install requirements-dev.txt to test FastAPI")
 class FastAPITests(unittest.TestCase):
+    def test_public_demo_exact_origin_and_no_shared_message_history(self):
+        with patch.object(server,'PUBLIC_ORIGIN','https://demo.example'),patch.object(server,'PROFILE','demo'):
+            with patch('switchboard.server.sqlite3.connect',side_effect=AssertionError('Public input persisted')):
+                response=self.client.post('/api/enforce',json={'message':'Hello!'},headers={**self.headers,'Origin':'https://demo.example'})
+            self.assertEqual(response.status_code,200)
+            self.assertEqual(self.client.get('/api/evidence',headers=self.headers).json()['events'],[])
+            self.assertTrue(self.client.get('/api/demo-config').json()['public_demo'])
+            rejected=self.client.post('/api/enforce',json={'message':'Hello!'},headers={**self.headers,'Origin':'https://demo.example.evil.test'})
+            self.assertEqual(rejected.status_code,403)
+
+    def test_public_setting_does_not_disable_private_service_evidence(self):
+        with patch.object(server,'PUBLIC_ORIGIN','https://demo.example'),patch.object(server,'PROFILE','service'),\
+             patch('switchboard.server.sqlite3.connect',side_effect=OSError('Evidence storage unavailable')):
+            with self.assertRaises(OSError):server.record({})
     def test_invalid_shadow_version_and_corrupt_report_fail_closed(self):
         result=self.client.post('/api/shadow',json={'message':'Hello','version':'../../outside'},headers=self.headers)
         self.assertEqual(result.status_code,400)
