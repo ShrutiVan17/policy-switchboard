@@ -22,3 +22,26 @@ jobs:
         with:
           name: evaluation-${{ matrix.os }}-${{ matrix.python }}
           path: artifacts/evaluation.json
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build service image
+        run: docker build -t switchboard-service .
+      - name: Verify the deployed service boundary
+        shell: bash
+        run: |
+          docker run -d --name switchboard-check --network host -e SWITCHBOARD_MODE=service -e HARBOR_API_KEY=ci-harbor-fixture-key-0000000000000000000000 -e CEDAR_API_KEY=ci-cedar-fixture-key-00000000000000000000000 switchboard-service
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:8765/api/health; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:8765/api/health
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:8765/api/demo-config)" = 404
+          docker exec switchboard-check python -m switchboard.provision_context --tenant harbor --ticket ci-refund --amount 15
+          curl --fail --silent http://127.0.0.1:8765/api/enforce -H 'Authorization: Bearer ci-harbor-fixture-key-0000000000000000000000' -H 'Content-Type: application/json' --data '{"message":"I can refund your $15 transfer fee now.","version":"v2","ticket_id":"ci-refund"}' > service-response.json
+          python -c "import json; r=json.load(open('service-response.json')); assert r['verdict']=='escalate' and r['delivered_output'] is None"
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:8765/api/enforce -H 'Authorization: Bearer ci-harbor-fixture-key-0000000000000000000000' -H 'Content-Type: application/json' --data '{"message":"Hello!","ticket_id":"ci-refund","context":{"supervisor_approved":true}}')" = 400
+      - name: Container diagnostics
+        if: failure()
+        run: docker logs switchboard-check

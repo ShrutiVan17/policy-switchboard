@@ -28,6 +28,7 @@ class EnforcementRequest(BaseModel):
     version: str = "v1"
     tenant: str | None = None
     context: dict = Field(default_factory=dict)
+    ticket_id: str | None = Field(default=None,min_length=1,max_length=64,pattern=r'^[A-Za-z0-9_.-]+$')
 
 
 class EvaluationRequest(BaseModel):
@@ -77,6 +78,8 @@ def health():
 
 @app.get("/api/demo-config")
 def demo_config():
+    if server.PROFILE!='demo' or set(server.TOKENS)!={'demo-harbor-key','demo-cedar-key'}:
+        raise HTTPException(404,'Demo credentials unavailable')
     return {"keys":{tenant:key for key,tenant in server.TOKENS.items()},
             "policies":[p.public() for p in POLICIES.values()], "local_demo":True}
 
@@ -86,13 +89,26 @@ def experiments(tenant=Depends(authenticated_tenant)):
     return load_experiments(server.ROOT)
 
 
+def trusted_context(body,tenant):
+    if server.PROFILE=='demo': return body.context
+    if body.context: raise HTTPException(400,'Caller-supplied business context is forbidden in service mode')
+    if not body.ticket_id: raise HTTPException(400,'A tenant-owned support ticket is required')
+    try:
+        from .context_store import read
+        return read(server.TRUSTED_DB,tenant,body.ticket_id)
+    except LookupError:
+        raise HTTPException(404,'Ticket not found for authenticated tenant') from None
+    except (OSError,sqlite3.Error):
+        raise HTTPException(503,'Trusted context unavailable; delivery withheld') from None
+
+
 @app.post("/api/enforce")
 def check(body: EnforcementRequest, tenant=Depends(authenticated_tenant)):
     if body.tenant is not None and body.tenant != tenant:
         raise HTTPException(403, "Tenant does not match authenticated key")
     start = time.perf_counter()
     try:
-        result = enforce(body.message, body.context, tenant, body.version)
+        result = enforce(body.message, trusted_context(body,tenant), tenant, body.version)
     except (ValueError, TypeError) as exc:
         raise HTTPException(400, str(exc)) from None
     result.update(evidence_id="ev_"+secrets.token_hex(8),
@@ -113,7 +129,7 @@ def shadow_check(body: EnforcementRequest, tenant=Depends(authenticated_tenant))
         raise HTTPException(503, 'Complete trained adapter registry is not available')
     try:
         from ml.runtime import shadow
-        return shadow(body.message,body.context,tenant,body.version)
+        return shadow(body.message,trusted_context(body,tenant),tenant,body.version)
     except ValueError as exc:
         raise HTTPException(400,str(exc)) from None
     except (ImportError,OSError,RuntimeError,KeyError):

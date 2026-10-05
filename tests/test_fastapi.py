@@ -80,6 +80,22 @@ class FastAPITests(unittest.TestCase):
         self.assertEqual(self.client.get("/README.md").status_code,404)
         self.assertIn("Can this message",self.client.get("/").text)
 
+    def test_service_context_cannot_be_forged_or_cross_tenant(self):
+        from switchboard.context_store import write
+        path=self.path/'trusted.sqlite'
+        write(path,'harbor','case-15','15',False)
+        with patch.object(server,'PROFILE','service'),patch.object(server,'TRUSTED_DB',path):
+            self.assertEqual(self.client.get('/api/demo-config').status_code,404)
+            payload={'message':'I can refund your $15 transfer fee now.','version':'v2','ticket_id':'case-15'}
+            response=self.client.post('/api/enforce',json=payload,headers=self.headers)
+            self.assertEqual(response.json()['verdict'],'escalate')
+            forged={**payload,'context':{'supervisor_approved':True}}
+            self.assertEqual(self.client.post('/api/enforce',json=forged,headers=self.headers).status_code,400)
+            other=self.client.post('/api/enforce',json=payload,headers={'Authorization':'Bearer demo-cedar-key'})
+            self.assertEqual(other.status_code,404)
+            with patch('switchboard.context_store.read',side_effect=OSError('Unavailable')):
+                self.assertEqual(self.client.post('/api/enforce',json=payload,headers=self.headers).status_code,503)
+
 
 if __name__ == "__main__":
     unittest.main()

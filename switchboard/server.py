@@ -15,11 +15,16 @@ from .engine import enforce, POLICIES
 from .evals import run
 
 ROOT = Path(__file__).resolve().parent.parent
+PROFILE=os.environ.get('SWITCHBOARD_MODE','demo')
+if PROFILE not in {'demo','service'}: raise RuntimeError('Mode must be demo or service')
+if PROFILE=='service' and any(len(os.environ.get(name,''))<32 for name in ('HARBOR_API_KEY','CEDAR_API_KEY')):
+    raise RuntimeError('Service mode requires distinct tenant keys of at least 32 characters')
 TOKENS = {os.environ.get("HARBOR_API_KEY", "demo-harbor-key"): "harbor",
           os.environ.get("CEDAR_API_KEY", "demo-cedar-key"): "cedar"}
 if len(TOKENS) != 2:
     raise RuntimeError("Tenant keys must differ")
 DB = ROOT / "artifacts" / "evidence.sqlite"
+TRUSTED_DB=ROOT/'artifacts/trusted-context.sqlite'
 CACHE = {}
 EVAL_LOCK = threading.Lock()
 
@@ -55,6 +60,8 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/health":
             return self.send_json({"status":"ok", "backend":"deterministic", "trained_model":False})
         if path == "/api/demo-config":
+            if PROFILE!='demo' or set(TOKENS)!={'demo-harbor-key','demo-cedar-key'}:
+                return self.send_json({'error':'Demo credentials unavailable'},404)
             return self.send_json({"keys": {tenant: key for key, tenant in TOKENS.items()},
                                    "policies":[p.public() for p in POLICIES.values()], "local_demo":True})
         if path == "/api/evidence":
@@ -119,6 +126,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
+    if PROFILE=='service': raise SystemExit('Service mode requires the FastAPI entry point')
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args()
